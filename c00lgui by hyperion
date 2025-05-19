@@ -1,1360 +1,1142 @@
--- Gui to Lua
--- Version: 3.2
+--[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+-- the code is extremely messy because something in the code editor fucked it up all at once and for some reason removed indents in some parts of the code while kept indents in some other parts of the code LOL
+local LOAD_TIME = tick()
+local queueonteleport = queue_on_teleport or queueonteleport
+local setclipboard = toclipboard or setrbxclipboard or setclipboard
+local clonefunction = clonefunc or clonefunction
+local hookfunction =
+    hookfunc or replacecclosure or detourfunction or replacefunc or replacefunction or replaceclosure or detour_function or
+        hookfunction
+local setthreadidentity = set_thread_identity or setthreadcaps or setthreadidentity
+local firetouchinterests = fire_touch_interests or firetouchinterests
+local getnamecallmethod = get_namecall_method or getnamecallmethod
+local setnamecallmethod = set_namecall_method or setnamecallmethod
+local restorefunction = restorefunction or restoreclosure or restorefunc
 
--- Instances:
+-- // cloneref function for exploits that dont support it
+local a = Instance.new("Part")
+local f = {}
+function f.invalidate(g)
+    if not InstanceList then
+        return
+    end
+    for b, c in pairs(InstanceList) do
+        if c == g then
+            InstanceList[b] = nil;
+            return g
+        end
+    end
+end
+function cloneref(s)
+	return s
+end
+getrenv = getgenv
+getrenv().Visit = cloneref(game:GetService("Visit"))
+getrenv().MarketplaceService = cloneref(game:GetService("MarketplaceService")) -- // theres a reason why thats referenced in the roblox environment
+getrenv().HttpRbxApiService = cloneref(game:GetService("HttpRbxApiService"))
+getrenv().HttpService = cloneref(game:GetService("HttpService"))
+local PlayerGui = cloneref(game.Players.LocalPlayer:WaitForChild("PlayerGui")0
+local ContentProvider = cloneref(game:GetService("ContentProvider"))
+local RunService = cloneref(game:GetService("RunService"))
+local Stats = cloneref(game:GetService("Stats"))
+local Players = cloneref(game:GetService("Players"))
+local NetworkClient = cloneref(game:GetService("NetworkClient"))
+local VirtualUser = cloneref(game:GetService("VirtualUser"))
+local ProximityPromptService = cloneref(game:GetService("ProximityPromptService"))
+local Lighting = cloneref(game:GetService("Lighting"))
+local AssetService = cloneref(game:GetService("AssetService"))
+local TeleportService = cloneref(game:GetService("TeleportService"))
+local NetworkSettings = settings().Network
+local UserGameSettings = UserSettings():GetService("UserGameSettings")
+getrenv().getgenv = clonefunction(getgenv)
 
+local message = Instance.new("Message")
+message.Text = "loading wyvern"
+message.Name =
+    "Knee grow"
+message.Parent = PlayerGui
 
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
---unlike brookhaven if script patched
+task.wait(0.25)
 
-
-
-local lp = game:FindService("Players").LocalPlayer
-
-local function gplr(String)
-	local Found = {}
-	local strl = String:lower()
-	if strl == "all" then
-		for i,v in pairs(game:FindService("Players"):GetPlayers()) do
-			table.insert(Found,v)
-		end
-	elseif strl == "others" then
-		for i,v in pairs(game:FindService("Players"):GetPlayers()) do
-			if v.Name ~= lp.Name then
-				table.insert(Found,v)
-			end
-		end 
-	elseif strl == "me" then
-		for i,v in pairs(game:FindService("Players"):GetPlayers()) do
-			if v.Name == lp.Name then
-				table.insert(Found,v)
-			end
-		end 
-	else
-		for i,v in pairs(game:FindService("Players"):GetPlayers()) do
-			if v.Name:lower():sub(1, #String) == String:lower() then
-				table.insert(Found,v)
-			end
-		end 
-	end
-	return Found 
+getgenv().stealth_call = function(script)
+    getrenv()._set = clonefunction(setthreadidentity)
+    local old
+    old = hookmetamethod(game, "__index", function(a, b)
+        task.spawn(function()
+            _set(7)
+            task.wait(0.1)
+            local went, error = pcall(function()
+                loadstring(script)()
+            end)
+            print(went, error)
+            if went then
+                local check = Instance.new("LocalScript")
+                check.Parent = Visit
+            end
+        end)
+        hookmetamethod(game, "__index", old)
+        return old(a, b)
+    end)
 end
 
-local ScreenGui = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local Giant = Instance.new("TextButton")
-local tp = Instance.new("TextButton")
-local tptarget = Instance.new("TextBox")
-local Holdalltools = Instance.new("TextButton")
-local X = Instance.new("TextButton")
-local flingtarget = Instance.new("TextBox")
-local fling = Instance.new("TextButton")
-local Rejoin = Instance.new("TextButton")
-local bringtarget = Instance.new("TextBox")
-local Bring = Instance.new("TextButton")
-local Bringall = Instance.new("TextButton")
-local Rainbowcharacter = Instance.new("TextButton")
-local Credit = Instance.new("TextButton")
-local Open = Instance.new("TextButton")
-
-local Frame1 = Instance.new("Frame")
-local cre = Instance.new("TextLabel")
-local LikeAndSubscribe = Instance.new("TextLabel")
-local nlpoxcv = Instance.new("TextLabel")
-local TextButton = Instance.new("TextButton")
-
-
-local Claimallhouse = Instance.new("TextButton")
-
-local Open2 = Instance.new("TextButton")
-
-
-local Frame2 = Instance.new("Frame")
-local CrashServer = Instance.new("TextButton")
-local Version = Instance.new("TextButton")
-local XX = Instance.new("TextButton")
-
-local JumpPower = Instance.new("TextButton")
-local ClickTotp = Instance.new("TextButton")
-local Jump = Instance.new("TextBox")
-local WalkSpeed = Instance.new("TextButton")
-local Speed = Instance.new("TextBox")
-local View = Instance.new("TextBox")
-local Spectate = Instance.new("TextButton")
-
---Properties:
-
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-Frame1.Name = "Frame1"
-Frame1.Parent = ScreenGui
-Frame1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Frame1.Position = UDim2.new(0.22708334, 0, 0.162499949, 0)
-Frame1.Size = UDim2.new(0, 249, 0, 201)
-Frame1.Visible = false
-
-Open2.Name = "Open 2"
-Open2.Parent = Frame
-Open2.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-Open2.Position = UDim2.new(0.997094154, 0, 0.810631216, 0)
-Open2.Size = UDim2.new(0, 49, 0, 50)
-Open2.Font = Enum.Font.SourceSans
-Open2.Text = "Open 2"
-Open2.TextColor3 = Color3.fromRGB(0, 0, 0)
-Open2.TextScaled = true
-Open2.TextSize = 14.000
-Open2.TextWrapped = true
-Open2.MouseButton1Down:Connect(function()
-	Frame2.Visible = true
-end)
-
-cre.Name = "cre"
-cre.Parent = Frame1
-cre.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-cre.Position = UDim2.new(0, 0, -0.0048040892, 0)
-cre.Size = UDim2.new(0, 254, 0, 40)
-cre.Font = Enum.Font.SourceSans
-cre.Text = "Script made by WarriorRoberr"
-cre.TextColor3 = Color3.fromRGB(0, 0, 0)
-cre.TextScaled = true
-cre.TextSize = 14.000
-cre.TextWrapped = true
-
-LikeAndSubscribe.Name = "Like And Subscribe"
-LikeAndSubscribe.Parent = Frame1
-LikeAndSubscribe.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-LikeAndSubscribe.Position = UDim2.new(0, 0, 0.194200888, 0)
-LikeAndSubscribe.Size = UDim2.new(0, 254, 0, 40)
-LikeAndSubscribe.Font = Enum.Font.SourceSans
-LikeAndSubscribe.Text = "Like And Subscribe"
-LikeAndSubscribe.TextColor3 = Color3.fromRGB(0, 0, 0)
-LikeAndSubscribe.TextScaled = true
-LikeAndSubscribe.TextSize = 14.000
-LikeAndSubscribe.TextWrapped = true
-
-nlpoxcv.Name = "nlpoxcv"
-nlpoxcv.Parent = Frame1
-nlpoxcv.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-nlpoxcv.Position = UDim2.new(0, 0, 0.398180991, 0)
-nlpoxcv.Size = UDim2.new(0, 254, 0, 40)
-nlpoxcv.Font = Enum.Font.SourceSans
-nlpoxcv.Text = "Like And Subscribe"
-nlpoxcv.TextColor3 = Color3.fromRGB(0, 0, 0)
-nlpoxcv.TextScaled = true
-nlpoxcv.TextSize = 14.000
-nlpoxcv.TextWrapped = true
-
-TextButton.Parent = Frame1
-TextButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-TextButton.Position = UDim2.new(1.02008033, 0, 0, 0)
-TextButton.Size = UDim2.new(0, 46, 0, 44)
-TextButton.Font = Enum.Font.SourceSans
-TextButton.Text = "X"
-TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextButton.TextScaled = true
-TextButton.TextSize = 14.000
-TextButton.TextWrapped = true
-TextButton.MouseButton1Down:Connect(function()
-	Frame1.Visible = false
-end)
-
-Credit.Name = "Credit"
-Credit.Parent = Frame
-Credit.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-Credit.Position = UDim2.new(0.0541666746, 0, 0.404138803, 0)
-Credit.Size = UDim2.new(0, 195, 0, 44)
-Credit.Font = Enum.Font.SourceSans
-Credit.Text = "Credit"
-Credit.TextColor3 = Color3.fromRGB(0, 0, 0)
-Credit.TextScaled = true
-Credit.TextSize = 14.000
-Credit.TextWrapped = true
-Credit.MouseButton1Down:Connect(function()
-	Frame1.Visible = true
-end)
-
-
-
-Frame.Parent = ScreenGui
-Frame.Active = true
-Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Frame.Position = UDim2.new(0.143750012, 0, 0.0282131676, 0)
-Frame.Size = UDim2.new(0, 322, 0, 301)
-Frame.Visible = false
-Frame.Draggable = true
-
-Giant.Name = "Giant"
-Giant.Parent = Frame
-Giant.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-Giant.Position = UDim2.new(0.0541666634, 0, 0.218092218, 0)
-Giant.Size = UDim2.new(0, 100, 0, 44)
-Giant.Font = Enum.Font.SourceSans
-Giant.Text = "Giant"
-Giant.TextColor3 = Color3.fromRGB(0, 0, 0)
-Giant.TextScaled = true
-Giant.TextSize = 14.000
-Giant.TextWrapped = true
-Giant.MouseButton1Down:Connect(function()
-	local LocalPlayer = game:GetService("Players").LocalPlayer
-	local Character = LocalPlayer.Character
-	local Humanoid = Character:FindFirstChildOfClass("Humanoid")
-
-	function rm()
-		for i,v in pairs(Character:GetDescendants()) do
-			if v:IsA("BasePart") then
-				if v.Name == "Handle" or v.Name == "Head" then
-					if Character.Head:FindFirstChild("OriginalSize") then
-						Character.Head.OriginalSize:Destroy()
-					end
-				else
-					for i,cav in pairs(v:GetDescendants()) do
-						if cav:IsA("Attachment") then
-							if cav:FindFirstChild("OriginalPosition") then
-								cav.OriginalPosition:Destroy()  
-							end
-						end
-					end
-					v:FindFirstChild("OriginalSize"):Destroy()
-					if v:FindFirstChild("AvatarPartScaleType") then
-						v:FindFirstChild("AvatarPartScaleType"):Destroy()
-					end
-				end
-			end
-		end
-	end
-
-	rm()
-	wait(0.5)
-	Humanoid:FindFirstChild("BodyProportionScale"):Destroy()
-	wait(1)
-
-	rm()
-	wait(0.5)
-	Humanoid:FindFirstChild("BodyHeightScale"):Destroy()
-	wait(1)
-
-	rm()
-	wait(0.5)
-	Humanoid:FindFirstChild("BodyWidthScale"):Destroy()
-	wait(1)
-
-	rm()
-	wait(0.5)
-	Humanoid:FindFirstChild("BodyDepthScale"):Destroy()
-	wait(1)
-
-	rm()
-	wait(0.5)
-	Humanoid:FindFirstChild("HeadScale"):Destroy()
-	wait(1)
-end)
-
-tptarget.Name = "tptarget"
-tptarget.Parent = Frame
-tptarget.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-tptarget.Position = UDim2.new(0.705168724, 0, 0.0730897039, 0)
-tptarget.Size = UDim2.new(0, 80, 0, 50)
-tptarget.Font = Enum.Font.SourceSans
-tptarget.PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
-tptarget.PlaceholderText = "Player name"
-tptarget.Text = ""
-tptarget.TextColor3 = Color3.fromRGB(0, 0, 0)
-tptarget.TextSize = 14.000
-
-tp.Name = "tp"
-tp.Parent = Frame
-tp.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-tp.Position = UDim2.new(0.705168724, 0, 0.238025799, 0)
-tp.Size = UDim2.new(0, 80, 0, 34)
-tp.Font = Enum.Font.SourceSans
-tp.Text = "goto player"
-tp.TextColor3 = Color3.fromRGB(0, 0, 0)
-tp.TextScaled = true
-tp.TextSize = 14.000
-tp.TextWrapped = true
-tp.MouseButton1Down:Connect(function()
-	local Target = gplr(tptarget.Text)
-	if Target[1] then
-		Target = Target[1]
-		lp.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame
-	end
-end)
-
-Holdalltools.Name = "Hold all tools"
-Holdalltools.Parent = Frame
-Holdalltools.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-Holdalltools.Position = UDim2.new(0.0541666634, 0, 0.0486570336, 0)
-Holdalltools.Size = UDim2.new(0, 100, 0, 44)
-Holdalltools.Font = Enum.Font.SourceSans
-Holdalltools.Text = "HoldTools"
-Holdalltools.TextColor3 = Color3.fromRGB(0, 0, 0)
-Holdalltools.TextScaled = true
-Holdalltools.TextSize = 14.000
-Holdalltools.TextWrapped = true
-Holdalltools.MouseButton1Down:Connect(function()
-	for i,tools in pairs(game.Players.LocalPlayer.Backpack:GetDescendants()) do
-		if tools:IsA("Tool") then
-			tools.Parent = game.Players.LocalPlayer.Character
-		end
-	end
-end)
-
-X.Name = "X"
-X.Parent = Frame
-X.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-X.Position = UDim2.new(0.998266101, 0, -0.00117685646, 0)
-X.Size = UDim2.new(0, 45, 0, 44)
-X.Font = Enum.Font.SourceSans
-X.Text = "X"
-X.TextColor3 = Color3.fromRGB(0, 0, 0)
-X.TextScaled = true
-X.TextSize = 14.000
-X.TextWrapped = true
-X.MouseButton1Down:Connect(function()
-	Frame.Visible = false
-end)
-
-flingtarget.Name = "flingtarget"
-flingtarget.Parent = Frame
-flingtarget.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-flingtarget.Position = UDim2.new(0.705168724, 0, 0.3887043, 0)
-flingtarget.Size = UDim2.new(0, 80, 0, 50)
-flingtarget.Font = Enum.Font.SourceSans
-flingtarget.PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
-flingtarget.PlaceholderText = "Player name"
-flingtarget.Text = ""
-flingtarget.TextColor3 = Color3.fromRGB(0, 0, 0)
-flingtarget.TextSize = 14.000
-
-fling.Name = "fling"
-fling.Parent = Frame
-fling.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-fling.Position = UDim2.new(0.705168724, 0, 0.553640425, 0)
-fling.Size = UDim2.new(0, 80, 0, 34)
-fling.Font = Enum.Font.SourceSans
-fling.Text = "fling cart needed"
-fling.TextColor3 = Color3.fromRGB(0, 0, 0)
-fling.TextScaled = true
-fling.TextSize = 14.000
-fling.TextWrapped = true
-fling.MouseButton1Down:Connect(function()
-	local Target = gplr(flingtarget.Text)
-	if Target[1] then
-		Target = Target[1]
-		local Thrust = Instance.new('BodyThrust', lp.Character.HumanoidRootPart)
-		Thrust.Force = Vector3.new(9999,9999,9999)
-		Thrust.Name = "flingForce"
-		repeat
-			lp.Character.HumanoidRootPart.CFrame = Target.Character.HumanoidRootPart.CFrame
-			Thrust.Location = Target.Character.HumanoidRootPart.Position
-			game:FindService("RunService").Heartbeat:wait()
-		until not Target.Character:FindFirstChild("Head")
-	end
-
-end)
-
-Rejoin.Name = "Rejoin"
-Rejoin.Parent = Frame
-Rejoin.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-Rejoin.Position = UDim2.new(0.392676026, 0, 0.214770019, 0)
-Rejoin.Size = UDim2.new(0, 85, 0, 44)
-Rejoin.Font = Enum.Font.SourceSans
-Rejoin.Text = "Rejoin"
-Rejoin.TextColor3 = Color3.fromRGB(0, 0, 0)
-Rejoin.TextScaled = true
-Rejoin.TextSize = 14.000
-Rejoin.TextWrapped = true
-Rejoin.MouseButton1Down:Connect(function()
-	game:GetService("TeleportService"):Teleport(game.PlaceId)
-end)
-
-bringtarget.Name = "bringtarget"
-bringtarget.Parent = Frame
-bringtarget.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-bringtarget.Position = UDim2.new(0.705168724, 0, 0.700996637, 0)
-bringtarget.Size = UDim2.new(0, 80, 0, 50)
-bringtarget.Font = Enum.Font.SourceSans
-bringtarget.PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
-bringtarget.PlaceholderText = "Player name"
-bringtarget.Text = ""
-bringtarget.TextColor3 = Color3.fromRGB(0, 0, 0)
-bringtarget.TextSize = 14.000
-
-Bring.Name = "Bring"
-Bring.Parent = Frame
-Bring.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-Bring.Position = UDim2.new(0.705168724, 0, 0.865932822, 0)
-Bring.Size = UDim2.new(0, 80, 0, 34)
-Bring.Font = Enum.Font.SourceSans
-Bring.Text = "Bring Tool needed"
-Bring.TextColor3 = Color3.fromRGB(0, 0, 0)
-Bring.TextScaled = true
-Bring.TextSize = 14.000
-Bring.TextWrapped = true
-Bring.MouseButton1Down:Connect(function()
-	local Target = gplr(bringtarget.Text)
-	if Target[1] then
-		Target = Target[1]
-		Target.Character.HumanoidRootPart.CFrame = lp.Character.HumanoidRootPart.CFrame
-		lp.Character.Humanoid:Clone().Parent = lp.Character
-		lp.Character.Humanoid:Destroy()
-		game.Workspace.CurrentCamera.CameraSubject = lp.Character.Head
-	end
-	wait()
-	for i,tools in pairs(game.Players.LocalPlayer.Backpack:GetDescendants()) do
-		if tools:IsA("Tool") then
-			tools.Parent = game.Players.LocalPlayer.Character
-		end
-	end
-end)
-
-Bringall.Name = "Bring all"
-Bringall.Parent = Frame
-Bringall.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-Bringall.Position = UDim2.new(0.392676026, 0, 0.0486570336, 0)
-Bringall.Size = UDim2.new(0, 85, 0, 44)
-Bringall.Font = Enum.Font.SourceSans
-Bringall.Text = "Bring all Tools needed"
-Bringall.TextColor3 = Color3.fromRGB(0, 0, 0)
-Bringall.TextScaled = true
-Bringall.TextSize = 14.000
-Bringall.TextWrapped = true
-Bringall.MouseButton1Down:Connect(function()
-	for i,Playys in pairs(game.Players:GetPlayers()) do
-		Playys.Character.HumanoidRootPart.CFrame = lp.Character.HumanoidRootPart.CFrame
-		lp.Character.Humanoid:Clone().Parent = lp.Character
-		lp.Character.Humanoid:Destroy()
-		game.Workspace.CurrentCamera.CameraSubject = lp.Character.Head
-	end
-	wait()
-	for i,tools in pairs(game.Players.LocalPlayer.Backpack:GetDescendants()) do
-		if tools:IsA("Tool") then
-			tools.Parent = game.Players.LocalPlayer.Character
-		end
-	end
-end)
-
-Rainbowcharacter.Name = "Rainbow character"
-Rainbowcharacter.Parent = Frame
-Rainbowcharacter.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-Rainbowcharacter.Position = UDim2.new(0.0541666746, 0, 0.583540797, 0)
-Rainbowcharacter.Size = UDim2.new(0, 195, 0, 44)
-Rainbowcharacter.Font = Enum.Font.SourceSans
-Rainbowcharacter.Text = "Rainbow character"
-Rainbowcharacter.TextColor3 = Color3.fromRGB(0, 0, 0)
-Rainbowcharacter.TextScaled = true
-Rainbowcharacter.TextSize = 14.000
-Rainbowcharacter.TextWrapped = true
-Rainbowcharacter.MouseButton1Down:Connect(function()
-	game:GetService('RunService').RenderStepped:connect(function()
-
-		local args = {
-			[1] = "skintone",
-			[2] = "Pink"
-		}
-
-		game:GetService("ReplicatedStorage").RemoteEvents.U8pdateA8vatar:FireServer(unpack(args))
-		wait(1)
-		local args = {
-			[1] = "skintone",
-			[2] = "New Yeller"
-		}
-
-		game:GetService("ReplicatedStorage").RemoteEvents.U8pdateA8vatar:FireServer(unpack(args))
-		wait(1)
-		local args = {
-			[1] = "skintone",
-			[2] = "Deep orange"
-		}
-
-		game:GetService("ReplicatedStorage").RemoteEvents.U8pdateA8vatar:FireServer(unpack(args))
-		wait(1)
-		local args = {
-			[1] = "skintone",
-			[2] = "Really red"
-		}
-
-		game:GetService("ReplicatedStorage").RemoteEvents.U8pdateA8vatar:FireServer(unpack(args))
-		wait(1)
-		local args = {
-			[1] = "skintone",
-			[2] = "Lime green"
-		}
-
-		game:GetService("ReplicatedStorage").RemoteEvents.U8pdateA8vatar:FireServer(unpack(args))
-		wait(1)
-		local args = {
-			[1] = "skintone",
-			[2] = "Toothpaste"
-		}
-
-		game:GetService("ReplicatedStorage").RemoteEvents.U8pdateA8vatar:FireServer(unpack(args))
-		wait(1)
-		local args = {
-			[1] = "skintone",
-			[2] = "Really blue"
-		}
-
-		game:GetService("ReplicatedStorage").RemoteEvents.U8pdateA8vatar:FireServer(unpack(args))
-		wait(1)
-		local args = {
-			[1] = "skintone",
-			[2] = "Magenta"
-		}
-
-		game:GetService("ReplicatedStorage").RemoteEvents.U8pdateA8vatar:FireServer(unpack(args))
-		wait(1)
-	end)
-end)
-
-Open.Name = "Open"
-Open.Parent = ScreenGui
-Open.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-Open.Position = UDim2.new(0, 0, 0.420062691, 0)
-Open.Size = UDim2.new(0, 61, 0, 50)
-Open.Font = Enum.Font.SourceSans
-Open.Text = "Open"
-Open.TextColor3 = Color3.fromRGB(0, 0, 0)
-Open.TextScaled = true
-Open.TextSize = 14.000
-Open.TextWrapped = true
-Open.MouseButton1Down:Connect(function()
-	Frame.Visible = true
-end)
-
-
-
-
-
-
-
-
-
-
-Claimallhouse.Name = "Claim all house"
-Claimallhouse.Parent = Frame
-Claimallhouse.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-Claimallhouse.Position = UDim2.new(0.0529948175, 0, 0.759620428, 0)
-Claimallhouse.Size = UDim2.new(0, 194, 0, 42)
-Claimallhouse.Font = Enum.Font.SourceSans
-Claimallhouse.Text = "get all house"
-Claimallhouse.TextColor3 = Color3.fromRGB(0, 0, 0)
-Claimallhouse.TextScaled = true
-Claimallhouse.TextSize = 14.000
-Claimallhouse.TextWrapped = true
-Claimallhouse.MouseButton1Down:Connect(function()
-	local args = {
-		[1] = "BuyingHouse",
-		[2] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").Number.Number,
-		[3] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse,
-		[4] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse.PlotOfLand
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PickingCustomHouse",
-		[2] = "012_House",
-		[3] = 1
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PlayerSellHouse"
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.P8layerHouseC8hoice:FireServer(unpack(args))
-	wait()
-	local args = {
-		[1] = "BuyingHouse",
-		[2] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").Number.Number,
-		[3] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse,
-		[4] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse.PlotOfLand
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PickingCustomHouse",
-		[2] = "012_House",
-		[3] = 2
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PlayerSellHouse"
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.P8layerHouseC8hoice:FireServer(unpack(args))
-	wait()
-	local args = {
-		[1] = "BuyingHouse",
-		[2] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").Number.Number,
-		[3] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse,
-		[4] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse.PlotOfLand
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PickingCustomHouse",
-		[2] = "012_House",
-		[3] = 3
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PlayerSellHouse"
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.P8layerHouseC8hoice:FireServer(unpack(args))
-	wait()
-	local args = {
-		[1] = "BuyingHouse",
-		[2] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").Number.Number,
-		[3] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse,
-		[4] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse.PlotOfLand
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PickingCustomHouse",
-		[2] = "012_House",
-		[3] = 4
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PlayerSellHouse"
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.P8layerHouseC8hoice:FireServer(unpack(args))
-	wait()
-	local args = {
-		[1] = "BuyingHouse",
-		[2] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").Number.Number,
-		[3] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse,
-		[4] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse.PlotOfLand
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PickingCustomHouse",
-		[2] = "012_House",
-		[3] = 5
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PlayerSellHouse"
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.P8layerHouseC8hoice:FireServer(unpack(args))
-	wait()
-	local args = {
-		[1] = "BuyingHouse",
-		[2] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").Number.Number,
-		[3] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse,
-		[4] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse.PlotOfLand
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PickingCustomHouse",
-		[2] = "012_House",
-		[3] = 6
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PlayerSellHouse"
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.P8layerHouseC8hoice:FireServer(unpack(args))
-	wait()
-	local args = {
-		[1] = "BuyingHouse",
-		[2] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").Number.Number,
-		[3] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse,
-		[4] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse.PlotOfLand
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PickingCustomHouse",
-		[2] = "012_House",
-		[3] = 7
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PlayerSellHouse"
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.P8layerHouseC8hoice:FireServer(unpack(args))
-	wait()
-	local args = {
-		[1] = "BuyingHouse",
-		[2] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").Number.Number,
-		[3] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse,
-		[4] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse.PlotOfLand
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PickingCustomHouse",
-		[2] = "012_House",
-		[3] = 11
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PlayerSellHouse"
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.P8layerHouseC8hoice:FireServer(unpack(args))
-	wait()
-	local args = {
-		[1] = "BuyingHouse",
-		[2] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").Number.Number,
-		[3] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse,
-		[4] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse.PlotOfLand
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PickingCustomHouse",
-		[2] = "012_House",
-		[3] = 12
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PlayerSellHouse"
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.P8layerHouseC8hoice:FireServer(unpack(args))
-	wait()
-	local args = {
-		[1] = "BuyingHouse",
-		[2] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").Number.Number,
-		[3] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse,
-		[4] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse.PlotOfLand
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PickingCustomHouse",
-		[2] = "012_House",
-		[3] = 13
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PlayerSellHouse"
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.P8layerHouseC8hoice:FireServer(unpack(args))
-	wait()
-	local args = {
-		[1] = "BuyingHouse",
-		[2] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").Number.Number,
-		[3] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse,
-		[4] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse.PlotOfLand
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PickingCustomHouse",
-		[2] = "012_House",
-		[3] = 14
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PlayerSellHouse"
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.P8layerHouseC8hoice:FireServer(unpack(args))
-	wait()
-	local args = {
-		[1] = "BuyingHouse",
-		[2] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").Number.Number,
-		[3] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse,
-		[4] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse.PlotOfLand
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PickingCustomHouse",
-		[2] = "012_House",
-		[3] = 15
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PlayerSellHouse"
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.P8layerHouseC8hoice:FireServer(unpack(args))
-	wait()
-	local args = {
-		[1] = "BuyingHouse",
-		[2] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").Number.Number,
-		[3] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse,
-		[4] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse.PlotOfLand
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PickingCustomHouse",
-		[2] = "012_House",
-		[3] = 16
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PlayerSellHouse"
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.P8layerHouseC8hoice:FireServer(unpack(args))
-	wait()
-	local args = {
-		[1] = "BuyingHouse",
-		[2] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").Number.Number,
-		[3] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse,
-		[4] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse.PlotOfLand
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PickingCustomHouse",
-		[2] = "012_House",
-		[3] = 17
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PlayerSellHouse"
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.P8layerHouseC8hoice:FireServer(unpack(args))
-	wait()
-	local args = {
-		[1] = "BuyingHouse",
-		[2] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").Number.Number,
-		[3] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse,
-		[4] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse.PlotOfLand
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PickingCustomHouse",
-		[2] = "012_House",
-		[3] = 18
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PlayerSellHouse"
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.P8layerHouseC8hoice:FireServer(unpack(args))
-	wait()
-	local args = {
-		[1] = "BuyingHouse",
-		[2] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").Number.Number,
-		[3] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse,
-		[4] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse.PlotOfLand
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PickingCustomHouse",
-		[2] = "012_House",
-		[3] = 19
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PlayerSellHouse"
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.P8layerHouseC8hoice:FireServer(unpack(args))
-	wait()
-	local args = {
-		[1] = "BuyingHouse",
-		[2] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").Number.Number,
-		[3] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse,
-		[4] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse.PlotOfLand
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PickingCustomHouse",
-		[2] = "012_House",
-		[3] = 20
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PlayerSellHouse"
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.P8layerHouseC8hoice:FireServer(unpack(args))
-	wait()
-	local args = {
-		[1] = "BuyingHouse",
-		[2] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").Number.Number,
-		[3] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse,
-		[4] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse.PlotOfLand
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PickingCustomHouse",
-		[2] = "012_House",
-		[3] = 21
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PlayerSellHouse"
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.P8layerHouseC8hoice:FireServer(unpack(args))
-	wait()
-	local args = {
-		[1] = "BuyingHouse",
-		[2] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").Number.Number,
-		[3] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse,
-		[4] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse.PlotOfLand
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PickingCustomHouse",
-		[2] = "012_House",
-		[3] = 22
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PlayerSellHouse"
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.P8layerHouseC8hoice:FireServer(unpack(args))
-	wait()
-	local args = {
-		[1] = "BuyingHouse",
-		[2] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").Number.Number,
-		[3] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse,
-		[4] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse.PlotOfLand
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PickingCustomHouse",
-		[2] = "012_House",
-		[3] = 23
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PlayerSellHouse"
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.P8layerHouseC8hoice:FireServer(unpack(args))
-	wait()
-	local args = {
-		[1] = "BuyingHouse",
-		[2] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").Number.Number,
-		[3] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse,
-		[4] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse.PlotOfLand
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PickingCustomHouse",
-		[2] = "012_House",
-		[3] = 24
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-	wait()
-
-	local args = {
-		[1] = "PlayerSellHouse"
-	}
-
-	game:GetService("ReplicatedStorage").RemoteEvents.P8layerHouseC8hoice:FireServer(unpack(args))
-	wait()
-end)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Frame2.Name = "Frame1"
-Frame2.Parent = ScreenGui
-Frame2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Frame2.Position = UDim2.new(0.16458334, 0, 0.0910456777, 0)
-Frame2.Size = UDim2.new(0, 168, 0, 267)
-Frame2.Visible = false
-Frame2.Active = true
-Frame2.Draggable = true
-
-CrashServer.Name = "Crash Server"
-CrashServer.Parent = Frame2
-CrashServer.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-CrashServer.Position = UDim2.new(0.0357142873, 0, 0.845034897, 0)
-CrashServer.Size = UDim2.new(0, 155, 0, 31)
-CrashServer.Font = Enum.Font.SourceSans
-CrashServer.Text = "Crash Server"
-CrashServer.TextColor3 = Color3.fromRGB(0, 0, 0)
-CrashServer.TextScaled = true
-CrashServer.TextSize = 14.000
-CrashServer.TextWrapped = true
-CrashServer.MouseButton1Down:Connect(function()
-	game:GetService('RunService').RenderStepped:connect(function()
-		local args = {
-			[1] = "BuyingHouse",
-			[2] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").Number.Number,
-			[3] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse,
-			[4] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse.PlotOfLand
-		}
-
-		game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-
-		local args = {
-			[1] = "PickingCustomHouse",
-			[2] = "012_House",
-			[3] = 24
-		}
-
-		game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-
-
-		local args = {
-			[1] = "PlayerSellHouse"
-		}
-
-		game:GetService("ReplicatedStorage").RemoteEvents.P8layerHouseC8hoice:FireServer(unpack(args))
-
-		local args = {
-			[1] = "BuyingHouse",
-			[2] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").Number.Number,
-			[3] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse,
-			[4] = workspace:FindFirstChild("001_Lots"):FindFirstChild("For Sale").BuyHouse.PlotOfLand
-		}
-
-		game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-
-		local args = {
-			[1] = "PickingCustomHouse",
-			[2] = "012_House",
-			[3] = 23
-		}
-
-		game:GetService("ReplicatedStorage").RemoteEvents.G8ettingH8ouse:FireServer(unpack(args))
-
-		local args = {
-			[1] = "PlayerSellHouse"
-		}
-
-		game:GetService("ReplicatedStorage").RemoteEvents.P8layerHouseC8hoice:FireServer(unpack(args))
-
-	end)
-end)
-
-
-
-
-Version.Name = "Version"
-Version.Parent = Frame2
-Version.BackgroundColor3 = Color3.fromRGB(0, 0, 255)
-Version.Position = UDim2.new(0.0357142873, 0, 0.0360877775, 0)
-Version.Size = UDim2.new(0, 155, 0, 51)
-Version.Font = Enum.Font.SourceSans
-Version.Text = "Wait for version Brookhaven gui V4"
-Version.TextColor3 = Color3.fromRGB(0, 0, 0)
-Version.TextScaled = true
-Version.TextSize = 14.000
-Version.TextWrapped = true
-
-XX.Name = "X"
-XX.Parent = Frame2
-XX.BackgroundColor3 = Color3.fromRGB(0, 0, 255)
-XX.Position = UDim2.new(1, 0, -0.000469093473, 0)
-XX.Size = UDim2.new(0, 44, 0, 44)
-XX.Font = Enum.Font.SourceSans
-XX.Text = "X"
-XX.TextColor3 = Color3.fromRGB(0, 0, 0)
-XX.TextScaled = true
-XX.TextSize = 14.000
-XX.TextWrapped = true
-XX.MouseButton1Down:Connect(function()
-	Frame2.Visible = false
-end)
-
-
-
-
-
-
-JumpPower.Name = "JumpPower"
-JumpPower.Parent = Frame2
-JumpPower.BackgroundColor3 = Color3.fromRGB(0, 0, 255)
-JumpPower.Position = UDim2.new(0.0357142873, 0, 0.703146815, 0)
-JumpPower.Size = UDim2.new(0, 95, 0, 29)
-JumpPower.Font = Enum.Font.SourceSans
-JumpPower.Text = "JumpPower"
-JumpPower.TextColor3 = Color3.fromRGB(0, 0, 0)
-JumpPower.TextScaled = true
-JumpPower.TextSize = 14.000
-JumpPower.TextWrapped = true
-JumpPower.MouseButton1Down:Connect(function()
-	game.Players.LocalPlayer.Character.Humanoid.JumpPower = Jump.Text
-end)
-
-ClickTotp.Name = "Click To tp"
-ClickTotp.Parent = Frame2
-ClickTotp.BackgroundColor3 = Color3.fromRGB(0, 0, 255)
-ClickTotp.Position = UDim2.new(0.0357142873, 0, 0.259510428, 0)
-ClickTotp.Size = UDim2.new(0, 155, 0, 29)
-ClickTotp.Font = Enum.Font.SourceSans
-ClickTotp.Text = "Click To tp"
-ClickTotp.TextColor3 = Color3.fromRGB(0, 0, 0)
-ClickTotp.TextScaled = true
-ClickTotp.TextSize = 14.000
-ClickTotp.TextWrapped = true
-ClickTotp.MouseButton1Down:Connect(function()
-	local mouse = game.Players.LocalPlayer:GetMouse()
-	local tool = Instance.new("Tool")
-	tool.RequiresHandle = false
-	tool.Name = "Click Teleport"
-	tool.Activated:connect(function()
-		local pos = mouse.Hit+Vector3.new(0,2.5,0)
-		pos = CFrame.new(pos.X,pos.Y,pos.Z)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
-	end)
-	tool.Parent = game.Players.LocalPlayer.Backpack
-end)
-
-Jump.Name = "Jump"
-Jump.Parent = Frame2
-Jump.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Jump.Position = UDim2.new(0.601190448, 0, 0.704481483, 0)
-Jump.Size = UDim2.new(0, 60, 0, 28)
-Jump.Font = Enum.Font.SourceSans
-Jump.PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
-Jump.Text = ""
-Jump.TextColor3 = Color3.fromRGB(0, 0, 0)
-Jump.TextSize = 14.000
-
-Speed.Name = "Speed"
-Speed.Parent = Frame2
-Speed.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Speed.Position = UDim2.new(0.601190448, 0, 0.562159419, 0)
-Speed.Size = UDim2.new(0, 60, 0, 28)
-Speed.Font = Enum.Font.SourceSans
-Speed.PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
-Speed.Text = ""
-Speed.TextColor3 = Color3.fromRGB(0, 0, 0)
-Speed.TextSize = 14.000
-
-WalkSpeed.Name = "WalkSpeed"
-WalkSpeed.Parent = Frame2
-WalkSpeed.BackgroundColor3 = Color3.fromRGB(0, 0, 255)
-WalkSpeed.Position = UDim2.new(0.0357142873, 0, 0.56132865, 0)
-WalkSpeed.Size = UDim2.new(0, 95, 0, 29)
-WalkSpeed.Font = Enum.Font.SourceSans
-WalkSpeed.Text = "Speed"
-WalkSpeed.TextColor3 = Color3.fromRGB(0, 0, 0)
-WalkSpeed.TextScaled = true
-WalkSpeed.TextSize = 14.000
-WalkSpeed.TextWrapped = true
-WalkSpeed.MouseButton1Down:Connect(function()
-	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Speed.Text
-end)
-
-
-View.Name = "View"
-View.Parent = Frame2
-View.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-View.Position = UDim2.new(0.601190448, 0, 0.412346661, 0)
-View.Size = UDim2.new(0, 60, 0, 28)
-View.Font = Enum.Font.SourceSans
-View.PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
-View.PlaceholderText = "Player name"
-View.Text = ""
-View.TextColor3 = Color3.fromRGB(0, 0, 0)
-View.TextSize = 14.000
-
-Spectate.Name = "Spectate"
-Spectate.Parent = Frame2
-Spectate.BackgroundColor3 = Color3.fromRGB(0, 0, 255)
-Spectate.Position = UDim2.new(0.0357142873, 0, 0.408601344, 0)
-Spectate.Size = UDim2.new(0, 95, 0, 29)
-Spectate.Font = Enum.Font.SourceSans
-Spectate.Text = "Spectate"
-Spectate.TextColor3 = Color3.fromRGB(0, 0, 0)
-Spectate.TextScaled = true
-Spectate.TextSize = 14.000
-Spectate.TextWrapped = true
-Spectate.MouseButton1Down:Connect(function()
-	local Target = gplr(View.Text)
-	if Target[1] then
-		Target = Target[1]	
-		game.Workspace.CurrentCamera.CameraSubject = Target.Character.Humanoid
-	end
+local function touch(x)
+    x = x:FindFirstAncestorWhichIsA("Part")
+    if x then
+        if firetouchinterest then
+            task.spawn(function()
+                firetouchinterest(x, Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"), 1)
+                wait()
+                firetouchinterest(x, Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart"), 0)
+            end)
+        end
+        x.CFrame = Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
+    end
+end
+
+for i, v in pairs(game.RobloxReplicatedStorage:GetDescendants()) do
+    pcall(function()
+        v:Destroy()
+    end)
+end
+
+task.spawn(function()
+    local discord = loadstring(game:HttpGet("https://raw.githubusercontent.com/wyvernleaker/WyvernUI/main/UI.lua"))()
+    local win = discord:Window("Wyvern 1.269.4 - redblues edition [GokuSSJ5FreakyButtSex]")
+    local serv = win:Server("Wyvern", "http://www.roblox.com/asset/?id=6031075938")
+    local main = serv:Channel("Home")
+    main:Label("\nThank you for using Wyvern!\nThe #2 UGC Games Penetration Testing Tool! (mine is still better)")
+    main:Label("Check out the other Discord channels to see our available tools!")
+    main:Seperator()
+    -- main:Label("\n\nPlanned:\n- The Explorer you see at the left side of your screen\n- Move some stuff that doesn't belong in their category\n- More features\n- New techniques to get free UGC items from games")
+    main:Button("something was here but was removed", function()
+        pcall(function()
+            setclipboard("something was here but got removed")
+        end)
+    end)
+    main:Toggle("Anti Kick (Client)", false, function(bool)
+        if bool == "true" then
+            local kick;
+            kick = hookmetamethod(game, "__namecall", function(obj, ...)
+                local args = {...}
+                local method = getnamecallmethod()
+                if method == "Kick" then
+                    if args[1] then
+                        discord:Notification("Kick Attempt", "There was an attempt to kick player from client.", "Okay.")
+                    end
+                    return nil
+                end
+                return kick(obj, unpack(args))
+            end)
+        end
+    end)
+    main:Seperator()
+    main:Button("Update Logs", function()
+        discord:Notification("Updates", "...", "Okay!")
+    end)
+    main:Button("Credits", function()
+        discord:Notification("Credits", "i forgot, will be putting soon", "Okay!")
+    end)
+    local ugc = serv:Channel("UGC Limiteds")
+    ugc:Label("Looking for Remote Bruteforcing? Check out #Remotes!")
+    ugc:Seperator()
+    ugc:Label(
+        "\nThis will auto purchase any limited that gets prompted!\nThis is recommended to use in the rolimons game or wagoogus.\n")
+    ugc:Label("With this, you can get #1 serials of web UGC item drops!")
+    ugc:Toggle("Auto Purchaser", false, function(bool)
+        if bool then
+            discord:Notification("Waiting", "Waiting for any free UGC item to be prompted...", "Okay!")
+            getrenv()._set = clonefunction(setthreadidentity)
+            local old
+            old = hookmetamethod(game, "__index", function(a, b)
+                task.spawn(function()
+                    _set(7)
+                    task.wait()
+                    getgenv().promptpurchaserequestedv2 = MarketplaceService.PromptPurchaseRequestedV2:Connect(
+                        function(...)
+                            discord:Notification("Prompt Detected",
+                                "If this is a UGC item, this script will attempt purchase. Please check console.",
+                                "Okay!")
+                            local startTime = tick()
+                            t = {...}
+                            local assetId = t[2]
+                            local idempotencyKey = t[5]
+                            local purchaseAuthToken = t[6]
+                            local info = MarketplaceService:GetProductInfo(assetId)
+                            local productId = info.ProductId
+                            local price = info.PriceInRobux
+                            local collectibleItemId = info.CollectibleItemId
+                            local collectibleProductId = info.CollectibleProductId
+                            print("Double checking if we got the right info...")
+                            print("PurchaseAuthToken: " .. purchaseAuthToken)
+                            print("IdempotencyKey: " .. idempotencyKey)
+                            print("CollectibleItemId: " .. collectibleItemId)
+                            print("CollectibleProductId: " .. collectibleProductId)
+                            print("ProductId (SHOULD BE 0): " .. productId)
+                            print("Price: " .. price)
+                            print("-------------------------------------------------------")
+                            warn("FIRST PURCHASE ATTEMPT")
+                            for i, v in pairs(MarketplaceService:PerformPurchase(Enum.InfoType.Asset, productId, price,
+                                tostring(game:GetService("HttpService"):GenerateGUID(false)), true, collectibleItemId,
+                                collectibleProductId, idempotencyKey, tostring(purchaseAuthToken))) do
+                                print(i, v)
+                            end
+                            local endTime = tick()
+                            local duration = endTime - startTime
+                            print("Bought Item! Took " .. tostring(duration) .. " seconds")
+                            local input = loadstring(game:HttpGet('https://pastebin.com/raw/dYzQv3d8'))()
+                            input.press(Enum.KeyCode.F9)
+                        end)
+                end)
+                hookmetamethod(game, "__index", old)
+                return old(a, b)
+            end)
+        else
+            getgenv().promptpurchaserequestedv2:Disconnect()
+            discord:Notification("Stopped", "Stopped waiting for any free UGC item to be prompted...", "Okay!")
+        end
+    end)
+
+    ugc:Toggle("Auto Purchaser V2 (BETA)", false, function(bool)
+        if bool then
+            discord:Notification("Waiting", "Waiting for any free UGC item to be prompted...", "Okay!")
+            getrenv()._set = clonefunction(setthreadidentity)
+            local old
+            old = hookmetamethod(game, "__index", function(a, b)
+                task.spawn(function()
+                    _set(7)
+                    task.wait()
+                    getgenv().promptpurchaserequestedv2 = MarketplaceService.PromptPurchaseRequestedV2:Connect(
+                        function(...)
+                            discord:Notification("Prompt Detected",
+                                "If this is a UGC item, this script will attempt purchase. Please check console.",
+                                "Okay!")
+                            local startTime = tick()
+                            t = {...}
+                            local assetId = t[2]
+                            local info = MarketplaceService:GetProductInfo(assetId)
+                            pcall(function()
+                                local starttickxd = tick()
+                                local data = '{"collectibleItemId":"' .. tostring(info.CollectibleItemId) ..
+                                     '","collectibleProductId":"' .. tostring(info.CollectibleProductId) ..
+                                     '","expectedCurrency":1,"expectedPrice":' .. tostring(info.PriceInRobux) ..
+                                     ',"idempotencyKey":"' ..
+                                     tostring(game:GetService("HttpService"):GenerateGUID(false)) ..
+                                     '","expectedSellerId":' .. tostring(info.Creator.Id) .. ',"expectedSellerType":"' ..
+                                     tostring(info.Creator.CreatorType) ..
+                                     '","expectedPurchaserType":"User","expectedPurchaserId":' ..
+                                     tostring(game.Players.LocalPlayer.UserId) .. '}'
+                                print(data)
+                                -- setclipboard(data)
+                                _post("https://apis.roblox.com/marketplace-sales/v1/item/" .. tostring(info.CollectibleItemId) .."/purchase-item", data);
+                                wait();
+                                local endTime = tick()
+                                local duration = endTime - startTime
+                                print("Bought Item! Took " .. tostring(duration) .. " seconds")
+                            end)
+                        end)
+                    end)
+                hookmetamethod(game, "__index", old)
+                return old(a, b)
+            end)
+        else
+            getgenv().promptpurchaserequestedv2:Disconnect()
+            discord:Notification("Stopped", "Stopped waiting for any free UGC item to be prompted...", "Okay!")
+        end
+    end)
+    ugc:Button("Teleport to Rolimons UGC Game", function()
+        TeleportService:Teleport(14056754882, Players.LocalPlayer)
+    end)
+    ugc:Button("Teleport to Wagoogus UGC Game", function()
+        TeleportService:Teleport(975820487, Players.LocalPlayer)
+    end)
+    ugc:Seperator()
+    ugc:Label("\nFake Prompts! (Requested by @atellie)\nPrank people that you got an item!\n")
+    ugc:Label("This prompts a UGC item but buying it will error.")
+    ugc:Textbox("Enter the Id of the item you wanna prompt!", "Enter a UGC Item Id...", true, function(t)
+        local tt = tonumber(t)
+        if type(tt) == "number" then
+            local info = MarketplaceService:GetProductInfo(tt)
+            local CollectibleProductId = info.CollectibleProductId
+            local CollectibleItemId = info.CollectibleItemId
+            local Price = info.PriceInRobux
+            getrenv()._set = clonefunction(setthreadidentity)
+            local old
+            old = hookmetamethod(game, "__index", function(a, b)
+                task.spawn(function()
+                    _set(7)
+                    task.wait()
+                    -- MarketplaceService:PromptCollectiblesPurchase(Players.LocalPlayer, tt, CollectibleItemId, '', CollectibleProductId, Price)
+                    MarketplaceService:PromptPurchase(Players.LocalPlayer, tt)
+                end)
+                hookmetamethod(game, "__index", old)
+                return old(a, b)
+            end)
+            task.wait(0.2)
+            pcall(function()
+                Visit:FindFirstChild("LocalScript"):Destroy()
+            end)
+        else
+            discord:Notification("Error", "You must enter an Item ID.", "Okay!")
+        end
+    end)
+    getrenv()._set = clonefunction(setthreadidentity);
+    local function _post(url, data)
+        local s, e = pcall(function()
+            local old1;
+            old1 = hookmetamethod(game, "__index", function(a, b)
+                task.spawn(function()
+                    _set(7);
+                    task.wait();
+                    game:GetService("HttpRbxApiService"):PostAsyncFullUrl(url, data);
+                end);
+                hookmetamethod(game, "__index", old1);
+                return old1(a, b);
+            end);
+        end)
+        if not s or e then
+            warn(e)
+        end
+    end
+
+    ugc:Seperator()
+    ugc:Label(
+        "\nUwU Sniper, Created by Redblue, this is like the good ol' days\ni miss xolo and mewt\nno prompt needed and basically instant \n")
+    local snipeid = 123456789
+    ugc:Textbox("Enter the Id of the item you Want Snipe!", "Enter a UGC Item Id...", false, function(t)
+        snipeid = tonumber(t)
+    end)
+    local snpespeed = 0.15
+    ugc:Textbox("Enter the Speed of the Sniper!", "Enter a Speed...", false, function(t)
+        snpespeed = tonumber(t)
+    end)
+    local buylimit = 1
+    local amountbought = 0
+    ugc:Textbox("Enter the Buy Limit!", "Enter a Limit...", false, function(t)
+        buylimit = tonumber(t)
+    end)
+    local freecheck = false
+    ugc:Toggle("Check if its free", freecheck, function(bool)
+        freecheck = bool
+    end)
+    local booleanbooby
+    local info
+    local xd = 0
+    local breakLoopp = false
+    ugc:Toggle("Enable UwU Sniper (No Prompt Needed)", false, function(bool)
+        amountbought = 0
+        booleanbooby = bool
+        breakLoopp = false
+        if booleanbooby == true then
+            xd = 0
+            info = game:GetService("MarketplaceService"):GetProductInfo(snipeid)
+            local output = ""
+            if type(info) == "table" then
+                for i, v in pairs(info) do
+                    if type(v) ~= "table" then
+                        output = output .. tostring(i) .. ": " .. tostring(v) .. "\n"
+                    end
+                    if type(v) == "table" then
+                        for x, d in pairs(v) do
+                            output = output .. tostring(x) .. ": " .. tostring(d) .. "\n"
+
+                        end
+                    end
+                end
+            end
+            discord:Notification("Wyvern Sniper Started!", "Information Grabbed:\n" .. tostring(output), "Close!")
+        end
+        while booleanbooby == true and not breakLoopp do
+            info = game:GetService("MarketplaceService"):GetProductInfo(snipeid)
+            pcall(function()
+                xd = xd + 1
+                print("Sniping! Checks: " .. tostring(xd))
+                if info.IsForSale == true then
+                    local starttickxd = tick()
+                    local data = '{"collectibleItemId":"' .. tostring(info.CollectibleItemId) ..
+                                     '","collectibleProductId":"' .. tostring(info.CollectibleProductId) ..
+                                     '","expectedCurrency":1,"expectedPrice":' .. tostring(info.PriceInRobux) ..
+                                     ',"idempotencyKey":"' ..
+                                     tostring(game:GetService("HttpService"):GenerateGUID(false)) ..
+                                     '","expectedSellerId":' .. tostring(info.Creator.Id) .. ',"expectedSellerType":"' ..
+                                     tostring(info.Creator.CreatorType) ..
+                                     '","expectedPurchaserType":"User","expectedPurchaserId":' ..
+                                     tostring(game.Players.LocalPlayer.UserId) .. '}'
+                    print(data)
+                    -- setclipboard(data)
+                    if freecheck == true then
+                        if info.PriceInRobux == 0 then
+                            _post("https://apis.roblox.com/marketplace-sales/v1/item/" ..
+                                      tostring(info.CollectibleItemId) .. "/purchase-item", data);
+                            amountbought = amountbought + 1
+                        end
+                    else
+                        _post(
+                            "https://apis.roblox.com/marketplace-sales/v1/item/" .. tostring(info.CollectibleItemId) ..
+                                "/purchase-item", data);
+                        amountbought = amountbought + 1
+                    end
+                    wait();
+                    local endtickxd = tick()
+                    local durationxd =  endtickxd- starttickxd
+                    print("Bought Item! Took " .. tostring(durationxd) .. " seconds")
+                    task.wait(1);
+                end
+            end)
+            if amountbought >= buylimit then
+                breakLoopp = true
+            end
+            task.wait(snpespeed)
+        end
+    end)
+    local remotes = serv:Channel("Remotes")
+    remotes:Label(
+        "\nFires all remotes in the game as an attempt to prompt the item.\nWarning: This can be risky and can fire a decoy remote!\n")
+    remotes:Textbox("UGC Limited Item ID", "Enter Item ID that you wanna be included in the arguments...", false,
+        function(t)
+            local tt = tonumber(t)
+            if type(tt) == "number" then
+                getgenv().limitedidforfiringremotewithwyvern = tt
+                discord:Notification("Success",
+                    "The script now remembers that the Item ID you want is " .. tostring(tt) .. "!", "Okay!")
+            else
+                discord:Notification("Error", "That's... not an Item ID.", "Okay!")
+            end
+        end)
+    remotes:Dropdown("Remote Arguments...",
+        {"No Arguments/Blank", "LocalPlayer", "Your Username", "UGC Item ID", "UGC Item ID, LocalPlayer",
+         "LocalPlayer, UGC Item ID", "'UGC' as a string", "UGC Item ID, 'true' boolean", "'true' boolean",
+         "literal lua code to prompt item", "loadstring prompt item"}, function(x)
+            if not getgenv().limitedidforfiringremotewithwyvern then
+                discord:Notification("Error",
+                    "You must put a Limited Item ID at the first textbox before firing... Or just set it to blank if you're using this not for the purpose of UGC hunting.",
+                    "Okay!")
+            else
+                local id = getgenv().limitedidforfiringremotewithwyvern
+                local fire = function(args)
+                    local count = 0
+                    for i, v in pairs(game:GetDescendants()) do
+                        if v:IsA("RemoteEvent") or v:IsA("UnreliableRemoteEvent") then
+                            count = count + 1
+                            task.spawn(function()
+                                v:FireServer(args)
+                            end)
+                        elseif v:IsA("RemoteFunction") then
+                            count = count + 1
+                            task.spawn(function()
+                                v:InvokeServer(args)
+                            end)
+                        end
+                    end
+                    discord:Notification("Success", "Fired " .. count .. " RemoteEvents and RemoteFunctions!", "Okay!")
+                end
+                local _fire = function(args, args2)
+                    local count = 0
+                    for i, v in pairs(game:GetDescendants()) do
+                        if v:IsA("RemoteEvent") or v:IsA("UnreliableRemoteEvent") then
+                            count = count + 1
+                            task.spawn(function()
+                                v:FireServer(args, args2)
+                            end)
+                            pcall(function()
+                                v:FireServer(args, args2)
+                            end)
+                        elseif v:IsA("RemoteFunction") then
+                            count = count + 1
+                            task.spawn(function()
+                                v:InvokeServer(args, args2)
+                            end)
+                        end
+                    end
+                    discord:Notification("Success", "Fired " .. count .. " RemoteEvents and RemoteFunctions", "Okay!")
+                end
+                if x == "No Arguments/Blank" then
+                    fire(" ")
+                elseif x == "LocalPlayer" then
+                    fire(game.Players.LocalPlayer)
+                elseif x == "Your Username" then
+                    fire(tostring(game.Players.LocalPlayer))
+                elseif x == "UGC Item ID" then
+                    fire(id)
+                elseif x == "UGC Item ID, LocalPlayer" then
+                    _fire(id, game.Players.LocalPlayer)
+                elseif x == "LocalPlayer, UGC Item ID" then
+                    _fire(game.Players.LocalPlayer, id)
+                elseif x == "'UGC' as a string" then
+                    fire("UGC")
+                elseif x == "UGC Item ID, 'true' boolean" then
+                    _fire(id, true)
+                elseif x == "'true' boolean" then
+                    fire(true)
+                elseif x == "literal lua code to prompt item" then
+                    fire('game:GetService("MarketplaceService"):PromptPurchase(game.Players.' ..
+                             tostring(game.Players.LocalPlayer) .. ', ' .. tostring(id) .. ')')
+                elseif x == "loadstring prompt item" then
+                    fire('loadstring(`game:GetService("MarketplaceService"):PromptPurchase(game.Players.' ..
+                             tostring(game.Players.LocalPlayer) .. ', ' .. tostring(id) .. ')`)()')
+                end
+            end
+        end)
+    remotes:Seperator()
+    remotes:Label(
+        "\nThis will block client communication with the server.\nUseful for bypassing clientsided anticheats!\n")
+    remotes:Toggle("Block All RemoteEvents and RemoteFunctions", false, function(bool)
+        if bool then
+            local Methods = {"FireServer", "fireserver", "InvokeServer", "invokeserver", "Fire", "fire", "Invoke",
+                             "invoke"}
+
+            getgenv().Toggleblock = true
+            local OldNameCall = nil
+            OldNameCall = hookmetamethod(game, "__namecall", newcclosure(function(...)
+                local Self = ...
+                if table.find(Methods, getnamecallmethod()) then
+                    if Toggle and Self then
+                        return
+                    end
+                end
+                return OldNameCall(...)
+            end))
+        else
+            getgenv().Toggleblock = false
+        end
+    end)
+    remotes:Seperator()
+    remotes:Button("Print All Remotes (Includes Path)", function()
+        for i, v in pairs(game:GetDescendants()) do
+            if v:IsA("RemoteEvent") then
+                print("RemoteEvent: " .. v:GetFullName())
+            elseif v:IsA("RemoteFunction") then
+                print("RemoteFunction: " .. v:GetFullName())
+            elseif v:IsA("UnreliableRemoteEvent") then
+                print("UnreliableRemoteEvent: " .. v:GetFullName())
+            end
+        end
+        discord:Notification("Success", "Check console by clicking F9 or typing '/console' in the chat.", "Okay!")
+        local input = loadstring(game:HttpGet('https://pastebin.com/raw/dYzQv3d8'))()
+        input.press(Enum.KeyCode.F9)
+    end)
+    local games = serv:Channel("Games")
+    local antikickonteleport = false
+    games:Toggle("Inject Anti Kick on Teleport", false, function(bool)
+        if bool then
+            antikickonteleport = true
+        else
+            antikickonteleport = false
+        end
+    end)
+    games:Label("\nBelow is a list of subplaces of this game.\nChoose the one that you want to be teleported into!")
+    local places = {}
+    local placeids = {}
+    local pp = AssetService:GetGamePlacesAsync()
+    while true do
+        for _, place in pp:GetCurrentPage() do
+            table.insert(places, place.Name)
+            table.insert(placeids, place.PlaceId)
+        end
+        if pp.IsFinished then
+            break
+        end
+        pp:AdvanceToNextPageAsync()
+    end
+    games:Dropdown("Subplace/Hidden Games List", places, function(x)
+        local index = nil
+        for i, name in ipairs(places) do
+            if name == x then
+                index = i
+                break
+            end
+        end
+
+        if index then
+            local placeId = placeids[index]
+            discord:Notification("Teleporting", "Teleporting to...\n" .. x .. "\nGame ID: " .. placeId, "Okay!")
+            if antikickonteleport then
+                pcall(function()
+                    queueonteleport(
+                        'local kick; kick = hookmetamethod(game, "__namecall", function(obj, ...) local args = {...} local method = getnamecallmethod() if method == "Kick" then if args[1] then print("...") end return nil end return kick(obj, unpack(args)) end)')
+                end)
+                TeleportService:Teleport(placeId, Players.LocalPlayer)
+            else
+                TeleportService:Teleport(placeId, Players.LocalPlayer)
+            end
+        else
+            discord:Notification("Error", "Place not found... Well this shouldn't have happened. WTF.", "Okay!")
+        end
+    end)
+    games:Label("If you only see the main game, no other subplaces found.")
+    games:Seperator()
+    games:Textbox("Pause gameplay for a specified amount of time.",
+        "How long do you want to pause the game for? (In seconds)", true, function(t)
+            local tt = tonumber(t)
+            if type(tt) == "number" then
+                Players.LocalPlayer.GameplayPaused = true
+                task.wait()
+                Players.LocalPlayer.GameplayPaused = false
+                task.wait()
+                Players.LocalPlayer.GameplayPaused = true
+                task.wait(tt)
+                Players.LocalPlayer.GameplayPaused = false
+            else
+                discord:Notification("Error", "You must enter a number. (In seconds)", "Okay!")
+            end
+        end)
+    games:Label("Pausing the gameplay will overlay everything,\nEvery UI becomes unclickable.")
+    games:Seperator()
+    games:Toggle("Force Full Bright Lighting", false, function()
+        Lighting.Brightness = 2
+        Lighting.ClockTime = 14
+        Lighting.FogEnd = 100000
+        Lighting.GlobalShadows = false
+        Lighting.OutdoorAmbient = Color3.fromRGB(128, 128, 128)
+    end)
+    games:Button("Teleport to Smallest Server", function()
+        local gameapi = "https://games.roblox.com/v1/games/"
+        local _place = game.PlaceId
+        local _servers = gameapi .. _place .. "/servers/Public?sortOrder=Asc&limit=100"
+        function ListServers(cursor)
+            local Raw = game:HttpGet(_servers .. ((cursor and "&cursor=" .. cursor) or ""))
+            return HttpService:JSONDecode(Raw)
+        end
+        local Server, Next;
+        repeat
+            local Servers = ListServers(Next)
+            Server = Servers.data[1]
+            Next = Servers.nextPageCursor
+        until Server
+        discord:Notification("Teleporting", "Teleporting to...\n" .. game.PlaceId .. "\nJob ID: " .. Server.id, "Okay!")
+        if antikickonteleport then
+            pcall(function()
+                queueonteleport(
+                    'local kick; kick = hookmetamethod(game, "__namecall", function(obj, ...) local args = {...} local method = getnamecallmethod() if method == "Kick" then if args[1] then print("...") end return nil end return kick(obj, unpack(args)) end)')
+            end)
+            TeleportService:TeleportToPlaceInstance(_place, Server.id, game.Players.LocalPlayer)
+        else
+            TeleportService:TeleportToPlaceInstance(_place, Server.id, game.Players.LocalPlayer)
+        end
+    end)
+    games:Button("Force Close Roblox App", function()
+        game:Shutdown()
+    end)
+    games:Label("Current Game's Place ID:\n" .. game.PlaceId)
+    games:Label("Current Game's Universe ID:\n" .. game.GameId)
+    games:Label("Current Game's Job ID: \n" .. game.JobId)
+    local players = serv:Channel("Players")
+    players:Label("\nUses SetLocalPlayerInfo() to change your info!")
+    players:Textbox("Spoof as player with User ID (Client)", "Enter your new User ID...", false, function(t)
+        local tt = tonumber(t)
+        if type(tt) == "number" then
+            local name = Players:GetNameFromUserIdAsync(tt)
+            Players:SetLocalPlayerInfo(tt, name, name, Enum.MembershipType.Premium, false)
+            discord:Notification("Success", "You are now " .. name .. "! (" .. tt .. ")", "Okay!")
+        else
+            discord:Notification("Failed", "Please put a correct User ID.", "Okay!")
+        end
+    end)
+    players:Button("Spoof yourself as the Game Owner", function()
+        local name = Players:GetNameFromUserIdAsync(tonumber(game.CreatorId))
+        Players:SetLocalPlayerInfo(game.CreatorId, name, name, Enum.MembershipType.Premium, false)
+        discord:Notification("Success", "You are now " .. name .. "! (" .. game.CreatorId .. ")", "Okay!")
+    end)
+    players:Seperator()
+    players:Toggle("Auto Hide Other Players", false, function(bool)
+        if bool then
+            local usernames = {}
+            while task.wait(0.1) do
+                local players = Players:GetPlayers()
+                local localPlayer = Players.LocalPlayer
+                local cusernames = {}
+                for _, player in ipairs(players) do
+                    if player ~= localPlayer then
+                        table.insert(cusernames, player.Name)
+                        if not usernames[player.Name] then
+                            usernames[player.Name] = true
+                        end
+                    end
+                end
+                for username, _ in pairs(usernames) do
+                    if not table.find(cusernames, username) then
+                        usernames[username] = nil
+                    end
+                end
+                local models = game.Workspace:GetChildren()
+                for _, model in ipairs(models) do
+                    if model:IsA("Model") then
+                        if usernames[model.Name] then
+                            model:Destroy()
+                        end
+                    end
+                end
+                if Visit:FindFirstChild("Part") then
+                    break
+                end
+            end
+        else
+            local kill = Instance.new("Part")
+            kill.Parent = Visit
+            task.wait(0.2)
+            kill:Destroy()
+        end
+    end)
+    players:Toggle("Show Hidden GUIs of LocalPlayer", false, function(bool)
+        if bool then
+            guis = {}
+            for i, v in pairs(Players.LocalPlayer:FindFirstChildWhichIsA("PlayerGui"):GetDescendants()) do
+                if (v:IsA("Frame") or v:IsA("ImageLabel") or v:IsA("ScrollingFrame")) and not v.Visible then
+                    v.Visible = true
+                    if not FindInTable(guis, v) then
+                        table.insert(guis, v)
+                    end
+                end
+            end
+        elseif not bool then
+            for i, v in pairs(guis) do
+                v.Visible = false
+            end
+            guis = {}
+        end
+    end)
+    players:Toggle("Anti AFK", false, function(bool)
+        if bool then
+            Players.LocalPlayer.Idled:connect(function()
+                VirtualUser:CaptureController()
+                VirtualUser:ClickButton2(Vector2.new())
+            end)
+        end
+    end)
+    local signal
+    players:Seperator()
+    players:Button("Create Waypoint at Current Position", function()
+        if not Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+            discord:Notification("Failure", "HumanoidRootPart is missing from character", "Okay!")
+            return
+        end
+        getgenv().pos = Players.LocalPlayer.Character.HumanoidRootPart.Position
+        discord:Notification("Success", "Created waypoint at " .. tostring(getgenv().pos), "Okay!")
+        if getgenv().addeduis then
+            return
+        else
+            players:Button("Teleport to Saved Waypoint", function()
+                Players.LocalPlayer.Character:MoveTo(getgenv().pos)
+            end)
+            players:Button("Set Spawnpoint to Saved Waypoint", function()
+                signal = Players.LocalPlayer.CharacterAdded:Connect(function()
+                    Players.LocalPlayer.Character:MoveTo(getgenv().pos)
+                end)
+                players:Button("Delete Spawnpoint at Saved Waypoint", function()
+                    signal:Disconnect()
+                end)
+            end)
+            players:Button("Delete Saved Waypoint", function()
+                getgenv().pos = nil
+            end)
+        end
+        getgenv().addeduis = true
+    end)
+    local network = serv:Channel("Network")
+    network:Label("\nThis can bypass rate limits when firing remotes!")
+    network:Textbox("KBPS Limit", "Type a big number to have no limit...", true, function(t)
+        local tt = tonumber(t)
+        if type(tt) == "number" then
+            NetworkClient:SetOutgoingKBPSLimit(tt)
+            discord:Notification("Success!", "KBPS Limit has been set to " .. tostring(tt), "Okay!")
+        else
+            discord:Notification("Hold up!", "KBPS Limit must be a number.", "Okay!")
+        end
+    end)
+    network:Seperator()
+    network:Label("Simulates lag/delay from client -> server.")
+    local drop = network:Dropdown("Delay Intensiveness", {"Normal", "Mild", "Medium", "Severe", "No Connection"},
+        function(bool)
+            print(bool)
+            if bool == "Normal" then
+                NetworkSettings.IncomingReplicationLag = 0
+            elseif bool == "Mild" then
+                NetworkSettings.IncomingReplicationLag = 1
+            elseif bool == "Medium" then
+                NetworkSettings.IncomingReplicationLag = 2
+            elseif bool == "Severe" then
+                NetworkSettings.IncomingReplicationLag = 3
+            elseif bool == "No Connection" then
+                NetworkSettings.IncomingReplicationLag = 10
+            end
+        end)
+    network:Seperator()
+    network:Button("Show Average Client -> Server Ping", function()
+        discord:Notification("Average Ping", math.round(Players.LocalPlayer:GetNetworkPing() * 1000) .. "ms", "Okay!")
+    end)
+    network:Button("Dox Yourself", function()
+        local Username, IP, Day, Month, Week, Phone, Email, Robux, AccountCode
+        getrenv().request = (syn and syn.request) or http and http.request or http_request or
+                                (fluxus and fluxus.request) or request
+        local s = pcall(function()
+            getrenv()._set = clonefunction(setthreadidentity)
+            local old
+            old = hookmetamethod(game, "__index", function(a, b)
+                task.spawn(function()
+                    _set(3)
+                    task.wait()
+                    local req = request({
+                        Url = "https://api.ipify.org/",
+                        Method = "GET"
+                    })
+                    local req2 = HttpService:JSONDecode(HttpRbxApiService:GetAsyncFullUrl(
+                        "https://accountinformation.roblox.com/v1/birthdate"))
+                    print("done req2")
+                    local req3 = HttpService:JSONDecode(HttpRbxApiService:GetAsyncFullUrl(
+                        "https://accountinformation.roblox.com/v1/phone"))
+                    print("done req3")
+                    local req4 = HttpService:JSONDecode(HttpRbxApiService:GetAsyncFullUrl(
+                        "https://accountsettings.roblox.com/v1/email"))
+                    print("done req4")
+                    local req5 = HttpService:JSONDecode(HttpRbxApiService:GetAsyncFullUrl(
+                        "https://economy.roblox.com/v1/user/currency"))
+                    print("done req5")
+                    local req6 = HttpService:JSONDecode(HttpRbxApiService:GetAsyncFullUrl(
+                        "https://users.roblox.com/v1/users/authenticated/country-code"))
+                    print("done req6")
+                    IP = req.Body
+                    Username = tostring(Players.LocalPlayer)
+                    Day = req2.birthDay
+                    Month = req2.birthMonth
+                    Year = req2.birthYear
+                    Phone = req3.phone
+                    Email = req4.emailAddress
+                    Robux = req5.robux
+                    AccountCode = req6.countryCode
+                    local finished = Instance.new("TextLabel")
+                    finished.Parent = Visit
+                end)
+                hookmetamethod(game, "__index", old)
+                return old(a, b)
+            end)
+        end)
+        if not s then
+            discord:Notification("Not supported", "This feature is not supported by your executor.", "Okay!")
+        else
+            repeat
+                task.wait()
+            until Visit:FindFirstChild("TextLabel")
+            if type(IP) == "nil" then
+                IP = "undefined"
+            end
+            if type(Phone) == "nil" then
+                Phone = "No Phone Num"
+            end
+            if type(Email) == "nil" then
+                Email = "No Email"
+            end
+            network:Label("Your Username: " .. Username)
+            network:Label("Your IP: " .. IP)
+            network:Label("Your birthday: " .. Year .. "/" .. Month .. "/" .. Day .. "")
+            network:Label("Your Email: " .. Email)
+            network:Label("Your Phone Number: " .. Phone)
+            network:Label("Your Robux Balance: " .. Robux)
+            network:Label("Your Account Country Code (Settings): " .. AccountCode)
+        end
+    end)
+    local input = serv:Channel("Input Automations")
+    input:Toggle("Auto Use Tools in Inventory", false, function(bool)
+        if bool then
+            local Player = Players.LocalPlayer
+            getgenv().firetools = true
+            spawn(function()
+                while wait() and firetools do
+                    pcall(function()
+                        local Tool = Player.Backpack:FindFirstChildWhichIsA("Tool")
+                        if not Player.Character:FindFirstChildWhichIsA("Tool") then
+                            Player.Character:FindFirstChildWhichIsA("Humanoid"):EquipTool(Tool)
+                        end
+                        if Player.Character:FindFirstChildWhichIsA("Tool") then
+                            Player.Character:FindFirstChildWhichIsA("Tool"):Activate()
+                        end
+                    end)
+                end
+            end)
+        elseif not bool then
+            getgenv().firetools = false
+        end
+    end)
+    input:Toggle("Auto Grab All Dropped Tools", false, function(bool)
+        if bool then
+            for i, v in pairs(workspace:GetChildren()) do
+                if Players.LocalPlayer.Character:FindFirstChild("Humanoid") and v:IsA("BackpackItem") and
+                    v:FindFirstChild("Handle") then
+                    Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid"):EquipTool(v)
+                end
+            end
+            if getgenv().connected then
+                getgenv().connected:Disconnect()
+            end
+            getgenv().connected = workspace.ChildAdded:Connect(function(child)
+                if Players.LocalPlayer.Character:FindFirstChild("Humanoid") and child:IsA("BackpackItem") and
+                    child:FindFirstChild("Handle") then
+                    Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid"):EquipTool(child)
+                end
+            end)
+        elseif not bool then
+            if getgenv().connected then
+                getgenv().connected:Disconnect()
+            end
+        end
+    end)
+    input:Toggle("Infinite ProximityPrompt Range", false, function(bool)
+        if bool then
+            ProximityPromptService.MaxPromptsVisible = math.huge
+            for i, v in pairs(workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") then
+                    v.MaxActivationDistance = math.huge
+                end
+            end
+        elseif not bool then
+            ProximityPromptService.MaxPromptsVisible = 16
+            for i, v in pairs(workspace:GetDescendants()) do
+                if v:IsA("ProximityPrompt") then
+                    v.MaxActivationDistance = 10
+                end
+            end
+        end
+    end)
+    input:Toggle("Instant ProximityPrompt", false, function(bool)
+        local promptsignal = nil
+        if bool then
+            promptsignal = nil
+            task.wait()
+            promptsignal = ProximityPromptService.PromptButtonHoldBegan:Connect(function(prompt)
+                pcall(function()
+                    fireproximityprompt(prompt)
+                end)
+            end)
+        elseif not bool then
+            if promptsignal ~= nil then
+                promptsignal:Disconnect()
+                promptsignal = nil
+            end
+        end
+    end)
+    input:Button("Equip All Tools", function()
+        for i, v in pairs(Players.LocalPlayer.Backpack:GetChildren()) do
+            if v:IsA("Tool") then
+                v.Parent = Players.LocalPlayer.Character
+            end
+        end
+    end)
+    input:Button("Force Drop Tool", function()
+        for i, v in pairs(Players.LocalPlayer.Character:GetChildren()) do
+            if v:IsA("Tool") then
+                v.Parent = workspace
+            end
+        end
+    end)
+    input:Seperator()
+    input:Button("Fire All ClickDetectors", function()
+        for i, v in ipairs(workspace:GetDescendants()) do
+            if v:IsA("ClickDetector") then
+                v.MaxActivationDistance = math.huge
+                pcall(function()
+                    fireclickdetector(v)
+                end)
+            end
+        end
+    end)
+    input:Button("Fire All TouchInterests", function()
+        for i, v in ipairs(workspace:GetDescendants()) do
+            if v:IsA("TouchTransmitter") then
+                touch(v)
+            end
+        end
+    end)
+    input:Button("Fire All ProximityPrompts", function()
+        for i, v in ipairs(workspace:GetDescendants()) do
+            if v:IsA("ProximityPrompt") then
+                pcall(function()
+                    fireproximityprompt(v)
+                end)
+            end
+        end
+    end)
+    local purchase = serv:Channel("Purchase Exploits")
+    local x_x = HttpService:JSONDecode(game:HttpGet(
+        "https://apis.roblox.com/developer-products/v1/developer-products/list?universeId=" .. game.GameId .. "&page=1"))
+    local dnames = {}
+    local dproductIds = {}
+    if type(x_x.DeveloperProducts) == "nil" then
+        table.insert(dnames, " ")
+    end
+
+    pcall(function()
+
+        local currentPage = 1
+
+        repeat
+            local response = game:HttpGet(
+                "https://apis.roblox.com/developer-products/v1/developer-products/list?universeId=" ..
+                    tostring(game.GameId) .. "&page=" .. tostring(currentPage))
+            local decodedResponse = HttpService:JSONDecode(response)
+            local developerProducts = decodedResponse.DeveloperProducts
+            print("Page " .. currentPage .. ":")
+            for _, developerProduct in pairs(developerProducts) do
+                table.insert(dnames, developerProduct.Name)
+                table.insert(dproductIds, developerProduct.ProductId)
+            end
+            currentPage = currentPage + 1
+            local final = decodedResponse.FinalPage
+        until final
+
+    end)
+    purchase:Label("Fake Purchaser!\nThis tricks server that you bought a DevProduct!")
+    purchase:Label("Only works in some games...")
+    local index
+    purchase:Dropdown("Below is a list of all DevProducts in this game!", dnames, function(x)
+        index = nil
+        for i, name in ipairs(dnames) do
+            if name == x then
+                index = i
+                break
+            end
+        end
+    end)
+    getgenv().wyvernlooppurchases = false
+    purchase:Label("If nothing shows above, no DevProducts found.")
+    purchase:Toggle("Loop Selected Dev Product", false, function(bool)
+        getgenv().wyvernlooppurchases = bool
+        while getgenv().wyvernlooppurchases == true and task.wait() do
+            if index then
+                local product = dproductIds[index]
+                pcall(function()
+                    stealth_call('MarketplaceService:SignalPromptProductPurchaseFinished(game.Players.LocalPlayer.UserId, ' ..product .. ', true) ')
+                end)
+            end
+        end
+    end)
+    purchase:Button("Fire Selected Dev Product!", function()
+        if index then
+            local product = dproductIds[index]
+            pcall(function()
+                stealth_call(
+                    'MarketplaceService:SignalPromptProductPurchaseFinished(game.Players.LocalPlayer.UserId, ' ..
+                        product .. ', true) ')
+            end)
+            task.wait(0.2)
+            if not Visit:FindFirstChild("LocalScript") then
+                discord:Notification("Error", "Your executor blocked function SignalPromptProductPurchaseFinished.",
+                    "Okay!")
+            else
+                discord:Notification("Success",
+                    "Fired PromptProductPurchaseFinished signal to server with productId: " .. tostring(product),
+                    "Okay!")
+                Visit:FindFirstChild("LocalScript"):Destroy()
+            end
+        else
+            discord:Notification("Error", "Something went wrong but I don't know what.", "Okay!")
+        end
+    end)
+    purchase:Button("Fire All Dev Products", function()
+        getrenv()._set = clonefunction(setthreadidentity)
+        local starttickcc = tick()
+        for i, product in pairs(dproductIds) do
+            task.spawn(function()
+                pcall(function()
+                    stealth_call(
+                        'MarketplaceService:SignalPromptProductPurchaseFinished(game.Players.LocalPlayer.UserId, ' ..
+                            product .. ', true) ')
+                end)
+            end)
+            task.wait()
+        end
+        local endtickcc = tick()
+        local durationxd = endtickcc - starttickcc
+        discord:Notification("Attempt", "Fired All Dev Products! Took ".. tostring(durationxd)  .. " Seconds!", "Okay!")
+    end)
+    getgenv().wyvernlooppurchases2 = false
+    purchase:Toggle("Loop All Dev Products", false, function(bool)
+        getgenv().wyvernlooppurchases2 = bool
+        while getgenv().wyvernlooppurchases2 == true and task.wait() do
+            for i, product in pairs(dproductIds) do
+                task.spawn(function()
+                    pcall(function()
+                        stealth_call('MarketplaceService:SignalPromptProductPurchaseFinished(game.Players.LocalPlayer.UserId, ' ..product .. ', true) ')
+                    end)
+                end)
+                task.wait()
+            end
+        end
+    end)
+    purchase:Seperator()
+    purchase:Label("Pretty much the same as the one above but for gamepass")
+    local wyverngamepass = game.HttpService:JSONDecode(game:HttpGet(
+        "https://games.roblox.com/v1/games/" .. game.GameId .. "/game-passes?limit=100&sortOrder=1"))
+    local gnames = {}
+    local gproductIds = {}
+    for i, v in pairs(wyverngamepass.data) do
+        table.insert(gnames, v.name)
+        table.insert(gproductIds, v.id)
+    end
+    local gamepass
+    purchase:Dropdown("Below is a list of all GamePass in this game!", gnames, function(x)
+        for i, name in ipairs(gnames) do
+            if name == x then
+                gamepass = gproductIds[i]
+                break
+            end
+        end
+
+    end)
+    purchase:Label("If nothing shows above, no GamePass found.")
+    purchase:Button("Fire Selected Gamepass", function()
+        if gamepass then
+            pcall(function()
+                stealth_call('MarketplaceService:SignalPromptGamePassPurchaseFinished(game.Players.LocalPlayer, ' ..
+                                 tostring(gamepass) .. ', true)')
+            end)
+            task.wait(0.2)
+            if not Visit:FindFirstChild("LocalScript") then
+                discord:Notification("Error", "Your executor blocked function SignalPromptGamePassPurchaseFinished.",
+                    "Okay!")
+            else
+                discord:Notification("Success",
+                    "Fired PromptProductGamePassPurchaseFinished signal to server with productId: " ..
+                        tostring(gamepass), "Okay!")
+                Visit:FindFirstChild("LocalScript"):Destroy()
+            end
+        else
+            discord:Notification("Error", "Something went wrong but I don't know what.", "Okay!")
+        end
+    end)
+    purchase:Seperator()
+    purchase:Label("Signals to server that an item purchase failed.")
+    purchase:Label("This can trick servers to reprompt an item!")
+    local returnvalprompt = false
+    purchase:Toggle("Item Purchase Success Return Value", returnvalprompt, function(bool)
+        returnvalprompt = bool
+    end)
+    purchase:Textbox("Item ID of the UGC item", "Enter the Item ID...", false, function(t)
+        local tt = tonumber(t)
+        if type(tt) == "number" then
+            pcall(function()
+                stealth_call('MarketplaceService:SignalPromptPurchaseFinished(game.Players.LocalPlayer, ' .. tt ..
+                                 ', false) MarketplaceService:SignalPromptPurchaseFinished(game.Players.LocalPlayer, ' ..
+                                 tt .. ', ' .. tostring(returnvalprompt) ')')
+            end)
+            task.wait(0.2)
+            if not Visit:FindFirstChild("LocalScript") then
+                discord:Notification("Error", "Your executor blocked function SignalPromptPurchaseFinished.", "Okay!")
+            else
+                discord:Notification("Success",
+                    "Fired signal PromptPurchaseFinished with bool false and productId: " .. tostring(tt), "Okay!")
+                Visit:FindFirstChild("LocalScript"):Destroy()
+            end
+        else
+            discord:Notification("Error", "That's... Not an Item ID.", "Okay!")
+        end
+    end)
+    purchase:Seperator()
+    local serv2 = win:Server("Explorer", "")
+    local explorer = serv2:Channel("work in progress")
+    explorer:Label("will add stupid roblox env explorer soon")
+    main:Label("                            Wyvern loaded in " ..
+                   string.format("%s seconds.", string.format("%.2f", tostring(tick() - LOAD_TIME))))
+    pcall(function()
+        message:Destroy()
+    end)
 end)
