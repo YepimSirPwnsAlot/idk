@@ -6,7 +6,7 @@ local Welcome2 = Instance.new("TextLabel")
 local UICorner_2 = Instance.new("UICorner")
 local ScrollSizer = Instance.new("Frame")
 local ScrollingFrame = Instance.new("ScrollingFrame")
-local Updated = Instance.new("TextLabel")
+local Updated = Instance.new("TextButton")
 local UICorner_3 = Instance.new("UICorner")
 local Cleetus = Instance.new("TextButton")
 local UICorner_4 = Instance.new("UICorner")
@@ -32,11 +32,11 @@ local Techno = Instance.new("TextButton")
 local UICorner_14 = Instance.new("UICorner")
 local KFC = Instance.new("TextButton")
 local UICorner_15 = Instance.new("UICorner")
-local SCP106 = Instance.new("TextButton")
+local Characters = Instance.new("TextButton")
 local UICorner_16 = Instance.new("UICorner")
 local ChainSaw = Instance.new("TextButton")
 local UICorner_17 = Instance.new("UICorner")
-local Fixed = Instance.new("TextButton")
+local FixedStuff = Instance.new("TextButton")
 local UICorner_18 = Instance.new("UICorner")
 local InfGaunt = Instance.new("TextButton")
 local UICorner_19 = Instance.new("UICorner")
@@ -153,14 +153,14 @@ local OpenUtg = Instance.new("TextButton")
 UltimateTrollingGuiV6.Name = "UltimateTrollingGuiV6"
 UltimateTrollingGuiV6.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 UltimateTrollingGuiV6.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-UltimateTrollingGuiV6.ResetOnSpawn = true
+UltimateTrollingGuiV6.ResetOnSpawn = false
 
 Main.Name = "Main"
 Main.Parent = UltimateTrollingGuiV6
-Main.BackgroundColor3 = Color3.fromRGB(114, 4, 191)
+Main.BackgroundColor3 = Color3.fromRGB(137, 0, 254)
 Main.BorderSizePixel = 0
 Main.Position = UDim2.new(0.382268965, 0, 1.18099999, 0)
-Main.Size = UDim2.new(0, 451, 0, 534)
+Main.Size = UDim2.new(0, 451, 0, 525)
 Main.Visible = true
 
 UICorner.Parent = Main
@@ -170,17 +170,16 @@ Title.Name = "Title"
 Title.Parent = Main
 Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Title.BackgroundTransparency = 1.000
-Title.Position = UDim2.new(0.0600659028, 0, -0.00186577276, 0)
+Title.Position = UDim2.new(0.0600659028, 0, 0.02, 0)
 Title.Size = UDim2.new(0, 395, 0, 51)
-Title.Font = Enum.Font.SourceSans
+Title.Font = Enum.Font.SourceSansBold
 Title.Text = "ULTIMATE TROLLING GUI"
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
-Title.TextStrokeTransparency = 0
 Title.TextScaled = true
 Title.TextSize = 14.000
 Title.TextWrapped = true
 
+local Welcome2 = Instance.new("TextLabel")
 Welcome2.Name = "Welcome2"
 Welcome2.Parent = Main
 Welcome2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -188,10 +187,45 @@ Welcome2.BorderSizePixel = 0
 Welcome2.Position = UDim2.new(0.0245891828, 0, 0.114000015, 0)
 Welcome2.Size = UDim2.new(0, 428, 0, 36)
 Welcome2.Font = Enum.Font.SourceSans
-Welcome2.Text = "Gonna add more stuff soon i guess."
+Welcome2.Text = "Loading..."
 Welcome2.TextColor3 = Color3.fromRGB(0, 0, 0)
-Welcome2.TextSize = 23.000
+Welcome2.TextSize = 15
 Welcome2.TextWrapped = true
+Welcome2.TextScaled = true
+
+wait(1)
+
+local messages = {
+	"Welcome to the new UTG! Have fun.",
+	"Gonna Add more stuff soon.",
+	"Press keyboard commands (f,g,w,e,etc) for commands",
+	"Dm me on discord yepimsirpwnsalot for sneek-peaks",
+	"This may get a big laggy depending on what you play on",
+	"Dont abuse this lmao",
+	"Follow my roblox profile, YepImSirPwnsAlot",
+	"More commands coming soon",
+	"Did you pray today?",
+	"Fun fact: i like hot goth babes",
+	"E",
+	"Whatevs lel",
+	"I got the idea to make this from Mr.Flamgo:D",
+	"Mommy tells me im special",
+	"Old acc is SirPwnsALot, follow my old account NOW",
+}
+
+local function cycleInOrder()
+	local index = 1
+	while true do
+		Welcome2.Text = messages[index]
+		index = index + 1
+		if index > #messages then
+			index = 1
+		end
+		wait(30)
+	end
+end
+
+task.spawn(cycleInOrder)
 
 UICorner_2.CornerRadius = UDim.new(1, 0)
 UICorner_2.Parent = Welcome2
@@ -220,18 +254,31 @@ local UICorner = Instance.new("UICorner")
 UICorner.Parent = ScrollingFrame
 UICorner.CornerRadius = UDim.new(0, 9)
 
-Updated.Name = "Kohl's Admin"
+Updated.Name = "Updated"
 Updated.Parent = ScrollingFrame
 Updated.BackgroundColor3 = Color3.fromRGB(235, 190, 77)
 Updated.Position = UDim2.new(0.0093457941, 0, 0.0022281385, 0)
 Updated.Size = UDim2.new(0, 419, 0, 36)
 Updated.Font = Enum.Font.SourceSansBold
-Updated.Text = "Updated Scripts"
+Updated.Text = "    Updated Stuff"
 Updated.TextColor3 = Color3.fromRGB(255, 255, 255)
 Updated.TextSize = 20.000
 Updated.TextWrapped = true
+Updated.TextXAlignment = Enum.TextXAlignment.Left
 
 UICorner_3.Parent = Updated
+
+local newTag = Instance.new("TextLabel")
+newTag.Name = "NewTag"
+newTag.Parent = Updated
+newTag.BackgroundColor3 = Color3.fromRGB(186, 142, 35)
+newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
+newTag.Size = UDim2.new(0, 60, 0, 30)
+newTag.Text = "UPDATED"
+newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
+newTag.Font = Enum.Font.SourceSansBold
+newTag.TextSize = 18
+newTag.BorderSizePixel = 0
 
 Cleetus.Name = "Cleetus"
 Cleetus.Parent = ScrollingFrame
@@ -239,11 +286,14 @@ Cleetus.BackgroundColor3 = Color3.fromRGB(235, 190, 77)
 Cleetus.Position = UDim2.new(0.0093457941, 0, 0.0175743196, 0)
 Cleetus.Size = UDim2.new(0, 419, 0, 36)
 Cleetus.Font = Enum.Font.SourceSansBold
-Cleetus.Text = "    Cleetus"
+Cleetus.Text = "    Cleetus (Warning: Still A Bit Broken)"
 Cleetus.TextColor3 = Color3.fromRGB(255, 255, 255)
 Cleetus.TextSize = 20.000
 Cleetus.TextWrapped = true
 Cleetus.TextXAlignment = Enum.TextXAlignment.Left
+Cleetus.MouseButton1Down:Connect(function()
+	loadstring(Game:GetObjects("rbxassetid://6032133213")[1].Source)()
+end)
 
 UICorner_4.Parent = Cleetus
 
@@ -252,7 +302,7 @@ newTag.Name = "NewTag"
 newTag.Parent = Cleetus
 newTag.BackgroundColor3 = Color3.fromRGB(186, 142, 35)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 60, 0, 25)
+newTag.Size = UDim2.new(0, 60, 0, 30)
 newTag.Text = "UPDATED"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
@@ -263,13 +313,573 @@ JohnDoe.Name = "JohnDoe"
 JohnDoe.Parent = ScrollingFrame
 JohnDoe.BackgroundColor3 = Color3.fromRGB(235, 190, 77)
 JohnDoe.Position = UDim2.new(0.0093457941, 0, 0.0329205021, 0)
-JohnDoe.Size = UDim2.new(0, 419, 0, 36)
+JohnDoe.Size = UDim2.new(0, 419, 0, 30)
 JohnDoe.Font = Enum.Font.SourceSansBold
 JohnDoe.Text = "    John Doe"
 JohnDoe.TextColor3 = Color3.fromRGB(255, 255, 255)
 JohnDoe.TextSize = 20.000
 JohnDoe.TextWrapped = true
 JohnDoe.TextXAlignment = Enum.TextXAlignment.Left
+JohnDoe.MouseButton1Down:Connect(function()
+Wait(1)
+
+------------
+--John Doe--
+------------
+-----by-----
+--CKbackup--
+------------
+
+--Player Stuff--
+player = game:GetService("Players").LocalPlayer
+chara = player.Character
+
+ch = chara:GetChildren()
+for i = 1, #ch do
+if ch[i].Name == "Torso" then
+ch[i].roblox.Transparency = 1
+elseif ch[i].Name == "Head" then
+ch[i].face.Transparency = 1
+ch[i].Transparency = 1
+elseif ch[i].ClassName == "Accessory" or ch[i].ClassName == "Shirt" or ch[i].ClassName == "Pants" or ch[i].ClassName == "ShirtGraphic" then
+ch[i]:Destroy()
+end
+end
+
+chara["Left Arm"].BrickColor = BrickColor.new("Cool yellow")
+chara["Right Arm"].BrickColor = BrickColor.new("Cool yellow")
+chara["Left Leg"].BrickColor = BrickColor.new("Medium blue")
+chara["Right Leg"].BrickColor = BrickColor.new("Medium blue")
+chara.Torso.BrickColor = BrickColor.new("Bright yellow")
+
+--Outfit--
+New = function(Object, Parent, Name, Data)
+	local Object = Instance.new(Object)
+	for Index, Value in pairs(Data or {}) do
+		Object[Index] = Value
+	end
+	Object.Parent = Parent
+	Object.Name = Name
+	return Object
+end
+
+function ScatterEff(part)
+local eff1 = Instance.new("ParticleEmitter",part)
+eff1.Size = NumberSequence.new(.1)
+eff1.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0,0),NumberSequenceKeypoint.new(.9,0),NumberSequenceKeypoint.new(1,1)})
+eff1.LightEmission = 1
+eff1.Lifetime = NumberRange.new(1)
+eff1.Speed = NumberRange.new(1)
+eff1.Rate = 100
+eff1.VelocitySpread = 10000
+eff1.Texture = "rbxassetid://347504241"
+eff1.Color = ColorSequence.new(Color3.new(1,0,0))
+local eff2 = Instance.new("ParticleEmitter",part)
+eff2.Size = NumberSequence.new(.1)
+eff2.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0,0),NumberSequenceKeypoint.new(.9,0),NumberSequenceKeypoint.new(1,1)})
+eff2.LightEmission = 1
+eff2.Lifetime = NumberRange.new(1)
+eff2.Speed = NumberRange.new(1)
+eff2.Rate = 100
+eff2.VelocitySpread = 10000
+eff2.Texture = "rbxassetid://347504259"
+eff2.Color = ColorSequence.new(Color3.new(1,0,0))
+end
+
+function BurningEff(part)
+local eff1 = Instance.new("ParticleEmitter",part)
+eff1.Size = NumberSequence.new(.1)
+eff1.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0,0),NumberSequenceKeypoint.new(.2,0),NumberSequenceKeypoint.new(1,1)})
+eff1.LightEmission = 1
+eff1.Lifetime = NumberRange.new(1)
+eff1.Speed = NumberRange.new(0)
+eff1.Rate = 100
+eff1.Texture = "rbxassetid://347504241"
+eff1.Acceleration = Vector3.new(0,10,0)
+eff1.Color = ColorSequence.new(Color3.new(1,0,0))
+local eff2 = Instance.new("ParticleEmitter",part)
+eff2.Size = NumberSequence.new(.1)
+eff2.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0,0),NumberSequenceKeypoint.new(.2,0),NumberSequenceKeypoint.new(1,1)})
+eff2.LightEmission = 1
+eff2.Lifetime = NumberRange.new(1)
+eff2.Speed = NumberRange.new(0)
+eff2.Rate = 100
+eff2.Texture = "rbxassetid://347504259"
+eff2.Acceleration = Vector3.new(0,10,0)
+eff2.Color = ColorSequence.new(Color3.new(1,0,0))
+local eff3 = Instance.new("ParticleEmitter",part)
+eff3.Size = NumberSequence.new(1)
+eff3.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0,0),NumberSequenceKeypoint.new(1,1)})
+eff3.LightEmission = 1
+eff3.Lifetime = NumberRange.new(1)
+eff3.Speed = NumberRange.new(0)
+eff3.Rate = 100
+eff3.Texture = "rbxasset://textures/particles/fire_main.dds"
+eff3.Acceleration = Vector3.new(0,10,0)
+eff3.Color = ColorSequence.new(Color3.new(1,0,0))
+end
+
+FakeHead = New("Model",chara,"FakeHead",{})
+MainPart = New("Part",FakeHead,"MainPart",{FormFactor = Enum.FormFactor.Symmetric,Size = Vector3.new(2, 1, 1),CFrame = CFrame.new(2.29537678, 7.81603718, 0.746068954, 0.00980896503, 0.00110200304, 0.999957919, -0.000536994543, 1.00000548, -0.00109680078, -0.99994874, -0.0005262224, 0.00980964955),CanCollide = false,TopSurface = Enum.SurfaceType.Smooth,})
+Mesh = New("SpecialMesh",MainPart,"Mesh",{Scale = Vector3.new(1.25, 1.25, 1.25),})
+face = New("Decal",MainPart,"face",{Texture = "rbxasset://textures/face.png",})
+Weld = New("ManualWeld",MainPart,"Weld",{Part0 = MainPart,Part1 = chara.Head,C0 = CFrame.new(0, 0, 0, 0.00980896503, -0.000536994543, -0.99994874, 0.00110200304, 1.00000548, -0.0005262224, 0.999957919, -0.00109680078, 0.00980964955),C1 = CFrame.new(5.96046448e-008, -8.58306885e-006, 0, 0.00980896503, -0.000536994543, -0.99994874, 0.00110200304, 1.00000548, -0.0005262224, 0.999957919, -0.00109680078, 0.00980964955),})
+FakeHead.MainPart.BrickColor = BrickColor.new("Cool yellow")
+EyeFire = New("Part",FakeHead,"EyeFire",{BrickColor = BrickColor.new("Really red"),Material = Enum.Material.Neon,Size = Vector3.new(0.400000006, 0.200000003, 0.200000003),CFrame = CFrame.new(1.69668579, 8.11665249, 0.640022159, -0.00107900088, 0.999958038, -0.00980941113, -1.0000056, -0.00107390946, 0.000525554642, 0.000515007298, 0.00981007144, 0.999948859),CanCollide = false,Color = Color3.new(1, 0, 0),})
+Mesh = New("CylinderMesh",EyeFire,"Mesh",{Offset = Vector3.new(0.0500000007, 0, -0.0399999991),Scale = Vector3.new(1, 0.150000006, 1),})
+Weld = New("ManualWeld",EyeFire,"Weld",{Part0 = EyeFire,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, -0.0010790003, -0.999999344, 0.000515000196, 0.999951363, -0.0010738963, 0.00981000345, -0.00980944186, 0.000525560055, 0.99995178),C1 = CFrame.new(0.100008011, 0.300009251, -0.600027919, 0.00980899762, -0.000536999898, -0.99995178, 0.00110200245, 0.999999344, -0.000526215415, 0.999951363, -0.00109678751, 0.00980958249),})
+Chest = New("Model",chara,"Chest",{})
+MainPart = New("Part",Chest,"MainPart",{Transparency = 1,Transparency = 1,FormFactor = Enum.FormFactor.Symmetric,Size = Vector3.new(2, 2, 1),CFrame = CFrame.new(2.2937007, 6.31611967, 0.746871948, 0.00980956201, 0.00110224239, 0.999954581, -0.000537135813, 1.00000238, -0.00109703222, -0.99995023, -0.000526354474, 0.00981019717),CanCollide = false,LeftSurface = Enum.SurfaceType.Weld,RightSurface = Enum.SurfaceType.Weld,})
+Weld = New("ManualWeld",MainPart,"Weld",{Part0 = MainPart,Part1 = chara.Torso,C0 = CFrame.new(0, 0, 0, 0.009809535, -0.000537137908, -0.99994725, 0.00110225554, 1.00000858, -0.000526368851, 0.999961257, -0.00109705783, 0.00981026888),C1 = CFrame.new(5.96046448e-008, -9.05990601e-006, -2.38418579e-007, 0.00980956666, -0.000537143264, -0.99995023, 0.00110225484, 1.00000238, -0.000526361808, 0.999954581, -0.00109704456, 0.00981020182),})
+CorruptedPart = New("Part",Chest,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(0.400000006, 0.800000072, 1),CFrame = CFrame.new(2.28977966, 7.11656427, 1.34486222, -0.00110228383, -0.00980954897, -0.9999578, -1.00000536, 0.000536905834, 0.00109708123, 0.000526248943, 0.99994868, -0.00981033035),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, -0.0011022957, -0.999999225, 0.000526249292, -0.00980958622, 0.000536918582, 0.99995172, -0.999951243, 0.0010970803, -0.00981026702),C1 = CFrame.new(-0.598430753, 0.800122261, 0.00106739998, 0.00980956666, -0.000537143264, -0.99995023, 0.00110225484, 1.00000238, -0.000526361808, 0.999954581, -0.00109704456, 0.00981020182),})
+CorruptedPart = New("Part",Chest,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(0.400000006, 0.400000066, 1),CFrame = CFrame.new(2.29174757, 6.71645212, 1.54485857, -0.00110228383, -0.00980954897, -0.9999578, -1.00000536, 0.000536905834, 0.00109708123, 0.000526248943, 0.99994868, -0.00981033035),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, -0.0011022957, -0.999999225, 0.000526249292, -0.00980958622, 0.000536918582, 0.99995172, -0.999951243, 0.0010970803, -0.00981026702),C1 = CFrame.new(-0.798183441, 0.399908543, 0.00543618202, 0.00980956666, -0.000537143264, -0.99995023, 0.00110225484, 1.00000238, -0.000526361808, 0.999954581, -0.00109704456, 0.00981020182),})
+LeftArm = New("Model",chara,"LeftArm",{})
+MainPart = New("Part",LeftArm,"MainPart",{Transparency = 1,Transparency = 1,FormFactor = Enum.FormFactor.Symmetric,Size = Vector3.new(1, 2, 1),CFrame = CFrame.new(1.90889204, 6.31596565, 3.24640989, -0.0484240092, -0.0324009918, 0.998301268, -0.00117100019, 0.999474883, 0.0323822871, -0.998826265, 0.000399069104, -0.0484365262),CanCollide = false,})
+Weld = New("ManualWeld",MainPart,"Weld",{Part0 = MainPart,Part1 = chara["Left Arm"],C0 = CFrame.new(0, 0, 0, -0.0484240092, -0.00117100019, -0.998826265, -0.0324009918, 0.999474883, 0.000399069104, 0.998301268, 0.0323822871, -0.0484365262),C1 = CFrame.new(0, -8.10623169e-006, -2.38418579e-007, -0.0484240092, -0.00117100019, -0.998826265, -0.0324009918, 0.999474883, 0.000399069104, 0.998301268, 0.0323822871, -0.0484365262),})
+CorruptedPart = New("Part",LeftArm,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(0.200000003, 0.400000006, 0.200000003),CFrame = CFrame.new(1.48370504, 6.50245714, 2.8663168, -0.048417028, -0.0324150361, 0.998301387, -0.00116700074, 0.999474525, 0.03239654, -0.998826742, 0.000403525919, -0.0484294258),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, -0.048417028, -0.00116700074, -0.998826623, -0.0324150361, 0.999474466, 0.000403525832, 0.998301208, 0.0323965363, -0.0484294109),C1 = CFrame.new(0.400017738, 0.200018406, -0.400015235, -0.0484240092, -0.00117100019, -0.998826265, -0.0324009918, 0.999474883, 0.000399069104, 0.998301268, 0.0323822871, -0.0484365262),})
+CorruptedPart = New("Part",LeftArm,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(0.200000003, 0.600000024, 0.200000003),CFrame = CFrame.new(1.51924801, 6.60332775, 3.66543078, -0.048417028, -0.0324150361, 0.998301387, -0.00116700074, 0.999474525, 0.03239654, -0.998826742, 0.000403525919, -0.0484294258),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, -0.048417028, -0.00116700074, -0.998826623, -0.0324150361, 0.999474466, 0.000403525832, 0.998301208, 0.0323965363, -0.0484294109),C1 = CFrame.new(-0.399997473, 0.300003052, -0.399972558, -0.0484240092, -0.00117100019, -0.998826265, -0.0324009918, 0.999474883, 0.000399069104, 0.998301268, 0.0323822871, -0.0484365262),})
+EffCorruptedPart = New("Part",LeftArm,"EffCorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(1, 1, 1),CFrame = CFrame.new(1.92512023, 5.81624889, 3.24619365, -0.048417028, -0.0324150361, 0.998301387, -0.00116700074, 0.999474525, 0.03239654, -0.998826742, 0.000403525919, -0.0484294258),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",EffCorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",EffCorruptedPart,"Weld",{Part0 = EffCorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, -0.048417028, -0.00116700074, -0.998826623, -0.0324150361, 0.999474466, 0.000403525832, 0.998301208, 0.0323965363, -0.0484294109),C1 = CFrame.new(1.52587891e-005, -0.49998045, 2.90870667e-005, -0.0484240092, -0.00117100019, -0.998826265, -0.0324009918, 0.999474883, 0.000399069104, 0.998301268, 0.0323822871, -0.0484365262),})
+CorruptedPart = New("Part",LeftArm,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(0.200000003, 0.800000072, 0.200000003),CFrame = CFrame.new(2.31463432, 6.72918367, 3.62673688, -0.048417028, -0.0324150361, 0.998301387, -0.00116700074, 0.999474525, 0.03239654, -0.998826742, 0.000403525919, -0.0484294258),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, -0.048417028, -0.00116700074, -0.998826623, -0.0324150361, 0.999474466, 0.000403525832, 0.998301208, 0.0323965363, -0.0484294109),C1 = CFrame.new(-0.400012016, 0.400006294, 0.400012136, -0.0484240092, -0.00117100019, -0.998826265, -0.0324009918, 0.999474883, 0.000399069104, 0.998301268, 0.0323822871, -0.0484365262),})
+CorruptedPart = New("Part",LeftArm,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(0.200000003, 0.200000003, 0.200000003),CFrame = CFrame.new(1.50631011, 6.40297413, 3.26581192, -0.048417028, -0.0324150361, 0.998301387, -0.00116700074, 0.999474525, 0.03239654, -0.998826742, 0.000403525919, -0.0484294258),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, -0.048417028, -0.00116700074, -0.998826623, -0.0324150361, 0.999474466, 0.000403525832, 0.998301208, 0.0323965363, -0.0484294109),C1 = CFrame.new(1.3589859e-005, 0.100014687, -0.400020242, -0.0484240092, -0.00117100019, -0.998826265, -0.0324009918, 0.999474883, 0.000399069104, 0.998301268, 0.0323822871, -0.0484365262),})
+CorruptedPart = New("Part",LeftArm,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(0.200000003, 0.400000036, 0.200000003),CFrame = CFrame.new(1.92179501, 6.51633835, 3.64602208, -0.048417028, -0.0324150361, 0.998301387, -0.00116700074, 0.999474525, 0.03239654, -0.998826742, 0.000403525919, -0.0484294258),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, -0.048417028, -0.00116700074, -0.998826623, -0.0324150361, 0.999474466, 0.000403525832, 0.998301208, 0.0323965363, -0.0484294109),C1 = CFrame.new(-0.40000248, 0.200008869, 1.37090683e-005, -0.0484240092, -0.00117100019, -0.998826265, -0.0324009918, 0.999474883, 0.000399069104, 0.998301268, 0.0323822871, -0.0484365262),})
+BurningEff(EffCorruptedPart)
+LeftLeg = New("Model",chara,"LeftLeg",{})
+MainPart = New("Part",LeftLeg,"MainPart",{Transparency = 1,Transparency = 1,FormFactor = Enum.FormFactor.Symmetric,Size = Vector3.new(1, 2, 1),CFrame = CFrame.new(2.2865479, 1.31659603, 1.24781799, 0.00980953407, 0.00110225566, 0.999961138, -0.000537137908, 1.00000858, -0.00109705783, -0.99994719, -0.000526368851, 0.00981026888),CanCollide = false,BottomSurface = Enum.SurfaceType.Smooth,})
+Weld = New("ManualWeld",MainPart,"Weld",{Part0 = MainPart,Part1 = chara["Left Leg"],C0 = CFrame.new(0, 0, 0, 0.00980953407, -0.000537137908, -0.99994719, 0.00110225566, 1.00000858, -0.000526368851, 0.999961138, -0.00109705783, 0.00981026888),C1 = CFrame.new(0, -8.58306885e-006, -2.38418579e-007, 0.00980953407, -0.000537137908, -0.99994719, 0.00110225566, 1.00000858, -0.000526368851, 0.999961138, -0.00109705783, 0.00981026888),})
+EffCorruptedPart = New("Part",LeftLeg,"EffCorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(1, 0.200000048, 1),CFrame = CFrame.new(2.28007793, 0.400032878, 1.25993299, 1.00001979, -3.03611159e-007, -5.47617674e-007, 5.67175448e-007, 1.00001717, -5.60779881e-007, -1.86450779e-006, 9.50574758e-007, 0.99998951),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",EffCorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",EffCorruptedPart,"Weld",{Part0 = EffCorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, 1, 5.86369708e-007, -2.15602267e-006, -2.8440752e-007, 0.999998569, 9.76819592e-007, -8.39119252e-007, -5.34477465e-007, 0.999998569),C1 = CFrame.new(-0.0116856098, -0.916567385, -0.00534534454, 0.00980953407, -0.000537137908, -0.99994719, 0.00110225566, 1.00000858, -0.000526368851, 0.999961138, -0.00109705783, 0.00981026888),})
+CorruptedPart = New("Part",LeftLeg,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(0.200000003, 0.600000024, 0.200000003),CFrame = CFrame.new(1.88013697, 0.800038397, 0.859943509, 1.00001979, -3.03611159e-007, -5.47617674e-007, 5.67175448e-007, 1.00001717, -5.60779881e-007, -1.86450779e-006, 9.50574758e-007, 0.99998951),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, 1, 5.86369708e-007, -2.15602267e-006, -2.8440752e-007, 0.999998569, 9.76819592e-007, -8.39119252e-007, -5.34477465e-007, 0.999998569),C1 = CFrame.new(0.3841483, -0.516796231, -0.40962553, 0.00980953407, -0.000537137908, -0.99994719, 0.00110225566, 1.00000858, -0.000526368851, 0.999961138, -0.00109705783, 0.00981026888),})
+CorruptedPart = New("Part",LeftLeg,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(0.200000003, 0.800000012, 0.200000003),CFrame = CFrame.new(2.69002914, 0.915953577, 0.851962805, 0.999971032, 0.0011022269, -0.00980960391, -0.00109704852, 1.00001776, 0.000537177373, 0.00981036108, -0.000526409131, 0.999942601),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, 0.999951303, -0.0010970087, 0.00981015898, 0.00110222446, 0.999999166, -0.000526388001, -0.00980970077, 0.00053719338, 0.99995172),C1 = CFrame.new(0.400011122, -0.399985313, 0.400013685, 0.00980953407, -0.000537137908, -0.99994719, 0.00110225566, 1.00000858, -0.000526368851, 0.999961138, -0.00109705783, 0.00981026888),})
+CorruptedPart = New("Part",LeftLeg,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(0.200000003, 0.800000012, 0.200000003),CFrame = CFrame.new(1.88013721, 0.900040269, 1.65993917, 1.00001979, -3.03611159e-007, -5.47617674e-007, 5.67175448e-007, 1.00001717, -5.60779881e-007, -1.86450779e-006, 9.50574758e-007, 0.99998951),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, 1, 5.86369708e-007, -2.15602267e-006, -2.8440752e-007, 0.999998569, 9.76819592e-007, -8.39119252e-007, -5.34477465e-007, 0.999998569),C1 = CFrame.new(-0.415866137, -0.41721642, -0.40188694, 0.00980953407, -0.000537137908, -0.99994719, 0.00110225566, 1.00000858, -0.000526368851, 0.999961138, -0.00109705783, 0.00981026888),})
+CorruptedPart = New("Part",LeftLeg,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(0.200000003, 0.200000003, 0.200000003),CFrame = CFrame.new(1.88013721, 0.600035727, 1.25993288, 1.00001979, -3.03611159e-007, -5.47617674e-007, 5.67175448e-007, 1.00001717, -5.60779881e-007, -1.86450779e-006, 9.50574758e-007, 0.99998951),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, 1, 5.86369708e-007, -2.15602267e-006, -2.8440752e-007, 0.999998569, 9.76819592e-007, -8.39119252e-007, -5.34477465e-007, 0.999998569),C1 = CFrame.new(-0.0157161951, -0.717007458, -0.405481935, 0.00980953407, -0.000537137908, -0.99994719, 0.00110225566, 1.00000858, -0.000526368851, 0.999961138, -0.00109705783, 0.00981026888),})
+CorruptedPart = New("Part",LeftLeg,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(0.200000003, 0.400000006, 0.200000003),CFrame = CFrame.new(2.28007793, 0.700037479, 1.65993929, 1.00001967, -3.84054147e-007, 3.90969217e-006, 6.35045581e-007, 1.00001717, -5.60838998e-007, -6.19795173e-006, 9.32147486e-007, 0.99998951),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, 1, 6.5424797e-007, -6.48946025e-006, -3.64865258e-007, 0.999998629, 9.58411874e-007, 3.61912225e-006, -5.34497644e-007, 0.999998629),C1 = CFrame.new(-0.411835551, -0.616776347, -0.00175023079, 0.00980953407, -0.000537137908, -0.99994719, 0.00110225566, 1.00000858, -0.000526368851, 0.999961138, -0.00109705783, 0.00981026888),})
+CorruptedPart = New("Part",LeftLeg,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(0.200000003, 1.20000005, 0.200000003),CFrame = CFrame.new(2.68018699, 1.10004401, 1.65993941, 1.00001967, -3.84054147e-007, 3.90969217e-006, 6.35045581e-007, 1.00001717, -5.60838998e-007, -6.19795173e-006, 9.32147486e-007, 0.99998951),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, 1, 6.5424797e-007, -6.48946025e-006, -3.64865258e-007, 0.999998629, 9.58411874e-007, 3.61912225e-006, -5.34497644e-007, 0.999998629),C1 = CFrame.new(-0.408125639, -0.216332912, 0.397896528, 0.00980953407, -0.000537137908, -0.99994719, 0.00110225566, 1.00000858, -0.000526368851, 0.999961138, -0.00109705783, 0.00981026888),})
+CorruptedPart = New("Part",LeftLeg,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(0.200000003, 0.600000024, 0.200000003),CFrame = CFrame.new(2.68596959, 0.816166699, 1.25195313, 0.999971032, 0.0011022269, -0.00980960391, -0.00109704852, 1.00001776, 0.000537177373, 0.00981036108, -0.000526409131, 0.999942601),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, 0.999951303, -0.0010970087, 0.00981015898, 0.00110222446, 0.999999166, -0.000526388001, -0.00980970077, 0.00053719338, 0.99995172),C1 = CFrame.new(5.20944595e-005, -0.499986172, 0.399987936, 0.00980953407, -0.000537137908, -0.99994719, 0.00110225566, 1.00000858, -0.000526368851, 0.999961138, -0.00109705783, 0.00981026888),})
+ScatterEff(EffCorruptedPart)
+RightArm = New("Model",chara,"RightArm",{})
+MainPart = New("Part",RightArm,"MainPart",{Transparency = 1,Transparency = 1,FormFactor = Enum.FormFactor.Symmetric,Size = Vector3.new(1, 2, 1),CFrame = CFrame.new(2.011096, 6.31690788, -3.92582893, 0.00918400101, -0.262283146, 0.964947343, 0.259330034, 0.932596445, 0.251021653, -0.965745091, 0.247934431, 0.0765828639),CanCollide = false,})
+Weld = New("ManualWeld",MainPart,"Weld",{Part0 = MainPart,Part1 = chara["Right Arm"],C0 = CFrame.new(0, 0, 0, 0.00918400101, 0.259330034, -0.965745091, -0.262283146, 0.932596445, 0.247934431, 0.964947343, 0.251021653, 0.0765828639),C1 = CFrame.new(-2.86102295e-006, -9.05990601e-006, -2.38418579e-006, 0.00918400101, 0.259330034, -0.965745091, -0.262283146, 0.932596445, 0.247934431, 0.964947343, 0.251021653, 0.0765828639),})
+Hitbox = New("Part",RightArm,"Hitbox",{BrickColor = BrickColor.new("Really black"),Transparency = 1,Transparency = 1,Size = Vector3.new(1, 4, 1),CFrame = CFrame.new(22.2733669, 5.0842762, -22.1737366, -0.964945257, -0.262290984, 0.00919180829, -0.251027077, 0.93259424, 0.259333313, -0.0765930116, 0.247935042, -0.965744138),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Weld = New("ManualWeld",Hitbox,"Weld",{Part0 = Hitbox,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, -0.964945257, -0.251027077, -0.0765930116, -0.262290984, 0.93259424, 0.247935042, 0.00919180829, 0.259333313, -0.965744138),C1 = CFrame.new(-1.52587891e-005, -1.00003147, -1.71661377e-005, 0.0091838371, 0.259330064, -0.965745151, -0.262283117, 0.932596445, 0.247934505, 0.964947283, 0.251021653, 0.0765827149),})
+CorruptedPart = New("Part",RightArm,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(1, 2, 1),CFrame = CFrame.new(2.011096, 6.3169179, -3.92581391, -0.964945257, -0.262290984, 0.00919180829, -0.251027077, 0.93259424, 0.259333313, -0.0765930116, 0.247935042, -0.965744138),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, -0.964945138, -0.251027018, -0.0765930042, -0.262290984, 0.932594121, 0.247935027, 0.00919180084, 0.259333313, -0.965744197),C1 = CFrame.new(-1.1920929e-005, 1.28746033e-005, 3.57627869e-006, 0.00918400101, 0.259330034, -0.965745091, -0.262283146, 0.932596445, 0.247934431, 0.964947343, 0.251021653, 0.0765828639),})
+CorruptedPart = New("Part",RightArm,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(1, 0.600000024, 0.400000036),CFrame = CFrame.new(2.14866924, 6.03215551, -4.72580194, -0.964945078, 0.262291819, -0.00918725226, -0.251029015, -0.932593465, -0.259333432, -0.0765890032, -0.247936144, 0.965744317),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("SpecialMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),MeshType = Enum.MeshType.Wedge,})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, -0.964944899, -0.251028955, -0.0765889958, 0.262291819, -0.932593465, -0.247936144, -0.00918724574, -0.259333432, 0.965744257),C1 = CFrame.new(0.699988842, -0.499982834, 7.62939453e-006, 0.00918400101, 0.259330034, -0.965745091, -0.262283146, 0.932596445, 0.247934431, 0.964947343, 0.251021653, 0.0765828639),})
+CorruptedPart = New("Part",RightArm,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(1, 1.20000005, 0.600000024),CFrame = CFrame.new(2.63876629, 4.02682734, -4.32773018, -0.964945078, 0.262291819, -0.00918725226, -0.251029015, -0.932593465, -0.259333432, -0.0765890032, -0.247936144, 0.965744317),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("SpecialMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),MeshType = Enum.MeshType.Wedge,})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, -0.964944899, -0.251028955, -0.0765889958, 0.262291819, -0.932593465, -0.247936144, -0.00918724574, -0.259333432, 0.965744257),C1 = CFrame.new(-0.199987888, -2.39999342, 3.02791595e-005, 0.00918400101, 0.259330034, -0.965745091, -0.262283146, 0.932596445, 0.247934431, 0.964947343, 0.251021653, 0.0765828639),})
+CorruptedPart = New("Part",RightArm,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(1, 1, 0.600000024),CFrame = CFrame.new(1.62134135, 7.81954479, -3.94021821, 0.964945078, -0.262291819, -0.00918725226, 0.251029015, 0.932593465, -0.259333432, 0.0765890032, 0.247936144, 0.965744317),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("SpecialMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),MeshType = Enum.MeshType.Wedge,})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, 0.964944899, 0.251028955, 0.0765889958, -0.262291819, 0.932593465, 0.247936144, -0.00918724574, -0.259333432, 0.965744257),C1 = CFrame.new(0.399995804, 1.5000124, -2.38418579e-007, 0.00918400101, 0.259330034, -0.965745091, -0.262283146, 0.932596445, 0.247934431, 0.964947343, 0.251021653, 0.0765828639),})
+CorruptedPart = New("Part",RightArm,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(1, 0.600000024, 0.400000036),CFrame = CFrame.new(2.35483098, 5.18234444, -4.53787422, -0.964945078, 0.262291819, -0.00918725226, -0.251029015, -0.932593465, -0.259333432, -0.0765890032, -0.247936144, 0.965744317),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("SpecialMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),MeshType = Enum.MeshType.Wedge,})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, -0.964944899, -0.251028955, -0.0765889958, 0.262291819, -0.932593465, -0.247936144, -0.00918724574, -0.259333432, 0.965744257),C1 = CFrame.new(0.300010204, -1.29999256, 1.40666962e-005, 0.00918400101, 0.259330034, -0.965745091, -0.262283146, 0.932596445, 0.247934431, 0.964947343, 0.251021653, 0.0765828639),})
+CorruptedPart = New("Part",RightArm,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(1, 1, 0.600000024),CFrame = CFrame.new(1.88730097, 6.99068737, -4.57445002, -0.964945078, 0.262291819, -0.00918725226, -0.251029015, -0.932593465, -0.259333432, -0.0765890032, -0.247936144, 0.965744317),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("SpecialMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),MeshType = Enum.MeshType.Wedge,})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, -0.964944899, -0.251028955, -0.0765889958, 0.262291819, -0.932593465, -0.247936144, -0.00918724574, -0.259333432, 0.965744257),C1 = CFrame.new(0.799996853, 0.50001812, 4.29153442e-006, 0.00918400101, 0.259330034, -0.965745091, -0.262283146, 0.932596445, 0.247934431, 0.964947343, 0.251021653, 0.0765828639),})
+CorruptedPart = New("Part",RightArm,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(1, 0.800000072, 0.600000024),CFrame = CFrame.new(2.37646794, 4.9594202, -4.07979012, -0.964945316, -0.262290984, 0.00918756705, -0.251028091, 0.932593942, 0.259333163, -0.0765890256, 0.247935995, -0.965744197),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, -0.964945138, -0.251028031, -0.0765890107, -0.262290955, 0.932593882, 0.247935966, 0.0091875596, 0.259333193, -0.965744257),C1 = CFrame.new(-0.199994564, -1.39999104, 1.52587891e-005, 0.00918400101, 0.259330034, -0.965745091, -0.262283146, 0.932596445, 0.247934431, 0.964947343, 0.251021653, 0.0765828639),})
+RightLeg = New("Model",chara,"RightLeg",{})
+MainPart = New("Part",RightLeg,"MainPart",{Transparency = 1,Transparency = 1,FormFactor = Enum.FormFactor.Symmetric,Size = Vector3.new(1, 2, 1),CFrame = CFrame.new(2.29641008, 1.31540966, 0.248092994, 0.00933599845, 0.00110999751, 0.999955773, -0.0030579993, 0.999994755, -0.00108149007, -0.99995178, -0.0030477671, 0.00933934376),CanCollide = false,BottomSurface = Enum.SurfaceType.Smooth,})
+Weld = New("ManualWeld",MainPart,"Weld",{Part0 = MainPart,Part1 = chara["Right Leg"],C0 = CFrame.new(0, 0, 0, 0.00933599845, -0.0030579993, -0.99995178, 0.00110999751, 0.999994755, -0.0030477671, 0.999955773, -0.00108149007, 0.00933934376),C1 = CFrame.new(2.98023224e-008, -8.58306885e-006, 2.38418579e-007, 0.00933599845, -0.0030579993, -0.99995178, 0.00110999751, 0.999994755, -0.0030477671, 0.999955773, -0.00108149007, 0.00933934376),})
+CorruptedPart = New("Part",RightLeg,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(0.200000003, 0.200000003, 0.200000003),CFrame = CFrame.new(2.70045996, 1.61376095, -0.149078026, 0.999955833, 0.00111049914, -0.0093326522, -0.00108199986, 0.999994755, 0.00305823679, 0.00933599938, -0.00304800388, 0.999951839),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, 0.999955893, -0.00108199986, 0.00933599938, 0.00111049926, 0.999994755, -0.00304800388, -0.0093326522, 0.00305823679, 0.99995178),C1 = CFrame.new(0.400011688, 0.300008655, 0.400000095, 0.00933599845, -0.0030579993, -0.99995178, 0.00110999751, 0.999994755, -0.0030477671, 0.999955773, -0.00108149007, 0.00933934376),})
+CorruptedPart = New("Part",RightLeg,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(0.200000003, 0.600000024, 0.200000003),CFrame = CFrame.new(1.90071809, 1.81462395, -0.157150015, 0.999955714, 0.00111050205, -0.0093366541, -0.00108199974, 0.999994755, 0.00305724167, 0.00933999754, -0.00304700364, 0.999951899),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, 0.999955773, -0.00108199974, 0.00933999848, 0.00111050217, 0.999994755, -0.00304700388, -0.00933665317, 0.00305724121, 0.99995178),C1 = CFrame.new(0.400002658, 0.50000751, -0.399999142, 0.00933599845, -0.0030579993, -0.99995178, 0.00110999751, 0.999994755, -0.0030477671, 0.999955773, -0.00108149007, 0.00933934376),})
+CorruptedPart = New("Part",RightLeg,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(0.200000003, 0.400000036, 0.200000003),CFrame = CFrame.new(1.896873, 1.71584904, 0.243133992, 0.999955714, 0.00111050205, -0.0093366541, -0.00108199974, 0.999994755, 0.00305724167, 0.00933999754, -0.00304700364, 0.999951899),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, 0.999955773, -0.00108199974, 0.00933999848, 0.00111050217, 0.999994755, -0.00304700388, -0.00933665317, 0.00305724121, 0.99995178),C1 = CFrame.new(4.14252281e-006, 0.400008917, -0.399998784, 0.00933599845, -0.0030579993, -0.99995178, 0.00110999751, 0.999994755, -0.0030477671, 0.999955773, -0.00108149007, 0.00933934376),})
+CorruptedPart = New("Part",RightLeg,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(0.200000003, 0.800000072, 0.200000003),CFrame = CFrame.new(1.89314091, 1.71706903, 0.643112063, 0.999955714, 0.00111050205, -0.0093366541, -0.00108199974, 0.999994755, 0.00305724167, 0.00933999754, -0.00304700364, 0.999951899),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, 0.999955773, -0.00108199974, 0.00933999848, 0.00111050217, 0.999994755, -0.00304700388, -0.00933665317, 0.00305724121, 0.99995178),C1 = CFrame.new(-0.399993181, 0.400005698, -0.399996519, 0.00933599845, -0.0030579993, -0.99995178, 0.00110999751, 0.999994755, -0.0030477671, 0.999955773, -0.00108149007, 0.00933934376),})
+EffCorruptedPart = New("Part",RightLeg,"EffCorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(1, 1.20000005, 1),CFrame = CFrame.new(2.29597116, 0.915416002, 0.249298006, 0.999955714, 0.00111051137, -0.00933665317, -0.00108199974, 0.999994755, 0.00305824191, 0.00933999754, -0.00304800365, 0.999951899),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",EffCorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",EffCorruptedPart,"Weld",{Part0 = EffCorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, 0.999955773, -0.00108199974, 0.00933999848, 0.00111051148, 0.999994755, -0.00304800388, -0.00933665223, 0.00305824145, 0.99995178),C1 = CFrame.new(1.41263008e-005, -0.399995744, 5.00679016e-006, 0.00933599845, -0.0030579993, -0.99995178, 0.00110999751, 0.999994755, -0.0030477671, 0.999955773, -0.00108149007, 0.00933934376),})
+CorruptedPart = New("Part",RightLeg,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(0.200000003, 0.400000006, 0.200000003),CFrame = CFrame.new(2.300596, 1.71419013, -0.153122023, 0.999955714, 0.00111051137, -0.00933665317, -0.00108199974, 0.999994755, 0.00305824191, 0.00933999754, -0.00304800365, 0.999951899),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, 0.999955773, -0.00108199974, 0.00933999848, 0.00111051148, 0.999994755, -0.00304800388, -0.00933665223, 0.00305824145, 0.99995178),C1 = CFrame.new(0.400015235, 0.400005817, 7.39097595e-006, 0.00933599845, -0.0030579993, -0.99995178, 0.00110999751, 0.999994755, -0.0030477671, 0.999955773, -0.00108149007, 0.00933934376),})
+CorruptedPart = New("Part",RightLeg,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(0.200000003, 0.600000024, 0.200000003),CFrame = CFrame.new(2.69322205, 1.81620288, 0.650299072, 0.999955714, 0.00111051137, -0.00933665317, -0.00108199974, 0.999994755, 0.00305824191, 0.00933999754, -0.00304800365, 0.999951899),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, 0.999955773, -0.00108199974, 0.00933999848, 0.00111051148, 0.999994755, -0.00304800388, -0.00933665223, 0.00305824145, 0.99995178),C1 = CFrame.new(-0.400013447, 0.500005245, 0.400009155, 0.00933599845, -0.0030579993, -0.99995178, 0.00110999751, 0.999994755, -0.0030477671, 0.999955773, -0.00108149007, 0.00933934376),})
+CorruptedPart = New("Part",RightLeg,"CorruptedPart",{BrickColor = BrickColor.new("Really black"),Material = Enum.Material.Granite,Size = Vector3.new(0.200000003, 0.400000006, 0.200000003),CFrame = CFrame.new(2.69684124, 1.71498096, 0.250625998, 0.999955714, 0.00111051137, -0.00933665317, -0.00108199974, 0.999994755, 0.00305824191, 0.00933999754, -0.00304800365, 0.999951899),CanCollide = false,BackSurface = Enum.SurfaceType.SmoothNoOutlines,BottomSurface = Enum.SurfaceType.SmoothNoOutlines,FrontSurface = Enum.SurfaceType.SmoothNoOutlines,LeftSurface = Enum.SurfaceType.SmoothNoOutlines,RightSurface = Enum.SurfaceType.SmoothNoOutlines,TopSurface = Enum.SurfaceType.SmoothNoOutlines,Color = Color3.new(0.0666667, 0.0666667, 0.0666667),})
+Mesh = New("BlockMesh",CorruptedPart,"Mesh",{Scale = Vector3.new(1.10000002, 1.10000002, 1.10000002),})
+Weld = New("ManualWeld",CorruptedPart,"Weld",{Part0 = CorruptedPart,Part1 = MainPart,C0 = CFrame.new(0, 0, 0, 0.999955773, -0.00108199974, 0.00933999848, 0.00111051148, 0.999994755, -0.00304800388, -0.00933665223, 0.00305824145, 0.99995178),C1 = CFrame.new(-1.63316727e-005, 0.400005937, 0.400005102, 0.00933599845, -0.0030579993, -0.99995178, 0.00110999751, 0.999994755, -0.0030477671, 0.999955773, -0.00108149007, 0.00933934376),})
+ScatterEff(EffCorruptedPart)
+
+sa = RightArm:GetChildren()
+for i = 1, #sa do
+ScatterEff(sa[i])
+end
+
+local eff1 = Instance.new("ParticleEmitter",EyeFire)
+eff1.Size = NumberSequence.new(.1)
+eff1.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0,0),NumberSequenceKeypoint.new(.2,0),NumberSequenceKeypoint.new(1,1)})
+eff1.LightEmission = 1
+eff1.Lifetime = NumberRange.new(.5)
+eff1.Speed = NumberRange.new(1)
+eff1.EmissionDirection = "Front"
+eff1.Rate = 100
+eff1.Texture = "rbxassetid://347504241"
+eff1.Acceleration = Vector3.new(0,10,0)
+eff1.Color = ColorSequence.new(Color3.new(1,0,0))
+local eff2 = Instance.new("ParticleEmitter",EyeFire)
+eff2.Size = NumberSequence.new(.1)
+eff2.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0,0),NumberSequenceKeypoint.new(.2,0),NumberSequenceKeypoint.new(1,1)})
+eff2.LightEmission = 1
+eff2.Lifetime = NumberRange.new(.5)
+eff2.Speed = NumberRange.new(1)
+eff2.EmissionDirection = "Front"
+eff2.Rate = 100
+eff2.Texture = "rbxassetid://347504259"
+eff2.Acceleration = Vector3.new(0,10,0)
+eff2.Color = ColorSequence.new(Color3.new(1,0,0))
+local eff3 = Instance.new("ParticleEmitter",EyeFire)
+eff3.Size = NumberSequence.new(.1)
+eff3.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0,0),NumberSequenceKeypoint.new(1,1)})
+eff3.LightEmission = 1
+eff3.Lifetime = NumberRange.new(.5)
+eff3.Speed = NumberRange.new(1)
+eff3.EmissionDirection = "Front"
+eff3.Rate = 100
+eff3.Texture = "rbxasset://textures/particles/fire_main.dds"
+eff3.Acceleration = Vector3.new(0,10,0)
+eff3.Color = ColorSequence.new(Color3.new(1,0,0))
+
+--Sounds--
+slashsnd = New("Sound",chara.Torso,"Slash",{SoundId = "rbxassetid://28144425",PlaybackSpeed = .7,Volume = 5})
+hitsnd = New("Sound",chara.Torso,"Hit",{SoundId = "rbxassetid://429400881",PlaybackSpeed = .7,Volume = 5})
+telesnd = New("Sound",chara.Torso,"Tele",{SoundId = "rbxassetid://2767090",PlaybackSpeed = .7,Volume = 5})
+burnsnd = New("Sound",chara.Torso,"Burn",{SoundId = "rbxassetid://32791565",PlaybackSpeed = .7,Volume = 5})
+music1 = New("Sound",chara.Torso,"Music1",{SoundId = "rbxassetid://151038517",PlaybackSpeed = .5,Volume = 10,Looped = true})
+music2 = New("Sound",chara.Torso,"Music2",{SoundId = "rbxassetid://11984351",PlaybackSpeed = .2,Volume = 5,Looped = true})
+deathmus = New("Sound",chara.Torso,"DeathMus",{SoundId = "rbxassetid://19094700",PlaybackSpeed = .5,Volume = 5,Looped = true})
+deathex = New("Sound",chara.Torso,"DeathEx",{SoundId = "rbxassetid://11984351",PlaybackSpeed = 1,Volume = 5})
+music1:Play()
+music2:Play()
+
+--Animations--
+swinganim = chara.Humanoid:LoadAnimation(New("Animation",chara,"Swing",{AnimationId = "rbxassetid://186934658"}))
+
+--Name Tag--
+local naeeym = Instance.new("BillboardGui",chara)
+naeeym.Size = UDim2.new(0,100,0,40)
+naeeym.StudsOffset = Vector3.new(0,2,0)
+naeeym.Adornee = chara.Head
+local tecks = Instance.new("TextLabel",naeeym)
+tecks.BackgroundTransparency = 1
+tecks.BorderSizePixel = 0
+tecks.Text = "John Doe"
+tecks.Font = "Fantasy"
+tecks.FontSize = "Size24"
+tecks.TextStrokeTransparency = 0
+tecks.TextStrokeColor3 = Color3.new(0,0,0)
+tecks.TextColor3 = Color3.new(0,0,0)
+tecks.Size = UDim2.new(1,0,0.5,0)
+
+--Skybox--
+skybox = Instance.new("Part",chara)
+skybox.Size = Vector3.new(0,0,0)
+skybox.Anchored = true
+skybox.CanCollide = true
+skyboxmesh = Instance.new("SpecialMesh",skybox)
+skyboxmesh.MeshId = "http://www.roblox.com/asset/?id=1527559"
+skyboxmesh.TextureId = "http://www.roblox.com/asset/?id=1529455"
+skyboxmesh.VertexColor = Vector3.new(1,0,0)
+skyboxmesh.Scale = Vector3.new(-3000,-1000,-3000)
+
+--Soul Steal--
+function SoulSteal(pos)
+local soulst = coroutine.wrap(function()
+local soul = Instance.new("Part",chara)
+soul.Size = Vector3.new(0,0,0)
+soul.CanCollide = false
+soul.Anchored = false
+soul.Position = pos
+soul.CFrame = CFrame.new(pos.X,pos.Y,pos.Z)
+soul.Transparency = 1
+local ptc = Instance.new("ParticleEmitter",soul)
+ptc.Texture = "http://www.roblox.com/asset/?id=413366101"
+ptc.Size = NumberSequence.new(.5)
+ptc.LockedToPart = true
+ptc.Speed = NumberRange.new(0)
+ptc.Lifetime = NumberRange.new(9999)
+local bodpos = Instance.new("BodyPosition",soul)
+bodpos.Position = pos
+wait(2)
+soul.Touched:connect(function(hit)
+if hit.Parent == chara then
+soul:Destroy()
+end
+end)
+while soul do
+wait(.1)
+bodpos.Position = chara.Torso.Position
+end
+end)
+soulst()
+end
+
+--Death of a Mortal--
+function KillMortal(hitdude)
+local torsy = nil
+if hitdude:FindFirstChild("Torso")~=nil then
+torsy = hitdude.Torso	
+elseif hitdude:FindFirstChild("UpperTorso")~=nil then
+torsy = hitdude.UpperTorso
+end
+local val = Instance.new("ObjectValue",hitdude)
+val.Name = "HasBeenHit"
+hitdude:BreakJoints()
+hitdude.Humanoid:Destroy()
+SoulSteal(torsy.Position)
+local chi = hitdude:GetChildren()
+for i = 1, #chi do
+if chi[i].ClassName == "Part" or chi[i].ClassName == "MeshPart" then
+local bodpos = Instance.new("BodyPosition",chi[i])
+bodpos.Position = chi[i].Position + Vector3.new(math.random(-5,5),math.random(-5,5),math.random(-5,5))
+ScatterEff(chi[i])
+chi[i].BrickColor = BrickColor.new("Really black")
+end
+end
+for i = 1, 4 do
+for i = 1, #chi do
+if chi[i].ClassName == "Part" or chi[i].ClassName == "MeshPart" then
+chi[i].Transparency = chi[i].Transparency + .25
+wait(.01)
+end
+end
+end
+for i = 1, #chi do
+if chi[i].ClassName == "Part" or chi[i].ClassName == "MeshPart" then
+chi[i]:Destroy()
+end
+end
+end
+
+--Arm Touch--
+bladeactive = false
+Hitbox.Touched:connect(function(hit)
+if bladeactive == true then
+if hit.Parent:FindFirstChild("Humanoid")~= nil and hit.Parent:FindFirstChild("HasBeenHit")== nil and hit.Parent ~= chara then
+hitsnd:Play()
+KillMortal(hit.Parent)
+end
+end
+end)
+
+--Teleport--
+function Teleport(pos)
+telesnd:Play()
+local ch = chara:GetChildren()
+for i = 1, #ch do
+if ch[i].ClassName == "Part" and ch[i].Name ~= "HumanoidRootPart" then
+local trace = Instance.new("Part",game.Workspace)
+trace.Size = ch[i].Size
+trace.Material = "Neon"
+trace.BrickColor = BrickColor.new("Really black")
+trace.Transparency = .3
+trace.CanCollide = false
+trace.Anchored = true
+trace.CFrame = ch[i].CFrame
+if ch[i].Name == "Head" then
+mehs = Instance.new("CylinderMesh",trace)
+mehs.Scale = Vector3.new(1.25,1.25,1.25)
+end
+tracedisappear = coroutine.wrap(function()
+wait(1)
+for i = 1, 7 do
+wait(.1)
+trace.Transparency = trace.Transparency + .1
+end
+trace:Destroy()
+end)
+tracedisappear()
+end
+end
+chara.Torso.CFrame = CFrame.new(pos.X,pos.Y,pos.Z)
+end
+
+--Grab--
+function Grab(mouse)
+local hit = mouse.Target
+if hit ~= nil then
+if hit.Parent:FindFirstChild("Humanoid")~=nil then
+local torsy = nil
+if hit.Parent:FindFirstChild("Torso")~=nil then
+torsy = hit.Parent.Torso
+elseif hit.Parent:FindFirstChild("UpperTorso")~=nil then
+torsy = hit.Parent.UpperTorso
+end
+local bodpos = Instance.new("BodyPosition",torsy)
+bodpos.Position = torsy.Position
+wait(1)
+burnsnd:Play()
+hit.Parent.Humanoid.MaxHealth = 100
+bodpos.Position = bodpos.Position + Vector3.new(0,4,0)
+for i = 1, 10 do
+wait(.1)
+BurningEff(torsy)
+hit.Parent.Humanoid.Health = hit.Parent.Humanoid.Health - 10
+end
+KillMortal(hit.Parent)
+end
+else end
+end
+
+--Button1Down--
+dell = false
+function onButton1Down()
+if dell == false then
+dell = true
+swinganim:Play()
+bladeactive = true
+slashsnd:Play()
+wait(.7)
+bladeactive = false
+dell = false
+swinganim:Stop()
+end
+end
+
+--KeyDowns--
+function onKeyDown(key)
+if key == "z" then
+Teleport(Mouse.Hit.p + Vector3.new(0,2,0))
+elseif key == "x" then
+Grab(Mouse)
+end
+end
+
+--Mouse Functions--
+Mouse = player:GetMouse()
+if Mouse then
+Mouse.Button1Down:connect(onButton1Down)
+Mouse.KeyDown:connect(onKeyDown)
+end
+
+--Death--
+chara.Humanoid.Died:connect(function()
+local pat = Instance.new("Part",game.Workspace)
+pat.Transparency = 1
+pat.Anchored = true
+pat.CFrame = chara.Torso.CFrame
+naeeym.Parent = pat
+naeeym.Adornee = pat
+skybox.Parent = game.Workspace
+tecks.Text = "BAD CHOICE"
+tecks.FontSize = "Size48"
+tecks.TextColor3 = Color3.new(1,0,0)
+music1:Stop()
+music2:Stop()
+deathmus.Parent = game.Workspace
+deathex.Parent = game.Workspace
+deathmus:Play()
+deathex:Play()
+game.Lighting.OutdoorAmbient = Color3.new(0,0,0)
+game.Lighting.TimeOfDay = "00:00:00"
+game.Lighting.FogColor = Color3.new(0,0,0)
+game.Lighting.FogEnd = 1000
+local ex = Instance.new("Explosion",game.Workspace)
+ex.Position = chara.Torso.Position
+ex.Visible = false
+ex.BlastRadius = 999999999999999999999999
+ex.BlastPressure = 9999999999999999999999999
+end)
+
+--Loop Function--
+while true do
+wait(.01)
+chance = math.random(0,100)
+if chance < 10 then
+sel = math.random(1,3)
+if sel == 1 then
+tecks.Text = "NOHOPE"
+elseif sel == 2 then
+tecks.Text = "GIVEUP"
+elseif sel == 3 then
+tecks.Text = "BURNINHELL"
+end
+else tecks.Text = "John Doe"
+end
+if chara.Humanoid.Health > 0 then
+chara.Humanoid.MaxHealth = math.huge
+chara.Humanoid.Health = math.huge
+game.Lighting.OutdoorAmbient = Color3.new(1,0,0)
+game.Lighting.Ambient = Color3.new(1,0,0)
+chara["Left Arm"].BrickColor = BrickColor.new("Cool yellow")
+chara["Right Arm"].BrickColor = BrickColor.new("Cool yellow")
+chara["Left Leg"].BrickColor = BrickColor.new("Medium blue")
+chara["Right Leg"].BrickColor = BrickColor.new("Medium blue")
+chara.Torso.BrickColor = BrickColor.new("Bright yellow")
+chara["Left Arm"].Anchored = false
+chara["Right Arm"].Anchored = false
+chara["Left Leg"].Anchored = false
+chara["Right Leg"].Anchored = false
+chara.Torso.Anchored = false
+ch = chara:GetChildren()
+for i = 1, #ch do
+if ch[i].ClassName == "Accessory" or ch[i].ClassName == "Hat" then
+ch[i]:Destroy()
+end
+end
+tools = player.Backpack:GetChildren()
+for i = 1, #tools do
+if tools[i].ClassName == "HopperBin" then
+tools[i]:Destroy()
+end
+end
+skybox.CFrame = skybox.CFrame * CFrame.fromEulerAnglesXYZ(0,math.rad(1),0)
+tecks.Position = UDim2.new(0,math.random(-3,3),0,math.random(-3,3))
+local jtrace = Instance.new("Part",game.Workspace)
+jtrace.Name = "JDTrace"
+jtrace.Size = Vector3.new(10,0,10)
+jtrace.Position = chara.Torso.Position
+jtrace.CFrame = chara.Torso.CFrame - Vector3.new(0,3,0)
+jtrace.Anchored = true
+jtrace.CanCollide = false
+jtrace.BrickColor = BrickColor.new("Really black")
+jtrace.Material = "Granite"
+BurningEff(jtrace)
+game.Debris:AddItem(jtrace,1)
+end
+end
+end)
 
 UICorner_5.Parent = JohnDoe
 
@@ -278,7 +888,7 @@ newTag.Name = "NewTag"
 newTag.Parent = JohnDoe
 newTag.BackgroundColor3 = Color3.fromRGB(186, 142, 35)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 60, 0, 25)
+newTag.Size = UDim2.new(0, 60, 0, 30)
 newTag.Text = "UPDATED"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
@@ -396,7 +1006,7 @@ newTag.Name = "NewTag"
 newTag.Parent = TheDankEngine
 newTag.BackgroundColor3 = Color3.fromRGB(186, 142, 35)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 60, 0, 25)
+newTag.Size = UDim2.new(0, 60, 0, 30)
 newTag.Text = "UPDATED"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
@@ -414,6 +1024,9 @@ Banisher.TextColor3 = Color3.fromRGB(255, 255, 255)
 Banisher.TextSize = 20.000
 Banisher.TextWrapped = true
 Banisher.TextXAlignment = Enum.TextXAlignment.Left
+Banisher.MouseButton1Down:Connect(function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/YepimSirPwnsAlot/Ultimate-trolling-gui/refs/heads/main/Ultimate%20Trolling%20gui"))()
+end)
 
 UICorner_7.Parent = Banisher
 
@@ -422,7 +1035,7 @@ newTag.Name = "NewTag"
 newTag.Parent = Banisher
 newTag.BackgroundColor3 = Color3.fromRGB(186, 142, 35)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 60, 0, 25)
+newTag.Size = UDim2.new(0, 60, 0, 30)
 newTag.Text = "UPDATED"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
@@ -448,7 +1061,7 @@ newTag.Name = "NewTag"
 newTag.Parent = Illuminati
 newTag.BackgroundColor3 = Color3.fromRGB(186, 142, 35)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 60, 0, 25)
+newTag.Size = UDim2.new(0, 60, 0, 30)
 newTag.Text = "UPDATED"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
@@ -474,7 +1087,7 @@ newTag.Name = "NewTag"
 newTag.Parent = MineCraftSteve
 newTag.BackgroundColor3 = Color3.fromRGB(186, 142, 35)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 60, 0, 25)
+newTag.Size = UDim2.new(0, 60, 0, 30)
 newTag.Text = "UPDATED"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
@@ -492,7 +1105,10 @@ Goner.TextColor3 = Color3.fromRGB(255, 255, 255)
 Goner.TextSize = 20.000
 Goner.TextWrapped = true
 Goner.TextXAlignment = Enum.TextXAlignment.Left
-
+Goner.MouseButton1Down:Connect(function()
+	loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-TXT-GONER-FAKE-43271"))()
+end)
+	
 UICorner_10.Parent = Goner
 
 local newTag = Instance.new("TextLabel")
@@ -500,7 +1116,7 @@ newTag.Name = "NewTag"
 newTag.Parent = Goner
 newTag.BackgroundColor3 = Color3.fromRGB(186, 142, 35)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 60, 0, 25)
+newTag.Size = UDim2.new(0, 60, 0, 30)
 newTag.Text = "UPDATED"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
@@ -526,11 +1142,11 @@ newTag.Name = "NewTag"
 newTag.Parent = HolyWrench
 newTag.BackgroundColor3 = Color3.fromRGB(0, 0, 255)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "FIXED"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 Baseplate.Name = "Baseplate"
@@ -562,11 +1178,11 @@ newTag.Name = "NewTag"
 newTag.Parent = Baseplate
 newTag.BackgroundColor3 = Color3.fromRGB(0, 0, 255)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "FIXED"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 FlingGUI.Name = "FlingGUI"
@@ -588,11 +1204,11 @@ newTag.Name = "NewTag"
 newTag.Parent = FlingGUI
 newTag.BackgroundColor3 = Color3.fromRGB(0, 0, 255)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "FIXED"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 Techno.Name = "Techno"
@@ -614,11 +1230,11 @@ newTag.Name = "NewTag"
 newTag.Parent = Techno
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 KFC.Name = "KFC"
@@ -640,23 +1256,24 @@ newTag.Name = "NewTag"
 newTag.Parent = KFC
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 Characters.Name = "Characters"
 Characters.Parent = ScrollingFrame
-Characters.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
+Characters.BackgroundColor3 = Color3.fromRGB(250, 128, 114)
 Characters.Position = UDim2.new(0.0093457941, 0, 0.18459788, 0)
 Characters.Size = UDim2.new(0, 419, 0, 36)
 Characters.Font = Enum.Font.SourceSansBold
-Characters.Text = "Characters"
+Characters.Text = "    Characters"
 Characters.TextColor3 = Color3.fromRGB(255, 255, 255)
 Characters.TextSize = 20.000
 Characters.TextWrapped = true
+Characters.TextXAlignment = Enum.TextXAlignment.Left
 
 UICorner_16.Parent = Characters
 
@@ -1217,25 +1834,38 @@ newTag.Name = "NewTag"
 newTag.Parent = ChainSaw
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
-Fixed.Name = "Fixed Scripts"
-Fixed.Parent = ScrollingFrame
-Fixed.BackgroundColor3 = Color3.fromRGB(87, 185, 255)
-Fixed.Position = UDim2.new(0.0093457941, 0, 0.124283813, 0)
-Fixed.Size = UDim2.new(0, 419, 0, 36)
-Fixed.Font = Enum.Font.SourceSansBold
-Fixed.Text = "Fixed Scripts"
-Fixed.TextColor3 = Color3.fromRGB(255, 255, 255)
-Fixed.TextSize = 20.000
-Fixed.TextWrapped = true
+FixedStuff.Name = "FixedStuff"
+FixedStuff.Parent = ScrollingFrame
+FixedStuff.BackgroundColor3 = Color3.fromRGB(0, 0, 255)
+FixedStuff.Position = UDim2.new(0.0093457941, 0, 0.124283813, 0)
+FixedStuff.Size = UDim2.new(0, 419, 0, 36)
+FixedStuff.Font = Enum.Font.SourceSansBold
+FixedStuff.Text = "   Fixed Stuff"
+FixedStuff.TextColor3 = Color3.fromRGB(255, 255, 255)
+FixedStuff.TextSize = 20.000
+FixedStuff.TextWrapped = true
+FixedStuff.TextXAlignment = Enum.TextXAlignment.Left
 
-UICorner_18.Parent = Fixed
+UICorner_18.Parent = FixedStuff
+
+local newTag = Instance.new("TextLabel")
+newTag.Name = "NewTag"
+newTag.Parent = FixedStuff
+newTag.BackgroundColor3 = Color3.fromRGB(0, 0, 255)
+newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
+newTag.Size = UDim2.new(0, 55, 0, 29)
+newTag.Text = "NEW"
+newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
+newTag.Font = Enum.Font.SourceSansBold
+newTag.TextSize = 20
+newTag.BorderSizePixel = 0
 
 InfGaunt.Name = "Inf Gaunt"
 InfGaunt.Parent = ScrollingFrame
@@ -1256,11 +1886,11 @@ newTag.Name = "NewTag"
 newTag.Parent = InfGaunt
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 mrbyebye.Name = "mrbyebye"
@@ -1282,11 +1912,11 @@ newTag.Name = "NewTag"
 newTag.Parent = mrbyebye
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 chopchop.Name = "Chop Chop"
@@ -1308,11 +1938,11 @@ newTag.Name = "NewTag"
 newTag.Parent = chopchop
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 Nuke.Name = "Nuke"
@@ -1369,11 +1999,11 @@ newTag.Name = "NewTag"
 newTag.Parent = Nuke
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 Stand.Name = "Stand"
@@ -1395,11 +2025,11 @@ newTag.Name = "NewTag"
 newTag.Parent = Stand
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 KJ.Name = "KJ"
@@ -1421,11 +2051,11 @@ newTag.Name = "NewTag"
 newTag.Parent = KJ
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 clownvan.Name = "clown van"
@@ -1447,11 +2077,11 @@ newTag.Name = "NewTag"
 newTag.Parent = clownvan
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 Felipe.Name = "Felipe"
@@ -1473,11 +2103,11 @@ newTag.Name = "NewTag"
 newTag.Parent = Felipe
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 AmongUs.Name = "AmongUs"
@@ -1522,11 +2152,11 @@ newTag.Name = "NewTag"
 newTag.Parent = AmongUs
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 ServerAdmin.Name = "ServerAdmin"
@@ -1548,11 +2178,11 @@ newTag.Name = "NewTag"
 newTag.Parent = ServerAdmin
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 Sniper.Name = "Sniper"
@@ -1574,11 +2204,11 @@ newTag.Name = "NewTag"
 newTag.Parent = Sniper
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 ElioBlasio.Name = "ElioBlasio"
@@ -1600,11 +2230,11 @@ newTag.Name = "NewTag"
 newTag.Parent = ElioBlasio
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 DarthVader.Name = "Darth Vader"
@@ -1626,11 +2256,11 @@ newTag.Name = "NewTag"
 newTag.Parent = DarthVader
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 BanHammer.Name = "BanHammer"
@@ -1644,935 +2274,6 @@ BanHammer.TextColor3 = Color3.fromRGB(255, 255, 255)
 BanHammer.TextSize = 20.000
 BanHammer.TextWrapped = true
 BanHammer.TextXAlignment = Enum.TextXAlignment.Left
-BanHammer.MouseButton1Down:Connect(function()
---//====================================================\\--
---||			   CREATED BY SHACKLUSTER
---\\====================================================//--
-
-wait(0.2)
-
-Player = game:GetService("Players").LocalPlayer
-PlayerGui = Player.PlayerGui
-Cam = workspace.CurrentCamera
-Backpack = Player.Backpack
-Character = Player.Character
-Humanoid = Character.Humanoid
-Mouse = Player:GetMouse()
-RootPart = Character["HumanoidRootPart"]
-Torso = Character["Torso"]
-Head = Character["Head"]
-RightArm = Character["Right Arm"]
-LeftArm = Character["Left Arm"]
-RightLeg = Character["Right Leg"]
-LeftLeg = Character["Left Leg"]
-RootJoint = RootPart["RootJoint"]
-Neck = Torso["Neck"]
-RightShoulder = Torso["Right Shoulder"]
-LeftShoulder = Torso["Left Shoulder"]
-RightHip = Torso["Right Hip"]
-LeftHip = Torso["Left Hip"]
-local sick = Instance.new("Sound",Character)
-sick.SoundId = "rbxassetid://462506896"
-sick.Looped = true
-sick.Pitch = 1
-sick.Volume = 5
-sick:Play()
-
-IT = Instance.new
-CF = CFrame.new
-VT = Vector3.new
-RAD = math.rad
-C3 = Color3.new
-UD2 = UDim2.new
-BRICKC = BrickColor.new
-ANGLES = CFrame.Angles
-EULER = CFrame.fromEulerAnglesXYZ
-COS = math.cos
-ACOS = math.acos
-SIN = math.sin
-ASIN = math.asin
-ABS = math.abs
-MRANDOM = math.random
-FLOOR = math.floor
-
-function CreateMesh(MESH, PARENT, MESHTYPE, MESHID, TEXTUREID, SCALE, OFFSET)
-	local NEWMESH = IT(MESH)
-	if MESH == "SpecialMesh" then
-		NEWMESH.MeshType = MESHTYPE
-		if MESHID ~= "nil" and MESHID ~= "" then
-			NEWMESH.MeshId = "http://www.roblox.com/asset/?id="..MESHID
-		end
-		if TEXTUREID ~= "nil" and TEXTUREID ~= "" then
-			NEWMESH.TextureId = "http://www.roblox.com/asset/?id="..TEXTUREID
-		end
-	end
-	NEWMESH.Offset = OFFSET or VT(0, 0, 0)
-	NEWMESH.Scale = SCALE
-	NEWMESH.Parent = PARENT
-	return NEWMESH
-end
-
-function CreatePart(FORMFACTOR, PARENT, MATERIAL, REFLECTANCE, TRANSPARENCY, BRICKCOLOR, NAME, SIZE, ANCHOR)
-	local NEWPART = IT("Part")
-	NEWPART.formFactor = FORMFACTOR
-	NEWPART.Reflectance = REFLECTANCE
-	NEWPART.Transparency = TRANSPARENCY
-	NEWPART.CanCollide = false
-	NEWPART.Locked = true
-	NEWPART.Anchored = true
-	if ANCHOR == false then
-		NEWPART.Anchored = false
-	end
-	NEWPART.BrickColor = BRICKC(tostring(BRICKCOLOR))
-	NEWPART.Name = NAME
-	NEWPART.Size = SIZE
-	NEWPART.Position = Torso.Position
-	NEWPART.Material = MATERIAL
-	NEWPART:BreakJoints()
-	NEWPART.Parent = PARENT
-	return NEWPART
-end
-
---//=================================\\
---||		  CUSTOMIZATION
---\\=================================//
-
-Player_Size = 1 --Size of the player.
-Animation_Speed = 3
-Frame_Speed = 1 / 60 -- (1 / 30) OR (1 / 60)
-
-local Speed = 16
-local Effects2 = {}
-
---//=================================\\
---|| 	  END OF CUSTOMIZATION
---\\=================================//
-
-	local function weldBetween(a, b)
-	    local weldd = Instance.new("ManualWeld")
-	    weldd.Part0 = a
-	    weldd.Part1 = b
-	    weldd.C0 = CFrame.new()
-	    weldd.C1 = b.CFrame:inverse() * a.CFrame
-	    weldd.Parent = a
-	    return weldd
-	end
-
-function createaccessory(attachmentpart,mesh,texture,scale,offset,color)
-local acs = Instance.new("Part")
-acs.CanCollide = false
-acs.Anchored = false
-acs.Size = Vector3.new(0,0,0)
-acs.CFrame = attachmentpart.CFrame
-acs.Parent = Character
-acs.BrickColor = color
-    local meshs = Instance.new("SpecialMesh")
-    meshs.MeshId = mesh
-    meshs.TextureId = texture
-    meshs.Parent = acs
-    meshs.Scale = scale
-    meshs.Offset = offset
-weldBetween(attachmentpart,acs)
-end
-
-function createbodypart(TYPE,COLOR,PART,OFFSET,SIZE)
-if TYPE == "Gem" then
-	local acs = CreatePart(3, Character, "Plastic", 0, 0, COLOR, "Part", VT(0,0,0))
-	acs.Anchored = false
-    acs.CanCollide = false
-	acs.CFrame = PART.CFrame
-	local acs2 = CreateMesh("SpecialMesh", acs, "FileMesh", "9756362", "", SIZE, OFFSET)
-weldBetween(PART,acs)
-elseif TYPE == "Skull" then
-	local acs = CreatePart(3, Character, "Plastic", 0, 0, COLOR, "Part", VT(0,0,0))
-	acs.Anchored = false
-    acs.CanCollide = false
-	acs.CFrame = PART.CFrame
-	local acs2 = CreateMesh("SpecialMesh", acs, "FileMesh", "4770583", "", SIZE, OFFSET)
-weldBetween(PART,acs)
-elseif TYPE == "Eye" then
-	local acs = CreatePart(3, Character, "Neon", 0, 0, COLOR, "Part", VT(0,0,0))
-	acs.Anchored = false
-    acs.CanCollide = false
-	acs.CFrame = PART.CFrame
-	local acs2 = CreateMesh("SpecialMesh", acs, "Sphere", "", "", SIZE, OFFSET)
-weldBetween(PART,acs)
-end
-end
-
---//=================================\\
---|| 	      USEFUL VALUES
---\\=================================//
-
-local ROOTC0 = CF(0, 0, 0) * ANGLES(RAD(-90), RAD(0), RAD(180))
-local NECKC0 = CF(0, 1, 0) * ANGLES(RAD(-90), RAD(0), RAD(180))
-local RIGHTSHOULDERC0 = CF(-0.5, 0, 0) * ANGLES(RAD(0), RAD(90), RAD(0))
-local LEFTSHOULDERC0 = CF(0.5, 0, 0) * ANGLES(RAD(0), RAD(-90), RAD(0))
-local CHANGEDEFENSE = 0
-local CHANGEDAMAGE = 0
-local CHANGEMOVEMENT = 0
-local ANIM = "Idle"
-local ATTACK = false
-local EQUIPPED = false
-local HOLD = false
-local COMBO = 1
-local Rooted = false
-local SINE = 0
-local KEYHOLD = false
-local CHANGE = 2 / Animation_Speed
-local WALKINGANIM = false
-local WALK = 0
-local VALUE1 = false
-local HITFLOOR = nil
-local VALUE2 = false
-local ROBLOXIDLEANIMATION = IT("Animation")
-ROBLOXIDLEANIMATION.Name = "Roblox Idle Animation"
-ROBLOXIDLEANIMATION.AnimationId = "http://www.roblox.com/asset/?id=180435571"
---ROBLOXIDLEANIMATION.Parent = Humanoid
-local WEAPONGUI = IT("ScreenGui", PlayerGui)
-WEAPONGUI.Name = "Weapon GUI"
-local Weapon = IT("Model")
-Weapon.Name = "Adds"
-local Delete = IT("Model",Character)
-Delete.Name = "Banlist"
-local Effects = IT("Folder", Weapon)
-Effects.Name = "Effects"
-local ANIMATOR = Humanoid.Animator
-local ANIMATE = Character.Animate
-local HITPLAYERSOUNDS = {--[["199149137", "199149186", "199149221", "199149235", "199149269", "199149297"--]]"263032172", "263032182", "263032200", "263032221", "263032252", "263033191"}
-local HITARMORSOUNDS = {"199149321", "199149338", "199149367", "199149409", "199149452"}
-local HITWEAPONSOUNDS = {"199148971", "199149025", "199149072", "199149109", "199149119"}
-local HITBLOCKSOUNDS = {"199148933", "199148947"}
-local UNANCHOR = true
-
-local SKILLTEXTCOLOR = C3(0,0,0)
-
---//=================================\\
---\\=================================//
-
-
---//=================================\\
---|| SAZERENOS' ARTIFICIAL HEARTBEAT
---\\=================================//
-
-ArtificialHB = Instance.new("BindableEvent", script)
-ArtificialHB.Name = "ArtificialHB"
-
-script:WaitForChild("ArtificialHB")
-
-frame = Frame_Speed
-tf = 0
-allowframeloss = false
-tossremainder = false
-lastframe = tick()
-script.ArtificialHB:Fire()
-
-game:GetService("RunService").Heartbeat:connect(function(s, p)
-	tf = tf + s
-	if tf >= frame then
-		if allowframeloss then
-			script.ArtificialHB:Fire()
-			lastframe = tick()
-		else
-			for i = 1, math.floor(tf / frame) do
-				script.ArtificialHB:Fire()
-			end
-		lastframe = tick()
-		end
-		if tossremainder then
-			tf = 0
-		else
-			tf = tf - frame * math.floor(tf / frame)
-		end
-	end
-end)
-
---//=================================\\
---\\=================================//
-
-
-
-
-
---//=================================\\
---|| 	      SOME FUNCTIONS
---\\=================================//
-
-function Raycast(POSITION, DIRECTION, RANGE, IGNOREDECENDANTS)
-	return workspace:FindPartOnRay(Ray.new(POSITION, DIRECTION.unit * RANGE), IGNOREDECENDANTS)
-end
-
-function PositiveAngle(NUMBER)
-	if NUMBER >= 0 then
-		NUMBER = 0
-	end
-	return NUMBER
-end
-
-function NegativeAngle(NUMBER)
-	if NUMBER <= 0 then
-		NUMBER = 0
-	end
-	return NUMBER
-end
-
-function Swait(NUMBER)
-	if NUMBER == 0 or NUMBER == nil then
-		ArtificialHB.Event:wait()
-	else
-		for i = 1, NUMBER do
-			ArtificialHB.Event:wait()
-		end
-	end
-end
-
-function QuaternionFromCFrame(cf)
-	local mx, my, mz, m00, m01, m02, m10, m11, m12, m20, m21, m22 = cf:components()
-	local trace = m00 + m11 + m22
-	if trace > 0 then 
-		local s = math.sqrt(1 + trace)
-		local recip = 0.5 / s
-		return (m21 - m12) * recip, (m02 - m20) * recip, (m10 - m01) * recip, s * 0.5
-	else
-		local i = 0
-		if m11 > m00 then
-			i = 1
-		end
-		if m22 > (i == 0 and m00 or m11) then
-			i = 2
-		end
-		if i == 0 then
-			local s = math.sqrt(m00 - m11 - m22 + 1)
-			local recip = 0.5 / s
-			return 0.5 * s, (m10 + m01) * recip, (m20 + m02) * recip, (m21 - m12) * recip
-		elseif i == 1 then
-			local s = math.sqrt(m11 - m22 - m00 + 1)
-			local recip = 0.5 / s
-			return (m01 + m10) * recip, 0.5 * s, (m21 + m12) * recip, (m02 - m20) * recip
-		elseif i == 2 then
-			local s = math.sqrt(m22 - m00 - m11 + 1)
-			local recip = 0.5 / s return (m02 + m20) * recip, (m12 + m21) * recip, 0.5 * s, (m10 - m01) * recip
-		end
-	end
-end
- 
-function QuaternionToCFrame(px, py, pz, x, y, z, w)
-	local xs, ys, zs = x + x, y + y, z + z
-	local wx, wy, wz = w * xs, w * ys, w * zs
-	local xx = x * xs
-	local xy = x * ys
-	local xz = x * zs
-	local yy = y * ys
-	local yz = y * zs
-	local zz = z * zs
-	return CFrame.new(px, py, pz, 1 - (yy + zz), xy - wz, xz + wy, xy + wz, 1 - (xx + zz), yz - wx, xz - wy, yz + wx, 1 - (xx + yy))
-end
- 
-function QuaternionSlerp(a, b, t)
-	local cosTheta = a[1] * b[1] + a[2] * b[2] + a[3] * b[3] + a[4] * b[4]
-	local startInterp, finishInterp;
-	if cosTheta >= 0.0001 then
-		if (1 - cosTheta) > 0.0001 then
-			local theta = ACOS(cosTheta)
-			local invSinTheta = 1 / SIN(theta)
-			startInterp = SIN((1 - t) * theta) * invSinTheta
-			finishInterp = SIN(t * theta) * invSinTheta
-		else
-			startInterp = 1 - t
-			finishInterp = t
-		end
-	else
-		if (1 + cosTheta) > 0.0001 then
-			local theta = ACOS(-cosTheta)
-			local invSinTheta = 1 / SIN(theta)
-			startInterp = SIN((t - 1) * theta) * invSinTheta
-			finishInterp = SIN(t * theta) * invSinTheta
-		else
-			startInterp = t - 1
-			finishInterp = t
-		end
-	end
-	return a[1] * startInterp + b[1] * finishInterp, a[2] * startInterp + b[2] * finishInterp, a[3] * startInterp + b[3] * finishInterp, a[4] * startInterp + b[4] * finishInterp
-end
-
-function Clerp(a, b, t)
-	local qa = {QuaternionFromCFrame(a)}
-	local qb = {QuaternionFromCFrame(b)}
-	local ax, ay, az = a.x, a.y, a.z
-	local bx, by, bz = b.x, b.y, b.z
-	local _t = 1 - t
-	return QuaternionToCFrame(_t * ax + t * bx, _t * ay + t * by, _t * az + t * bz, QuaternionSlerp(qa, qb, t))
-end
-
-function CreateFrame(PARENT, TRANSPARENCY, BORDERSIZEPIXEL, POSITION, SIZE, COLOR, BORDERCOLOR, NAME)
-	local frame = IT("Frame")
-	frame.BackgroundTransparency = TRANSPARENCY
-	frame.BorderSizePixel = BORDERSIZEPIXEL
-	frame.Position = POSITION
-	frame.Size = SIZE
-	frame.BackgroundColor3 = COLOR
-	frame.BorderColor3 = BORDERCOLOR
-	frame.Name = NAME
-	frame.Parent = PARENT
-	return frame
-end
-
-function CreateLabel(PARENT, TEXT, TEXTCOLOR, TEXTFONTSIZE, TEXTFONT, TRANSPARENCY, BORDERSIZEPIXEL, STROKETRANSPARENCY, NAME)
-	local label = IT("TextLabel")
-	label.BackgroundTransparency = 1
-	label.Size = UD2(1, 0, 1, 0)
-	label.Position = UD2(0, 0, 0, 0)
-	label.TextColor3 = TEXTCOLOR
-	label.TextStrokeTransparency = STROKETRANSPARENCY
-	label.TextTransparency = TRANSPARENCY
-	label.FontSize = TEXTFONTSIZE
-	label.Font = TEXTFONT
-	label.BorderSizePixel = BORDERSIZEPIXEL
-	label.TextScaled = false
-	label.Text = TEXT
-	label.Name = NAME
-	label.Parent = PARENT
-	return label
-end
-
-function NoOutlines(PART)
-	PART.TopSurface, PART.BottomSurface, PART.LeftSurface, PART.RightSurface, PART.FrontSurface, PART.BackSurface = 10, 10, 10, 10, 10, 10
-end
-
-
-function CreateWeldOrSnapOrMotor(TYPE, PARENT, PART0, PART1, C0, C1)
-	local NEWWELD = IT(TYPE)
-	NEWWELD.Part0 = PART0
-	NEWWELD.Part1 = PART1
-	NEWWELD.C0 = C0
-	NEWWELD.C1 = C1
-	NEWWELD.Parent = PARENT
-	return NEWWELD
-end
-
-local SOUND = IT("Sound",nil)
-
-function CreateSound(ID, PARENT, VOLUME, PITCH)
-	local NEWSOUND = nil
-	coroutine.resume(coroutine.create(function()
-		NEWSOUND = SOUND:Clone()
-		NEWSOUND.Parent = PARENT
-		NEWSOUND.Volume = VOLUME
-		NEWSOUND.Pitch = PITCH
-		NEWSOUND.SoundId = "http://www.roblox.com/asset/?id="..ID
-		Swait()
-		NEWSOUND:play()
-		game:GetService("Debris"):AddItem(NEWSOUND, 10)
-	end))
-	return NEWSOUND
-end
-
-function CFrameFromTopBack(at, top, back)
-	local right = top:Cross(back)
-	return CF(at.x, at.y, at.z, right.x, top.x, back.x, right.y, top.y, back.y, right.z, top.z, back.z)
-end
-
-function CreateWave(SIZE,WAIT,CFRAME,DOESROT,ROT,COLOR,GROW)
-	local wave = CreatePart(3, Effects, "Neon", 0, 0.5, BRICKC(COLOR), "Effect", VT(0,0,0))
-	local mesh = IT("SpecialMesh",wave)
-	mesh.MeshType = "FileMesh"
-	mesh.MeshId = "http://www.roblox.com/asset/?id=20329976"
-	mesh.Scale = SIZE
-	mesh.Offset = VT(0,0,-SIZE.X/8)
-	wave.CFrame = CFRAME
-	coroutine.resume(coroutine.create(function(PART)
-		for i = 1, WAIT do
-			Swait()
-			mesh.Scale = mesh.Scale + GROW
-			mesh.Offset = VT(0,0,-(mesh.Scale.X/8))
-			if DOESROT == true then
-				wave.CFrame = wave.CFrame * CFrame.fromEulerAnglesXYZ(0,ROT,0)
-			end
-			wave.Transparency = wave.Transparency + (0.5/WAIT)
-			if wave.Transparency > 0.99 then
-				wave:remove()
-			end
-		end
-	end))
-end
-
-function MagicSphere(SIZE,WAIT,CFRAME,COLOR,GROW)
-	local wave = CreatePart(3, Effects, "Neon", 0, 0, BRICKC(COLOR), "Effect", VT(1,1,1), true)
-	local mesh = IT("SpecialMesh",wave)
-	mesh.MeshType = "Sphere"
-	mesh.Scale = SIZE
-	mesh.Offset = VT(0,0,0)
-	wave.CFrame = CFRAME
-	coroutine.resume(coroutine.create(function(PART)
-		for i = 1, WAIT do
-			Swait()
-			mesh.Scale = mesh.Scale + GROW
-			wave.Transparency = wave.Transparency + (1/WAIT)
-			if wave.Transparency > 0.99 then
-				wave:remove()
-			end
-		end
-	end))
-end
-
-function MakeForm(PART,TYPE)
-	if TYPE == "Cyl" then
-		local MSH = IT("CylinderMesh",PART)
-	elseif TYPE == "Ball" then
-		local MSH = IT("SpecialMesh",PART)
-		MSH.MeshType = "Sphere"
-	elseif TYPE == "Wedge" then
-		local MSH = IT("SpecialMesh",PART)
-		MSH.MeshType = "Wedge"
-	end
-end
-
-function CheckTableForString(Table, String)
-	for i, v in pairs(Table) do
-		if string.find(string.lower(String), string.lower(v)) then
-			return true
-		end
-	end
-	return false
-end
-
-function CheckIntangible(Hit)
-	local ProjectileNames = {"Water", "Arrow", "Projectile", "Effect", "Rail", "Lightning", "Bullet"}
-	if Hit and Hit.Parent then
-		if ((not Hit.CanCollide or CheckTableForString(ProjectileNames, Hit.Name)) and not Hit.Parent:FindFirstChild("Humanoid")) then
-			return true
-		end
-	end
-	return false
-end
-
-Debris = game:GetService("Debris")
-
-function CastZapRay(StartPos, Vec, Length, Ignore, DelayIfHit)
-	local Direction = CFrame.new(StartPos, Vec).lookVector
-	local Ignore = ((type(Ignore) == "table" and Ignore) or {Ignore})
-	local RayHit, RayPos, RayNormal = game:GetService("Workspace"):FindPartOnRayWithIgnoreList(Ray.new(StartPos, Direction * Length), Ignore)
-	if RayHit and CheckIntangible(RayHit) then
-		if DelayIfHit then
-			wait()
-		end
-		RayHit, RayPos, RayNormal = CastZapRay((RayPos + (Vec * 0.01)), Vec, (Length - ((StartPos - RayPos).magnitude)), Ignore, DelayIfHit)
-	end
-	return RayHit, RayPos, RayNormal
-end
-
-function turnto(position)
-	RootPart.CFrame=CFrame.new(RootPart.CFrame.p,VT(position.X,RootPart.Position.Y,position.Z)) * CFrame.new(0, 0, 0)
-end
-
---//=================================\\
---||	     WEAPON CREATION
---\\=================================//
-
-local HandlePart = CreatePart(3, Weapon, "SmoothPlastic", 0, 0, "Really black", "Handle", VT(0, 0, 0),false)
-local HandleMesh = CreateMesh("SpecialMesh", HandlePart, "FileMesh", "10604848", "10605252", VT(1,1,1), VT(0, 2.7, 0))
-local HandleWeld = CreateWeldOrSnapOrMotor("Weld", HandlePart, RightArm, HandlePart, CF(0,-0.8,0) * ANGLES(RAD(-90), RAD(0), RAD(0)), CF(0, 0, 0))
-
-for _, c in pairs(Weapon:GetChildren()) do
-	if c.ClassName == "Part" then
-		c.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0, 0, 0)
-	end
-end
-
-Weapon.Parent = Character
-
-Humanoid.Died:connect(function()
-	ATTACK = true
-end)
-
-local SKILL1FRAME = CreateFrame(WEAPONGUI, 0.5, 2, UD2(0.13, 0, 0.80, 0), UD2(0.26, 0, 0.07, 0), C3(0,0,0), C3(0, 0, 0), "Skill 1 Frame")
-local SKILL2FRAME = CreateFrame(WEAPONGUI, 0.5, 2, UD2(0.60, 0, 0.80, 0), UD2(0.26, 0, 0.07, 0), C3(0,0,0), C3(0, 0, 0), "Skill 2 Frame")
-
-local SKILL1TEXT = CreateLabel(SKILL1FRAME, "[CLICK+HOLD] Ban Slam", SKILLTEXTCOLOR, 7, "Garamond", 0, 2, 1, "Text 1")
-local SKILL2TEXT = CreateLabel(SKILL2FRAME, "[B] Teleport", SKILLTEXTCOLOR, 8, "Garamond", 0, 2, 1, "Text 2")
-
---//=================================\\
---||			DAMAGING
---\\=================================//
-
-function BAN(CHARACTER)
-	local BANFOLDER = IT("Folder",Effects)
-	local naeeym2 = Instance.new("BillboardGui",BANFOLDER)
-	naeeym2.AlwaysOnTop = false
-	naeeym2.Size = UDim2.new(5,35,2,35)
-	naeeym2.StudsOffset = Vector3.new(0,1,0)
-	naeeym2.Name = "AAAA"
-	local tecks2 = Instance.new("TextLabel",naeeym2)
-	tecks2.BackgroundTransparency = 1
-	tecks2.TextScaled = true
-	tecks2.BorderSizePixel = 0
-	tecks2.Text = "BANNED"
-	tecks2.Font = "Code"
-	tecks2.TextSize = 30
-	tecks2.TextStrokeTransparency = 1
-	tecks2.TextColor3 = Color3.new(1,0,0)
-	tecks2.TextStrokeColor3 = Color3.new(1,0,0)
-	tecks2.Size = UDim2.new(1,0,0.5,0)
-	tecks2.Parent = naeeym2
-	for i,v in ipairs(CHARACTER:GetChildren()) do
-		if v.ClassName == "Part" or v.ClassName == "MeshPart" then
-			if v.Name ~= "HumanoidRootPart" then
-				local BOD = v:Clone()
-				BOD.CanCollide = false
-				BOD.Anchored = true
-				BOD.CFrame = v.CFrame
-				BOD.Parent = BANFOLDER
-				BOD.Material = "Neon"
-				BOD.Color = C3(1,0,0)
-				if BOD:FindFirstChildOfClass("Decal") then
-					BOD:FindFirstChildOfClass("Decal"):remove()
-				end
-				if BOD.Name == "Head" then
-					naeeym2.Adornee = BOD
-				end
-				if BOD.ClassName == "MeshPart" then
-					BOD.TextureID = ""
-				end
-			end
-		end
-	end
-	CHARACTER:remove()
-	coroutine.resume(coroutine.create(function()
-		for i = 1, 50 do
-			Swait()
-			for i,v in ipairs(BANFOLDER:GetChildren()) do
-				if v.ClassName == "Part" or v.ClassName == "MeshPart" then
-					v.Transparency = 1
-				end
-				naeeym2.Enabled = false
-			end
-			Swait()
-			for i,v in ipairs(BANFOLDER:GetChildren()) do
-				if v.ClassName == "Part" or v.ClassName == "MeshPart" then
-					v.Transparency = 0
-				end
-				naeeym2.Enabled = true
-			end
-		end
-		BANFOLDER:remove()
-	end))
-end
-
-function BANNEAREST(POS,RANGE)
-	for i,v in ipairs(workspace:GetChildren()) do
-	local body = v:GetChildren()
-		for part = 1, #body do
-			if((body[part].ClassName == "Part" or body[part].ClassName == "MeshPart") and v ~= Character) then
-				if(body[part].Position - POS).Magnitude < RANGE then
-					if v:FindFirstChildOfClass("Humanoid") then
-						BAN(v)
-						if game.Players:FindFirstChild(v.Name) then
-							local Value = IT("BoolValue",Delete)
-							Value.Name = v.Name
-						end
-					end
-				end
-			end
-		end
-	end
-end
-
---//=================================\\
---||	ATTACK FUNCTIONS AND STUFF
---\\=================================//
-
-function CreateDebreeRing(FLOOR,POSITION,SIZE,BLOCKSIZE,SWAIT)
-	if FLOOR ~= nil then
-		coroutine.resume(coroutine.create(function()
-			local PART = CreatePart(3, Effects, "Plastic", 0, 1, "Pearl", "DebreeCenter", VT(0,0,0))
-			PART.CFrame = CF(POSITION)
-			for i = 1, 45 do
-				local RingPiece = CreatePart(3, Effects, "Plastic", 0, 0, "Pearl", "DebreePart", BLOCKSIZE)
-				RingPiece.Material = FLOOR.Material
-				RingPiece.Color = FLOOR.Color
-				RingPiece.CFrame = PART.CFrame * ANGLES(RAD(0), RAD(i*8), RAD(0)) * CF(SIZE*4, 0, 0) * ANGLES(RAD(MRANDOM(-360,360)),RAD(MRANDOM(-360,360)),RAD(MRANDOM(-360,360)))
-				Debris:AddItem(RingPiece,SWAIT/100)
-			end
-			PART:remove()
-		end))
-	end
-end
-
-function BANSLAM()
-	ATTACK = true
-	Rooted = false
-	repeat
-		for i=0, 0.2, 0.1 / Animation_Speed do
-			Swait()
-			HandleWeld.C0 = Clerp(HandleWeld.C0, CF(0, -0.8, 0) * ANGLES(RAD(-90), RAD(-45), RAD(0)),2 / Animation_Speed)
-			RootJoint.C0 = Clerp(RootJoint.C0,ROOTC0 * CF(0, 0, 7) * ANGLES(RAD(0), RAD(0), RAD(0)), 2 / Animation_Speed)
-			Neck.C0 = Clerp(Neck.C0, NECKC0 * CF(0, 0, 0 + ((1) - 1)) * ANGLES(RAD(25), RAD(0), RAD(0)), 2 / Animation_Speed)
-			RightShoulder.C0 = Clerp(RightShoulder.C0, CF(1, 0.5, 0.5) * ANGLES(RAD(250), RAD(0), RAD(-45)) * RIGHTSHOULDERC0, 2 / Animation_Speed)
-			LeftShoulder.C0 = Clerp(LeftShoulder.C0, CF(-1, 0.5, 0.5) * ANGLES(RAD(250), RAD(0), RAD(45)) * LEFTSHOULDERC0, 2 / Animation_Speed)
-			RightHip.C0 = Clerp(RightHip.C0, CF(1, -1 - 0.05 * COS(SINE / 12), -0.01) * ANGLES(RAD(0), RAD(90), RAD(0)) * ANGLES(RAD(-8), RAD(0), RAD(25)), 2 / Animation_Speed)
-			LeftHip.C0 = Clerp(LeftHip.C0, CF(-1, -1 - 0.05 * COS(SINE / 12), -0.01) * ANGLES(RAD(0), RAD(-90), RAD(0)) * ANGLES(RAD(-8), RAD(0), RAD(25)), 2 / Animation_Speed)
-		end
-		for i=0, 0.08, 0.1 / Animation_Speed do
-			Swait()
-			HandleWeld.C0 = Clerp(HandleWeld.C0, CF(0, -1, 0) * ANGLES(RAD(-90), RAD(-45), RAD(0)), 2 / Animation_Speed)
-			RootJoint.C0 = Clerp(RootJoint.C0,ROOTC0 * CF(0, 0, 2) * ANGLES(RAD(75), RAD(0), RAD(0)), 2 / Animation_Speed)
-			Neck.C0 = Clerp(Neck.C0, NECKC0 * CF(0, 0, 0 + ((1) - 1)) * ANGLES(RAD(-25), RAD(0), RAD(0)), 2 / Animation_Speed)
-			RightShoulder.C0 = Clerp(RightShoulder.C0, CF(1, 0.5, -1) * ANGLES(RAD(120), RAD(0), RAD(-45)) * RIGHTSHOULDERC0, 2 / Animation_Speed)
-			LeftShoulder.C0 = Clerp(LeftShoulder.C0, CF(-1, 0.5, -1) * ANGLES(RAD(120), RAD(0), RAD(45)) * LEFTSHOULDERC0, 2 / Animation_Speed)
-			RightHip.C0 = Clerp(RightHip.C0, CF(1, -1 - 0.05 * COS(SINE / 12), -0.01) * ANGLES(RAD(0), RAD(90), RAD(0)) * ANGLES(RAD(-8), RAD(0), RAD(25)), 0.5 / Animation_Speed)
-			LeftHip.C0 = Clerp(LeftHip.C0, CF(-1, -1 - 0.05 * COS(SINE / 12), -0.01) * ANGLES(RAD(0), RAD(-90), RAD(0)) * ANGLES(RAD(-8), RAD(0), RAD(25)), 0.5 / Animation_Speed)
-		end
-		for i=0, 0.08, 0.1 / Animation_Speed do
-			Swait()
-			HandleWeld.C0 = Clerp(HandleWeld.C0, CF(0, -1, 0) * ANGLES(RAD(-70), RAD(-45), RAD(0)), 2 / Animation_Speed)
-			RootJoint.C0 = Clerp(RootJoint.C0,ROOTC0 * CF(0, 0, 2) * ANGLES(RAD(75), RAD(0), RAD(0)), 2 / Animation_Speed)
-			Neck.C0 = Clerp(Neck.C0, NECKC0 * CF(0, 0, 0 + ((1) - 1)) * ANGLES(RAD(-25), RAD(0), RAD(0)), 2 / Animation_Speed)
-			RightShoulder.C0 = Clerp(RightShoulder.C0, CF(1, 0.5, -1) * ANGLES(RAD(60), RAD(0), RAD(-45)) * RIGHTSHOULDERC0, 2 / Animation_Speed)
-			LeftShoulder.C0 = Clerp(LeftShoulder.C0, CF(-1, 0.5, -1) * ANGLES(RAD(60), RAD(0), RAD(45)) * LEFTSHOULDERC0, 2 / Animation_Speed)
-			RightHip.C0 = Clerp(RightHip.C0, CF(1, -1 - 0.05 * COS(SINE / 12), -0.01) * ANGLES(RAD(0), RAD(90), RAD(0)) * ANGLES(RAD(-8), RAD(0), RAD(25)), 0.5 / Animation_Speed)
-			LeftHip.C0 = Clerp(LeftHip.C0, CF(-1, -1 - 0.05 * COS(SINE / 12), -0.01) * ANGLES(RAD(0), RAD(-90), RAD(0)) * ANGLES(RAD(-8), RAD(0), RAD(25)), 0.5 / Animation_Speed)
-		end
-		CreateSound("147722910", Effects, 10, 1)
-		BANNEAREST(RootPart.CFrame*CF(0,0,-6).p,25)
-		if HITFLOOR ~= nil then
-			CreateSound("289842971", HandlePart, 10, 1)
-			CreateSound("289842971", HandlePart, 10, 1)
-			CreateSound("289842971", HandlePart, 10, 1)
-			CreateSound("289842971", HandlePart, 10, 1)
-			CreateDebreeRing(HITFLOOR,RootPart.CFrame*CF(0,-5,-6).p,5,VT(8,8,8),35)
-		end
-		CreateWave(VT(25,0,25),45,RootPart.CFrame*CF(0,-5,-6),true,2,"Really red",VT(0,3,0))
-		CreateWave(VT(25,0,25),45,RootPart.CFrame*CF(0,-5,-6),true,-2,"Really red",VT(0,3,0))
-		for i=0, 0.1, 0.1 / Animation_Speed do
-			Swait()
-			HandleWeld.C0 = Clerp(HandleWeld.C0, CF(0, -1, 0) * ANGLES(RAD(-70), RAD(-45), RAD(0)), 2 / Animation_Speed)
-			RootJoint.C0 = Clerp(RootJoint.C0,ROOTC0 * CF(0, 0, 1.8) * ANGLES(RAD(75), RAD(0), RAD(0)), 2 / Animation_Speed)
-			Neck.C0 = Clerp(Neck.C0, NECKC0 * CF(0, 0, 0 + ((1) - 1)) * ANGLES(RAD(-25), RAD(0), RAD(0)), 2 / Animation_Speed)
-			RightShoulder.C0 = Clerp(RightShoulder.C0, CF(1, 0.5, -1) * ANGLES(RAD(60), RAD(0), RAD(-45)) * RIGHTSHOULDERC0, 2 / Animation_Speed)
-			LeftShoulder.C0 = Clerp(LeftShoulder.C0, CF(-1, 0.5, -1) * ANGLES(RAD(60), RAD(0), RAD(45)) * LEFTSHOULDERC0, 2 / Animation_Speed)
-			RightHip.C0 = Clerp(RightHip.C0, CF(1, -1 - 0.05 * COS(SINE / 12), -0.01) * ANGLES(RAD(0), RAD(90), RAD(0)) * ANGLES(RAD(-8), RAD(0), RAD(25)), 0.5 / Animation_Speed)
-			LeftHip.C0 = Clerp(LeftHip.C0, CF(-1, -1 - 0.05 * COS(SINE / 12), -0.01) * ANGLES(RAD(0), RAD(-90), RAD(0)) * ANGLES(RAD(-8), RAD(0), RAD(25)), 0.5 / Animation_Speed)
-		end
-		if HOLD == true then
-			for i=0, 0.08, 0.1 / Animation_Speed do
-				Swait()
-				if HOLD == false then
-					break
-				end
-				HandleWeld.C0 = Clerp(HandleWeld.C0, CF(0, -1, 0) * ANGLES(RAD(-90), RAD(-45), RAD(0)), 2 / Animation_Speed)
-				RootJoint.C0 = Clerp(RootJoint.C0,ROOTC0 * CF(0, 0, 2) * ANGLES(RAD(75), RAD(0), RAD(0)), 2 / Animation_Speed)
-				Neck.C0 = Clerp(Neck.C0, NECKC0 * CF(0, 0, 0 + ((1) - 1)) * ANGLES(RAD(-25), RAD(0), RAD(0)), 2 / Animation_Speed)
-				RightShoulder.C0 = Clerp(RightShoulder.C0, CF(1, 0.5, -1) * ANGLES(RAD(120), RAD(0), RAD(-45)) * RIGHTSHOULDERC0, 2 / Animation_Speed)
-				LeftShoulder.C0 = Clerp(LeftShoulder.C0, CF(-1, 0.5, -1) * ANGLES(RAD(120), RAD(0), RAD(45)) * LEFTSHOULDERC0, 2 / Animation_Speed)
-				RightHip.C0 = Clerp(RightHip.C0, CF(1, -1 - 0.05 * COS(SINE / 12), -0.01) * ANGLES(RAD(0), RAD(90), RAD(0)) * ANGLES(RAD(-8), RAD(0), RAD(25)), 0.5 / Animation_Speed)
-				LeftHip.C0 = Clerp(LeftHip.C0, CF(-1, -1 - 0.05 * COS(SINE / 12), -0.01) * ANGLES(RAD(0), RAD(-90), RAD(0)) * ANGLES(RAD(-8), RAD(0), RAD(25)), 0.5 / Animation_Speed)
-			end
-		end
-	until HOLD == false
-	for i=0, 1, 0.1 / Animation_Speed do
-		Swait()
-		HandleWeld.C0 = Clerp(HandleWeld.C0, CF(0, -1, 0) * ANGLES(RAD(-70), RAD(-45), RAD(0)), 2 / Animation_Speed)
-		RootJoint.C0 = Clerp(RootJoint.C0,ROOTC0 * CF(0, 0, 1.8) * ANGLES(RAD(75), RAD(0), RAD(0)), 2 / Animation_Speed)
-		Neck.C0 = Clerp(Neck.C0, NECKC0 * CF(0, 0, 0 + ((1) - 1)) * ANGLES(RAD(-25), RAD(0), RAD(0)), 2 / Animation_Speed)
-		RightShoulder.C0 = Clerp(RightShoulder.C0, CF(1, 0.5, -1) * ANGLES(RAD(60), RAD(0), RAD(-45)) * RIGHTSHOULDERC0, 2 / Animation_Speed)
-		LeftShoulder.C0 = Clerp(LeftShoulder.C0, CF(-1, 0.5, -1) * ANGLES(RAD(60), RAD(0), RAD(45)) * LEFTSHOULDERC0, 2 / Animation_Speed)
-		RightHip.C0 = Clerp(RightHip.C0, CF(1, -1 - 0.05 * COS(SINE / 12), -0.01) * ANGLES(RAD(0), RAD(90), RAD(0)) * ANGLES(RAD(-8), RAD(0), RAD(25)), 0.5 / Animation_Speed)
-		LeftHip.C0 = Clerp(LeftHip.C0, CF(-1, -1 - 0.05 * COS(SINE / 12), -0.01) * ANGLES(RAD(0), RAD(-90), RAD(0)) * ANGLES(RAD(-8), RAD(0), RAD(25)), 0.5 / Animation_Speed)
-	end
-	for i=0, 5, 0.1 / Animation_Speed do
-		RightShoulder.C0 = Clerp(RightShoulder.C0, CF(1.5, 0, 0) * ANGLES(RAD(200), RAD(90), RAD(0)) * RIGHTSHOULDERC0, 0.2 / Animation_Speed)
-		HandleWeld.C0 = Clerp(HandleWeld.C0, CF(0, -0.8, 0) * ANGLES(RAD(-90), RAD(0), RAD(0)), 0.2 / Animation_Speed)
-		RootJoint.C0 = Clerp(RootJoint.C0,ROOTC0 * CF(0, 0, 0 + 0.05 * COS(SINE / 12)) * ANGLES(RAD(0), RAD(0), RAD(0)), 0.15 / Animation_Speed)
-		Neck.C0 = Clerp(Neck.C0, NECKC0 * CF(0, 0, 0 + ((1) - 1)) * ANGLES(RAD(0 - 2.5 * SIN(SINE / 12)), RAD(0), RAD(0)), 0.15 / Animation_Speed)
-		LeftShoulder.C0 = Clerp(LeftShoulder.C0, CF(-1.5, 0.5, 0) * ANGLES(RAD(0), RAD(0), RAD(-12)) * LEFTSHOULDERC0, 0.15 / Animation_Speed)
-		RightHip.C0 = Clerp(RightHip.C0, CF(1, -1 - 0.05 * COS(SINE / 12), -0.01) * ANGLES(RAD(0), RAD(90), RAD(0)) * ANGLES(RAD(-8), RAD(0), RAD(0)), 0.15 / Animation_Speed)
-		LeftHip.C0 = Clerp(LeftHip.C0, CF(-1, -1 - 0.05 * COS(SINE / 12), -0.01) * ANGLES(RAD(0), RAD(-90), RAD(0)) * ANGLES(RAD(-8), RAD(0), RAD(0)), 0.15 / Animation_Speed)
-	end
-	ATTACK = false
-	Rooted = false
-end
-
---//=================================\\
---||	  ASSIGN THINGS TO KEYS
---\\=================================//
-
-function MouseDown(Mouse)
-	HOLD = true
-	if ATTACK == false then
-		BANSLAM()
-	end
-end
-
-function MouseUp(Mouse)
-HOLD = false
-end
-
-function KeyDown(Key)
-	KEYHOLD = true
-	if Key == "b" and ATTACK == false then
-		local pos = RootPart.Position
-		RootPart.CFrame = CF(Mouse.Hit.p+VT(0,3,0),pos)
-		CreateSound("769380905", Torso, 10, 1)
-	end
-
-	if Key == "t" then
-		CreateSound("1058417264", Head, 10, 1)
-		Delete:ClearAllChildren()
-	end
-end
-
-function KeyUp(Key)
-	KEYHOLD = false
-end
-
-	Mouse.Button1Down:connect(function(NEWKEY)
-		MouseDown(NEWKEY)
-	end)
-	Mouse.Button1Up:connect(function(NEWKEY)
-		MouseUp(NEWKEY)
-	end)
-	Mouse.KeyDown:connect(function(NEWKEY)
-		KeyDown(NEWKEY)
-	end)
-	Mouse.KeyUp:connect(function(NEWKEY)
-		KeyUp(NEWKEY)
-	end)
-
---//=================================\\
---\\=================================//
-
-
-function unanchor()
-	if UNANCHOR == true then
-		g = Character:GetChildren()
-		for i = 1, #g do
-			if g[i].ClassName == "Part" then
-				g[i].Anchored = false
-			end
-		end
-	end
-end
-
-
---//=================================\\
---||	WRAP THE WHOLE SCRIPT UP
---\\=================================//
-
-Humanoid.Changed:connect(function(Jump)
-	if Jump == "Jump" and (Disable_Jump == true) then
-		Humanoid.Jump = false
-	end
-end)
-
-Speed = 23
-
-while true do
-	Swait()
-	ANIMATE.Parent = nil
-	local IDLEANIMATION = Humanoid:LoadAnimation(ROBLOXIDLEANIMATION)
-	IDLEANIMATION:Play()
-	SINE = SINE + CHANGE
-	local TORSOVELOCITY = (RootPart.Velocity * VT(1, 0, 1)).magnitude
-	local TORSOVERTICALVELOCITY = RootPart.Velocity.y
-	local LV = Torso.CFrame:pointToObjectSpace(Torso.Velocity - Torso.Position)
-	HITFLOOR = Raycast(RootPart.Position, (CF(RootPart.Position, RootPart.Position + VT(0, -1, 0))).lookVector, 4 * Player_Size, Character)
-	local WALKSPEEDVALUE = 6 / (Humanoid.WalkSpeed / 16)
-	if ATTACK == false then
-		RightShoulder.C0 = Clerp(RightShoulder.C0, CF(1.5, 0, 0) * ANGLES(RAD(200), RAD(90), RAD(0)) * RIGHTSHOULDERC0, 0.2 / Animation_Speed)
-		HandleWeld.C0 = Clerp(HandleWeld.C0, CF(0, -0.8, 0) * ANGLES(RAD(-90), RAD(0), RAD(0)), 0.2 / Animation_Speed)
-	end
-	if ANIM == "Walk" and TORSOVELOCITY > 1 and ATTACK == false then
-		RootJoint.C1 = Clerp(RootJoint.C1, ROOTC0 * CF(0, 0, -0.15 * COS(SINE / (WALKSPEEDVALUE / 2)) * Player_Size) * ANGLES(RAD(0), RAD(0) - RootPart.RotVelocity.Y / 75, RAD(0)), 2 * (Humanoid.WalkSpeed / 16) / Animation_Speed)
-		Neck.C1 = Clerp(Neck.C1, CF(0 * Player_Size, -0.5 * Player_Size, 0 * Player_Size) * ANGLES(RAD(-90), RAD(0), RAD(180)) * ANGLES(RAD(2.5 * SIN(SINE / (WALKSPEEDVALUE / 2))), RAD(0), RAD(0) - Head.RotVelocity.Y / 30), 0.2 * (Humanoid.WalkSpeed / 16) / Animation_Speed)
-		RightHip.C1 = Clerp(RightHip.C1, CF(0.5 * Player_Size, 0.875 * Player_Size - 0.125 * SIN(SINE / WALKSPEEDVALUE) * Player_Size, -0.125 * COS(SINE / WALKSPEEDVALUE) * Player_Size) * ANGLES(RAD(0), RAD(90), RAD(0)) * ANGLES(RAD(0) - RightLeg.RotVelocity.Y / 75, RAD(0), RAD(76 * COS(SINE / WALKSPEEDVALUE))), 0.2 * (Humanoid.WalkSpeed / 16) / Animation_Speed)
-		LeftHip.C1 = Clerp(LeftHip.C1, CF(-0.5 * Player_Size, 0.875 * Player_Size + 0.125 * SIN(SINE / WALKSPEEDVALUE) * Player_Size, 0.125 * COS(SINE / WALKSPEEDVALUE) * Player_Size) * ANGLES(RAD(0), RAD(-90), RAD(0)) * ANGLES(RAD(0) + LeftLeg.RotVelocity.Y / 75, RAD(0), RAD(76 * COS(SINE / WALKSPEEDVALUE))), 0.2 * (Humanoid.WalkSpeed / 16) / Animation_Speed)
-	elseif (ANIM ~= "Walk") or (TORSOVELOCITY < 1) or (ATTACK == true) then
-		RootJoint.C1 = Clerp(RootJoint.C1, ROOTC0 * CF(0, 0, 0) * ANGLES(RAD(0), RAD(0), RAD(0)), 0.2 / Animation_Speed)
-		Neck.C1 = Clerp(Neck.C1, CF(0 * Player_Size, -0.5 * Player_Size, 0 * Player_Size) * ANGLES(RAD(-90), RAD(0), RAD(180)) * ANGLES(RAD(0), RAD(0), RAD(0)), 0.2 / Animation_Speed)
-		RightHip.C1 = Clerp(RightHip.C1, CF(0.5 * Player_Size, 1 * Player_Size, 0 * Player_Size) * ANGLES(RAD(0), RAD(90), RAD(0)) * ANGLES(RAD(0), RAD(0), RAD(0)), 0.2 / Animation_Speed)
-		LeftHip.C1 = Clerp(LeftHip.C1, CF(-0.5 * Player_Size, 1 * Player_Size, 0 * Player_Size) * ANGLES(RAD(0), RAD(-90), RAD(0)) * ANGLES(RAD(0), RAD(0), RAD(0)), 0.2 / Animation_Speed)
-	end
-	if TORSOVERTICALVELOCITY > 1 and HITFLOOR == nil then
-		ANIM = "Jump"
-		if ATTACK == false then
-			RootJoint.C0 = Clerp(RootJoint.C0, ROOTC0 * CF(0, 0, 0) * ANGLES(RAD(0), RAD(0), RAD(0)), 0.2 / Animation_Speed)
-			Neck.C0 = Clerp(Neck.C0, NECKC0 * CF(0, 0 * Player_Size, 0 + ((1) - 1)) * ANGLES(RAD(-20), RAD(0), RAD(0)), 0.2 / Animation_Speed)
-			LeftShoulder.C0 = Clerp(LeftShoulder.C0, CF(-1.5, 0.5, 0 * Player_Size) * ANGLES(RAD(-40), RAD(0), RAD(-20)) * LEFTSHOULDERC0, 0.2 / Animation_Speed)
-			RightHip.C0 = Clerp(RightHip.C0, CF(1, -1, -0.3) * ANGLES(RAD(0), RAD(90), RAD(0)) * ANGLES(RAD(-5), RAD(0), RAD(-20)), 0.2 / Animation_Speed)
-			LeftHip.C0 = Clerp(LeftHip.C0, CF(-1, -1, -0.3) * ANGLES(RAD(0), RAD(-90), RAD(0)) * ANGLES(RAD(-5), RAD(0), RAD(20)), 0.2 / Animation_Speed)
-	       end
-	elseif TORSOVERTICALVELOCITY < -1 and HITFLOOR == nil then
-		ANIM = "Fall"
-		if ATTACK == false then
-			RootJoint.C0 = Clerp(RootJoint.C0, ROOTC0 * CF(0, 0, 0 ) * ANGLES(RAD(0), RAD(0), RAD(0)), 0.2 / Animation_Speed)
-			Neck.C0 = Clerp(Neck.C0, NECKC0 * CF(0, 0 , 0 + ((1) - 1)) * ANGLES(RAD(20), RAD(0), RAD(0)), 0.2 / Animation_Speed)
-			LeftShoulder.C0 = Clerp(LeftShoulder.C0, CF(-1.5, 0.5, 0) * ANGLES(RAD(0), RAD(0), RAD(-60)) * LEFTSHOULDERC0, 0.2 / Animation_Speed)
-			RightHip.C0 = Clerp(RightHip.C0, CF(1, -1, 0) * ANGLES(RAD(0), RAD(90), RAD(0)) * ANGLES(RAD(0), RAD(0), RAD(20)), 0.2 / Animation_Speed)
-			LeftHip.C0 = Clerp(LeftHip.C0, CF(-1, -1, 0) * ANGLES(RAD(0), RAD(-90), RAD(0)) * ANGLES(RAD(0), RAD(0), RAD(10)), 0.2 / Animation_Speed)
-		end
-	elseif TORSOVELOCITY < 1 and HITFLOOR ~= nil then
-		ANIM = "Idle"
-		if ATTACK == false then
-			RootJoint.C0 = Clerp(RootJoint.C0,ROOTC0 * CF(0, 0, 0 + 0.05 * COS(SINE / 12)) * ANGLES(RAD(0), RAD(0), RAD(0)), 0.15 / Animation_Speed)
-			Neck.C0 = Clerp(Neck.C0, NECKC0 * CF(0, 0, 0 + ((1) - 1)) * ANGLES(RAD(0 - 2.5 * SIN(SINE / 12)), RAD(0), RAD(0)), 0.15 / Animation_Speed)
-			LeftShoulder.C0 = Clerp(LeftShoulder.C0, CF(-1.5, 0.5, 0) * ANGLES(RAD(0), RAD(0), RAD(-12)) * LEFTSHOULDERC0, 0.15 / Animation_Speed)
-			RightHip.C0 = Clerp(RightHip.C0, CF(1, -1 - 0.05 * COS(SINE / 12), -0.01) * ANGLES(RAD(0), RAD(90), RAD(0)) * ANGLES(RAD(-8), RAD(0), RAD(0)), 0.15 / Animation_Speed)
-			LeftHip.C0 = Clerp(LeftHip.C0, CF(-1, -1 - 0.05 * COS(SINE / 12), -0.01) * ANGLES(RAD(0), RAD(-90), RAD(0)) * ANGLES(RAD(-8), RAD(0), RAD(0)), 0.15 / Animation_Speed)
-		end
-	elseif TORSOVELOCITY > 1 and HITFLOOR ~= nil then
-		ANIM = "Walk"
-		WALK = WALK + 1 / Animation_Speed
-		if WALK >= 15 - (5 * (Humanoid.WalkSpeed / 16 / Player_Size)) then
-			WALK = 0
-			if WALKINGANIM == true then
-				WALKINGANIM = false
-			elseif WALKINGANIM == false then
-				WALKINGANIM = true
-			end
-		end
-		--RightHip.C1 = Clerp(RightHip.C1, CF(0.5 * Player_Size, 0.875 * Player_Size - 0.125 * SIN(SINE / WALKSPEEDVALUE) * Player_Size, -0.125 * COS(SINE / WALKSPEEDVALUE) * Player_Size) * ANGLES(RAD(0), RAD(90), RAD(0)) * ANGLES(RAD(0) - RightLeg.RotVelocity.Y / 75, RAD(0), RAD(60 * COS(SINE / WALKSPEEDVALUE))), 0.2 * (Humanoid.WalkSpeed / 16) / Animation_Speed)
-		--LeftHip.C1 = Clerp(LeftHip.C1, CF(-0.5 * Player_Size, 0.875 * Player_Size + 0.125 * SIN(SINE / WALKSPEEDVALUE) * Player_Size, 0.125 * COS(SINE / WALKSPEEDVALUE) * Player_Size) * ANGLES(RAD(0), RAD(-90), RAD(0)) * ANGLES(RAD(0) + LeftLeg.RotVelocity.Y / 75, RAD(0), RAD(60 * COS(SINE / WALKSPEEDVALUE))), 0.2 * (Humanoid.WalkSpeed / 16) / Animation_Speed)
-		if ATTACK == false then
-			RootJoint.C0 = Clerp(RootJoint.C0,ROOTC0 * CF(0, 0, -0.1) * ANGLES(RAD(5), RAD(0), RAD(0)), 0.15 / Animation_Speed)
-			Neck.C0 = Clerp(Neck.C0, NECKC0 * CF(0, 0, 0 + ((1) - 1)) * ANGLES(RAD(5 - 8 * SIN(SINE / (WALKSPEEDVALUE / 2))), RAD(0), RAD(0)), 0.15 / Animation_Speed)
-			LeftShoulder.C0 = Clerp(LeftShoulder.C0, CF(-1.5, 0.5, 0) * ANGLES(RAD(-60 * COS(SINE / WALKSPEEDVALUE)), RAD(0), RAD(-5)) * LEFTSHOULDERC0, 0.35 / Animation_Speed)
-			RightHip.C0 = Clerp(RightHip.C0, CF(1 , -1 - 0.15 * COS(SINE / WALKSPEEDVALUE*2), -0.2+ 0.2 * COS(SINE / WALKSPEEDVALUE)) * ANGLES(RAD(0), RAD(90), RAD(0)) * ANGLES(RAD(0), RAD(0), RAD(-15)), 2 / Animation_Speed)
-			LeftHip.C0 = Clerp(LeftHip.C0, CF(-1, -1 - 0.15 * COS(SINE / WALKSPEEDVALUE*2), -0.2+ -0.2 * COS(SINE / WALKSPEEDVALUE)) * ANGLES(RAD(0), RAD(-90), RAD(0)) * ANGLES(RAD(0), RAD(0), RAD(15)), 2 / Animation_Speed)
-		end
-	end
-	unanchor()
-	Humanoid.MaxHealth = "inf"
-	Humanoid.Health = "inf"
-	if Rooted == false then
-		Disable_Jump = false
-		Humanoid.WalkSpeed = Speed
-	elseif Rooted == true then
-		Disable_Jump = true
-		Humanoid.WalkSpeed = 0
-	end
-	local MATHS = {"0","1"}
-	Humanoid.Name = MATHS[MRANDOM(1,#MATHS)]..MATHS[MRANDOM(1,#MATHS)]..MATHS[MRANDOM(1,#MATHS)]..MATHS[MRANDOM(1,#MATHS)]..MATHS[MRANDOM(1,#MATHS)]..MATHS[MRANDOM(1,#MATHS)]..MATHS[MRANDOM(1,#MATHS)]..MATHS[MRANDOM(1,#MATHS)]..MATHS[MRANDOM(1,#MATHS)]..MATHS[MRANDOM(1,#MATHS)]..MATHS[MRANDOM(1,#MATHS)]..MATHS[MRANDOM(1,#MATHS)]..MATHS[MRANDOM(1,#MATHS)]..MATHS[MRANDOM(1,#MATHS)]..MATHS[MRANDOM(1,#MATHS)]..MATHS[MRANDOM(1,#MATHS)]..MATHS[MRANDOM(1,#MATHS)]..MATHS[MRANDOM(1,#MATHS)]
-	Humanoid.PlatformStand = false
-	local GAME = game.Players:GetChildren()
-		for PLAYER = 1, #GAME do
-		local PLAY = GAME[PLAYER]
-		if PLAY.Character ~= nil and Delete:FindFirstChild(PLAY.Name) then
-			PLAY.Character:remove()
-		end
-	end
-end
-
---//=================================\\
---\\=================================//
-
-
-
-
-
---//====================================================\\--
---||			  		 END OF SCRIPT
---\\====================================================//--
-end)
 
 UICorner_32.Parent = BanHammer
 
@@ -2581,11 +2282,11 @@ newTag.Name = "NewTag"
 newTag.Parent = BanHammer
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 Caducus.Name = "Caducus"
@@ -2607,11 +2308,11 @@ newTag.Name = "NewTag"
 newTag.Parent = Caducus
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 AK47.Name = "AK47"
@@ -2625,303 +2326,6 @@ AK47.TextColor3 = Color3.fromRGB(255, 255, 255)
 AK47.TextSize = 20.000
 AK47.TextWrapped = true
 AK47.TextXAlignment = Enum.TextXAlignment.Left
-AK47.MouseButton1Down:Connect(function()
---By Rufus14
---ears: 391268255
---bamalam: 720451528
---columb: 1202637744
-
---[[music = Instance.new("Sound", game.Players.LocalPlayer.Character.Torso)
-music.Volume = 10
-music.SoundId = "rbxassetid://1202637744"
-music.Looped = true
-music:Play()]]
-mouse = game.Players.LocalPlayer:GetMouse()
-gun = Instance.new("Part", game.Players.LocalPlayer.Character)
-gun:BreakJoints()
-gun.CanCollide = false
-gun.Name = "Ak-47"
-gun.Orientation  = Vector3.new(0,0,0)
-mesh = Instance.new("SpecialMesh", gun)
-mesh.MeshId = "rbxassetid://477006495"
-mesh.TextureId = "rbxassetid://477006525"
-mesh.Scale = Vector3.new(0.04,0.04,0.04)
-weld = Instance.new("Weld", gun)
-weld.Part0 = game.Players.LocalPlayer.Character["Right Arm"]
-weld.Part1 = gun
-weld.C0 = weld.C0 * CFrame.Angles(-1.5,0,0) * CFrame.new(0,0,-2.5)
-local rhandweld = Instance.new("Weld", game.Players.LocalPlayer.Character.Torso)
-rhandweld.Part0 = game.Players.LocalPlayer.Character.Torso
-rhandweld.Part1 = game.Players.LocalPlayer.Character["Right Arm"]
-rhandweld.C0 = CFrame.new(1.5, 0.5, 0, 0, 0, 1, 0, 1, 0, -1, 0, 0)
-local lhandweld = Instance.new("Weld", game.Players.LocalPlayer.Character.Torso)
-lhandweld.Part0 = game.Players.LocalPlayer.Character.Torso
-lhandweld.Part1 = game.Players.LocalPlayer.Character["Left Arm"]
-lhandweld.C0 = CFrame.new(-1.5, 0.5, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0)
-shot = Instance.new("Sound", gun)
-shot.Volume = 10
-shot.SoundId = "rbxassetid://285234709"
-pump = Instance.new("Sound", gun)
-pump.Volume = 10
-pump.SoundId = "rbxassetid://255061173"
-pump.PlaybackSpeed = 0.7
---[[function owtheedge()
-	workspace.CurrentCamera.FieldOfView = 70 + music.PlaybackLoudness / 80
-end
-game:GetService("RunService").RenderStepped:connect(owtheedge)]]
-for i = 0,0.7 , 0.01 do
-	weld.C0 = weld.C0:lerp(CFrame.new(-0.342021942, -1.88848877, -0.088739872, 0.978147507, -0.0289359875, -0.205888897, 0.204753578, -0.0378959738, 0.978079677, -0.0361040607, -0.998862624, -0.0311431047),i)
-	rhandweld.C0 = rhandweld.C0:lerp(CFrame.new(0.917564392, 0.399175882, -0.578536987, 0.978147507, 0.204753578, -0.0361040607, -0.0289359875, -0.0378959738, -0.998862624, -0.205888897, 0.978079677, -0.0311431047),i)
-	lhandweld.C0 = lhandweld.C0:lerp(CFrame.new(-0.472423553, 0.409558296, -1.4746933, 0.939692736, -0.342019886, -2.0985492e-06, 0.0238559935, 0.0655499771, -0.997564137, 0.341186911, 0.937403619, 0.0697560608),i)
-	game:GetService("RunService").RenderStepped:wait()
-end
-using = false
-rapid = true
-debounce = false
-ammo = 30
-
-function plai(key)
-    key = key:lower()
-  --[[  if key == "e" then
-        if moosic then
-            runkids.SoundId = "rbxassetid://665751753"
-            runkids.Volume = 8
-            runkids:Play()
-            runkids.Looped = true
-            runkids.TimePosition = 13
-        end
-        if not moosic then
-            runkids:Stop()
-        end
-    end]]
-end
-
-mouse.KeyDown:connect(plai)
-function rapid()
-    rapid = true
-end
-mouse.Button1Down:connect(rapid)
-function notrapid()
-    rapid = false
-end
-mouse.Button1Up:connect(notrapid)
-
-function shoot()
-	
-	if not rapid then
-		rapid = true
-	end
-	
-	    while rapid and debounce == false do
-		shot:Play()
-	rapid = true	
-debounce = true
-		for i = 1,1 do
-			local missle = Instance.new("Part", workspace)
-			missle:BreakJoints()
-			missle.Name = "bullet"
-			missle.BrickColor = BrickColor.Yellow()
-			missle.CanCollide = false
-			missle.Material = "Neon"
-			missle.Size = Vector3.new(0.1,0.1,0.1)
-			missle.CFrame = gun.CFrame * CFrame.new(0,0,2)
-			missle.Transparency = 0
-			local vel = Instance.new("BodyVelocity", missle)
-			vel.Velocity = mouse.Hit.lookVector * math.random(500,500) + Vector3.new(math.random(-10,10),math.random(-10,10),0)
-			vel.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
-			local function hit(part)
-				local hitval = math.random(40,65)
-				local humanoid = part.Parent:findFirstChildOfClass("Humanoid")
-				if humanoid then
-					if humanoid.Health == math.huge or humanoid.Health >= 600 then
-						humanoid.Health = 100
-					end
-					if humanoid.MaxHealth == math.huge or humanoid.MaxHealth >= 600 then
-						humanoid.MaxHealth = 100
-					end
-					if humanoid.Parent.Name == game.Players.LocalPlayer.Name then
-						
-					else
-						if humanoid.Health < hitval then
-							humanoid.Health = 1
-							humanoid.JumpPower = 0
-	                        humanoid.PlatformStand = true
-	                        humanoid.WalkSpeed = 0
-	                        local findlefthip = humanoid.Parent.Torso:findFirstChild("Left Hip")
-	                        if findlefthip then
-	                            findlefthip:Remove()
-	                            local glue = Instance.new("Glue",  humanoid.Parent.Torso)
-	                            glue.Part0 = humanoid.Parent.Torso
-	                            glue.Part1 = humanoid.Parent["Left Leg"]
-	                            glue.Name = "Left leg"
-	                            local collider = Instance.new("Part",  humanoid.Parent["Left Leg"])
-	                            collider.Position = Vector3.new(0,999,0)
-	                            collider.Size = Vector3.new(1.5, 1, 1)
-	                            collider.Shape = "Cylinder"
-	                            local weld = Instance.new("Weld", collider)
-	                            weld.Part0 =  humanoid.Parent["Left Leg"]
-	                            weld.Part1 = collider
-	                            weld.C0 = CFrame.new(0,-0.2,0) * CFrame.fromEulerAnglesXYZ(0, 0, math.pi/2)
-	                            collider.TopSurface = "Smooth"
-	                            collider.BottomSurface = "Smooth"
-	                            collider.formFactor = "Symmetric"
-	                            glue.C0 = CFrame.new(-0.5, -1, 0, -0, -0, -1, 0, 1, 0, 1, 0, 0)
-	                            glue.C1 = CFrame.new(-0, 1, 0, -0, -0, -1, 0, 1, 0, 1, 0, 0)
-	                            collider.Transparency = 1
-	                        end
-	                        --
-	                        local findrighthip = humanoid.Parent.Torso:findFirstChild("Right Hip")
-	                        if findrighthip then
-	                            findrighthip:Remove()
-	                            local glue = Instance.new("Glue",  humanoid.Parent.Torso)
-	                            glue.Part0 = humanoid.Parent.Torso
-	                            glue.Part1 = humanoid.Parent["Right Leg"]
-	                            glue.Name = "Right leg"
-	                            local collider = Instance.new("Part",  humanoid.Parent["Right Leg"])
-	                            collider.Position = Vector3.new(0,999,0)
-	                            collider.Size = Vector3.new(1.5, 1, 1)
-	                            collider.Shape = "Cylinder"
-	                            local weld = Instance.new("Weld", collider)
-	                            weld.Part0 =  humanoid.Parent["Right Leg"]
-	                            weld.Part1 = collider
-	                            weld.C0 = CFrame.new(0,-0.2,0) * CFrame.fromEulerAnglesXYZ(0, 0, math.pi/2)
-	                            collider.TopSurface = "Smooth"
-	                            collider.BottomSurface = "Smooth"
-	                            collider.formFactor = "Symmetric"
-	                            glue.C0 = CFrame.new(0.5, -1, 0, 0, 0, 1, 0, 1, 0, -1, -0, -0)
-	                            glue.C1 = CFrame.new(0, 1, 0, 0, 0, 1, 0, 1, 0, -1, -0, -0)
-	                            collider.Transparency = 1
-	                        end
-	                        --
-	                        local findrightshoulder = humanoid.Parent.Torso:findFirstChild("Right Shoulder")
-	                        if findrightshoulder then
-	                            findrightshoulder:Remove()
-	                            local glue = Instance.new("Glue",  humanoid.Parent.Torso)
-	                            glue.Part0 = humanoid.Parent.Torso
-	                            glue.Part1 = humanoid.Parent["Right Arm"]
-	                            glue.Name = "Right arm"
-	                            local collider = Instance.new("Part",  humanoid.Parent["Right Arm"])
-	                            collider.Position = Vector3.new(0,999,0)
-	                            collider.Size = Vector3.new(1.5, 1, 1)
-	                            collider.Shape = "Cylinder"
-	                            local weld = Instance.new("Weld", collider)
-	                            weld.Part0 =  humanoid.Parent["Right Arm"]
-	                            weld.Part1 = collider
-	                            weld.C0 = CFrame.new(0,-0.2,0) * CFrame.fromEulerAnglesXYZ(0, 0, math.pi/2)
-	                            collider.TopSurface = "Smooth"
-	                            collider.BottomSurface = "Smooth"
-	                            collider.formFactor = "Symmetric"
-	                            glue.C0 = CFrame.new(1.5, 0.5, 0, 0, 0, 1, 0, 1, 0, -1, 0, 0)
-	                            glue.C1 = CFrame.new(0, 0.5, 0, 0, 0, 1, 0, 1, 0, -1, 0, 0)
-	                            collider.Transparency = 1
-	                        end
-	                        --
-	                        local findleftshoulder = humanoid.Parent.Torso:findFirstChild("Left Shoulder")
-	                        if findleftshoulder then
-	                            findleftshoulder:Remove()
-	                            local glue = Instance.new("Glue",  humanoid.Parent.Torso)
-	                            glue.Part0 = humanoid.Parent.Torso
-	                            glue.Part1 = humanoid.Parent["Left Arm"]
-	                            glue.Name = "Left arm"
-	                            local collider = Instance.new("Part",  humanoid.Parent["Left Arm"])
-	                            collider.Position = Vector3.new(0,999,0)
-	                            collider.Size = Vector3.new(1.5, 1, 1)
-	                            collider.Shape = "Cylinder"
-	                            local weld = Instance.new("Weld", collider)
-	                            weld.Part0 =  humanoid.Parent["Left Arm"]
-	                            weld.Part1 = collider
-	                            weld.C0 = CFrame.new(0,-0.2,0) * CFrame.fromEulerAnglesXYZ(0, 0, math.pi/2)
-	                            collider.TopSurface = "Smooth"
-	                            collider.BottomSurface = "Smooth"
-	                            collider.formFactor = "Symmetric"
-	                            glue.C0 = CFrame.new(-1.5, 0.5, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0)
-	                            glue.C1 = CFrame.new(0, 0.5, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0)
-	                            collider.Transparency = 1
-	                        end
-							local findhead = humanoid.Parent:findFirstChild("Head")
-	                        if findhead then
-								local attachment = Instance.new("Attachment", humanoid.Parent.Head)
-					            attachment.Position = Vector3.new(0, -0.5, 0)
-					            attachment.Name = "lol"
-					            attachment.Visible = false
-					            humanoid.Parent.Torso.NeckAttachment.Visible = false
-					            humanoid.Parent.Torso.NeckAttachment.Position = humanoid.Parent.Torso.NeckAttachment.Position + Vector3.new(0,0,0)
-					            local ball = Instance.new("BallSocketConstraint", humanoid.Parent)
-					            ball.Attachment0 = humanoid.Parent.Torso.NeckAttachment
-					            ball.Attachment1 = attachment
-								ball.LimitsEnabled = true
-								ball.TwistLimitsEnabled = true
-								ball.UpperAngle = 90
-								ball.Restitution = 0.5
-								ball.TwistUpperAngle = 90
-								ball.TwistLowerAngle = -90
-					            local  collidepartofleftleg = Instance.new("Part", humanoid.Parent.Torso)
-					            collidepartofleftleg.Name = "Bone"
-					            collidepartofleftleg.Size = Vector3.new(0.7,0.7,0.7)
-					            collidepartofleftleg.Transparency = 1
-					            collidepartofleftleg:BreakJoints()
-					            local weeld = Instance.new("Weld", collidepartofleftleg)
-					            weeld.Part0 = collidepartofleftleg
-					            weeld.Part1 = humanoid.Parent["Head"]
-								if humanoid.Parent.Torso:findFirstChild("Neck") then
-									humanoid.Parent.Torso.Neck:destroy()
-								end
-							end
-
-	                        wait(10)
-	                        humanoid.Health = 0
-					else
-						humanoid.Health = humanoid.Health - hitval
-					end
-					end
-				else
-					if part.Name == "Shotgun" or "bullet" then
-						
-					else
-						missle:destroy()
-					end
-				end
-			end
-			missle.Touched:connect(hit)
-		end
-		for i = 0,1 , 0.5 do
-			weld.C0 = weld.C0:lerp(CFrame.new(-0.342021942, -1.88848877, -0.088739872, 0.978147507, -0.0289359875, -0.205888897, 0.204753578, -0.0378959738, 0.978079677, -0.0361040607, -0.998862624, -0.0311431047),i)
-			rhandweld.C0 = rhandweld.C0:lerp(CFrame.new(0.917564392, 0.491810799, -0.168943405, 0.978147507, 0.204753578, -0.0361040607, 0.0289353225, -0.306021929, -0.951584637, -0.205889001, 0.929745436, -0.305259228),i)
-			lhandweld.C0 = lhandweld.C0:lerp(CFrame.new(-0.472423553, 0.748803854, -1.02752113, 0.939693093, -0.342019022, -2.66768012e-07, -0.0711100101, -0.195373133, -0.978147566, 0.334545016, 0.919158578, -0.207911715),i)
-			game:GetService("RunService").RenderStepped:wait()
-		end
-		--[[for i = 0,1 , 0.05 do
-			weld.C0 = weld.C0:lerp(CFrame.new(-0.342021942, -1.88848877, -0.088739872, 0.978147507, -0.0289359875, -0.205888897, 0.204753578, -0.0378959738, 0.978079677, -0.0361040607, -0.998862624, -0.0311431047),i)
-			rhandweld.C0 = rhandweld.C0:lerp(CFrame.new(0.917564392, 0.491810799, -0.168943405, 0.978147507, 0.204753578, -0.0361040607, 0.0289353225, -0.306021929, -0.951584637, -0.205889001, 0.929745436, -0.305259228),i)
-			lhandweld.C0 = lhandweld.C0:lerp(CFrame.new(-0.201648712, 0.903478384, -1.75520706, 0.939693093, -0.342019022, -2.66768012e-07, -0.0711100101, -0.195373133, -0.978147566, 0.334545016, 0.919158578, -0.207911715),i)
-			game:GetService("RunService").RenderStepped:wait()
-		end
-		pump:Play()
-		for i = 0,1 , 0.05 do
-			weld.C0 = weld.C0:lerp(CFrame.new(-0.342021942, -1.88848877, -0.088739872, 0.978147507, -0.0289359875, -0.205888897, 0.204753578, -0.0378959738, 0.978079677, -0.0361040607, -0.998862624, -0.0311431047),i)
-			rhandweld.C0 = rhandweld.C0:lerp(CFrame.new(0.917564392, 0.491810799, -0.168943405, 0.978147507, 0.204753578, -0.0361040607, 0.0289353225, -0.306021929, -0.951584637, -0.205889001, 0.929745436, -0.305259228),i)
-			lhandweld.C0 = lhandweld.C0:lerp(CFrame.new(-0.44393158, 0.765078783, -1.10408783, 0.939693093, -0.342019022, -2.66768012e-07, -0.0711100101, -0.195373133, -0.978147566, 0.334545016, 0.919158578, -0.207911715),i)
-			game:GetService("RunService").RenderStepped:wait()
-		end
-		for i = 0,1 , 0.05 do
-			weld.C0 = weld.C0:lerp(CFrame.new(-0.342021942, -1.88848877, -0.088739872, 0.978147507, -0.0289359875, -0.205888897, 0.204753578, -0.0378959738, 0.978079677, -0.0361040607, -0.998862624, -0.0311431047),i)
-			rhandweld.C0 = rhandweld.C0:lerp(CFrame.new(0.917564392, 0.491810799, -0.168943405, 0.978147507, 0.204753578, -0.0361040607, 0.0289353225, -0.306021929, -0.951584637, -0.205889001, 0.929745436, -0.305259228),i)
-			lhandweld.C0 = lhandweld.C0:lerp(CFrame.new(-0.201648712, 0.903478384, -1.75520706, 0.939693093, -0.342019022, -2.66768012e-07, -0.0711100101, -0.195373133, -0.978147566, 0.334545016, 0.919158578, -0.207911715),i)
-			game:GetService("RunService").RenderStepped:wait()
-		end]]
-		for i = 0,0.7 , 0.5 do
-			weld.C0 = weld.C0:lerp(CFrame.new(-0.342021942, -1.88848877, -0.088739872, 0.978147507, -0.0289359875, -0.205888897, 0.204753578, -0.0378959738, 0.978079677, -0.0361040607, -0.998862624, -0.0311431047),i)
-			rhandweld.C0 = rhandweld.C0:lerp(CFrame.new(0.917564392, 0.399175882, -0.578536987, 0.978147507, 0.204753578, -0.0361040607, -0.0289359875, -0.0378959738, -0.998862624, -0.205888897, 0.978079677, -0.0311431047),i)
-			lhandweld.C0 = lhandweld.C0:lerp(CFrame.new(-0.472423553, 0.409558296, -1.4746933, 0.939692736, -0.342019886, -2.0985492e-06, 0.0238559935, 0.0655499771, -0.997564137, 0.341186911, 0.937403619, 0.0697560608),i)
-			game:GetService("RunService").RenderStepped:wait()
-		end
-		using = false
-					wait(0.125)
-		debounce = false
-	end
-end
-mouse.Button1Down:connect(shoot)
-end)
 
 UICorner_34.Parent = AK47
 
@@ -2930,11 +2334,11 @@ newTag.Name = "NewTag"
 newTag.Parent = AK47
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 Car.Name = "Car"
@@ -2956,11 +2360,11 @@ newTag.Name = "NewTag"
 newTag.Parent = Car
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 Carnage.Name = "Carnage"
@@ -2982,11 +2386,11 @@ newTag.Name = "NewTag"
 newTag.Parent = Carnage
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 MLG.Name = "MLG"
@@ -3008,11 +2412,11 @@ newTag.Name = "NewTag"
 newTag.Parent = MLG
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 Demon.Name = "Pen"
@@ -3034,11 +2438,11 @@ newTag.Name = "NewTag"
 newTag.Parent = Demon
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 FZ.Name = "FZ"
@@ -3060,11 +2464,11 @@ newTag.Name = "NewTag"
 newTag.Parent = FZ
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 Memeus.Name = "Memeus"
@@ -3086,11 +2490,11 @@ newTag.Name = "NewTag"
 newTag.Parent = Memeus
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 Chrono.Name = "Chrono"
@@ -3112,11 +2516,11 @@ newTag.Name = "NewTag"
 newTag.Parent = Chrono
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 DistractDance.Name = "DistractDance"
@@ -3135,7 +2539,7 @@ UICorner_42.Parent = DistractDance
 
 Misc.Name = "Misc"
 Misc.Parent = ScrollingFrame
-Misc.BackgroundColor3 = Color3.fromRGB(250, 128, 114)
+Misc.BackgroundColor3 = Color3.fromRGB(162, 162, 162)
 Misc.Position = UDim2.new(0.00934579782, 0, 0.642485082, 0)
 Misc.Size = UDim2.new(0, 419, 0, 36)
 Misc.Font = Enum.Font.SourceSansBold
@@ -3166,11 +2570,11 @@ newTag.Name = "NewTag"
 newTag.Parent = Zeroith
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 OrangeJustice.Name = "OrangeJustice"
@@ -3234,11 +2638,11 @@ newTag.Name = "NewTag"
 newTag.Parent = Rokudayne
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 RussainKick.Name = "RussainKick"
@@ -3472,393 +2876,6 @@ Grabknife.TextColor3 = Color3.fromRGB(255, 255, 255)
 Grabknife.TextSize = 20.000
 Grabknife.TextWrapped = true
 Grabknife.TextXAlignment = Enum.TextXAlignment.Left
-Grabknife.MouseButton1Down:Connect(function()
-me = game.Players.LocalPlayer
-char = me.Character
-selected = false
-attacking = false
-hurt = false
-grabbed = nil
-mode = "drop"
-bloodcolors = {"Bright red", "Really red"}
-
-
-function prop(part, parent, collide, tran, ref, x, y, z, color, anchor, form)
-part.Parent = parent
-part.formFactor = form
-part.CanCollide = collide
-part.Transparency = tran
-part.Reflectance = ref
-part.Size = Vector3.new(x,y,z)
-part.BrickColor = BrickColor.new(color)
-part.TopSurface = 0
-part.BottomSurface = 0
-part.Anchored = anchor
-part.Locked = true
-part:BreakJoints()
-end
-
-function weld(w, p, p1, a, b, c, x, y, z)
-w.Parent = p
-w.Part0 = p
-w.Part1 = p1
-w.C1 = CFrame.fromEulerAnglesXYZ(a,b,c) * CFrame.new(x,y,z)
-end
-
-function mesh(mesh, parent, x, y, z, type)
-mesh.Parent = parent
-mesh.Scale = Vector3.new(x, y, z)
-mesh.MeshType = type
-end
-
-function remgui()
-	for _,v in pairs(me.PlayerGui:GetChildren()) do
-		if v.Name == "Modeshow" then
-			v:remove()
-		end
-	end
-end
-
-function inform(text,delay)
-	remgui()
-	local sc = Instance.new("ScreenGui")
-	sc.Parent = me.PlayerGui
-	sc.Name = "Modeshow"
-	local bak = Instance.new("Frame",sc)
-	bak.BackgroundColor3 = Color3.new(1,1,1)
-	bak.Size = UDim2.new(0.94,0,0.1,0)
-	bak.Position = UDim2.new(0.03,0,0.037,0)
-	bak.BorderSizePixel = 0
-	local gi = Instance.new("TextLabel",sc)
-	gi.Size = UDim2.new(0.92,0,0.09,0)
-	gi.BackgroundColor3 = Color3.new(0,0,0)
-	gi.Position = UDim2.new(0.04,0,0.042,0)
-	gi.TextColor3 = Color3.new(1,1,1)
-	gi.FontSize = "Size12"
-	gi.Text = text
-	coroutine.resume(coroutine.create(function()
-		wait(delay)
-		sc:remove()
-	end))
-end
-
-if char:findFirstChild("Bricks",true) then
-	char:findFirstChild("Bricks",true):remove()
-end
-
-bricks = Instance.new("Model",me.Character)
-bricks.Name = "Bricks"
-
---Parts-------------------------Parts-------------------------Parts-------------------------Parts----------------------
-
-rarm = char:findFirstChild("Right Arm")
-larm = char:findFirstChild("Left Arm")
-lleg = char:findFirstChild("Left Leg")
-torso = char:findFirstChild("Torso")
-hum = char:findFirstChild("Humanoid")
-
-righthold = Instance.new("Part")
-prop(righthold, bricks, false, 1, 0, 0.1, 0.1, 0.1, "White", false, "Custom")
-w11 = Instance.new("Weld")
-weld(w11, rarm, righthold, 0, 0, 0, 0, 1, 0)
-
-lefthold = Instance.new("Part")
-prop(lefthold, bricks, false, 1, 0, 0.1, 0.1, 0.1, "White", false, "Custom")
-w12 = Instance.new("Weld")
-weld(w12, larm, lefthold, 0, 0, 0, 0, 1, 0)
-
-hold = Instance.new("Part")
-prop(hold, bricks, false, 0, 0, 0.2, 0.4, 0.7, "Black", false, "Custom")
-oh = Instance.new("Weld")
-weld(oh, lleg, hold, -math.pi/1.4, 0, math.rad(35), 0.55, -0.9, 0.3)
-
-knife = Instance.new("Part")
-prop(knife, bricks, false, 0, 0, 0.35, 1.1, 0.5, "Reddish brown", false, "Custom")
-orr = Instance.new("Weld")
-weld(orr, hold, knife, 0, 0, 0, 0, 0.7, 0)
-ar = Instance.new("Weld")
-weld(ar, lefthold, nil, math.pi/2, 0, math.pi, 0, 0, 0)
-
-
-blade = Instance.new("Part")
-prop(blade, bricks, false, 0, 0, 0.1, 1.5, 0.4, "Medium grey", false, "Custom")
-Instance.new("BlockMesh",blade).Scale = Vector3.new(0.3,1,1)
-w2 = Instance.new("Weld")
-weld(w2, knife, blade, 0, 0, 0, 0, -1.2, 0)
-
-blade2 = Instance.new("Part")
-prop(blade2, bricks, false, 0, 0, 0.1, 0.5, 0.4, "Medium grey", false, "Custom")
-local mew = Instance.new("SpecialMesh",blade2)
-mew.MeshType = "Wedge"
-mew.Scale = Vector3.new(0.3,1,1)
-w3 = Instance.new("Weld")
-weld(w3, blade, blade2, 0, 0, 0, 0, -1, 0)
-
-
-
-
-rb = Instance.new("Part")
-prop(rb, bricks, false, 1, 0, 0.1, 0.1, 0.1, "White", false, "Custom")
-w13 = Instance.new("Weld")
-weld(w13, torso, rb, 0, 0, 0, -1.5, -0.5, 0)
-
-lb = Instance.new("Part")
-prop(lb, bricks, false, 1, 0, 0.1, 0.1, 0.1, "White", false, "Custom")
-w14 = Instance.new("Weld")
-weld(w14, torso, lb, 0, 0, 0, 1.5, -0.5, 0)
-
-rw = Instance.new("Weld")
-weld(rw, rb, nil, 0, 0, 0, 0, 0.5, 0)
-
-lw = Instance.new("Weld")
-weld(lw, lb, nil, 0, 0, 0, 0, 0.5, 0)
-
-grabweld = nil
-platlol = nil
-lolhum = nil
-
-function touch(h)
-	if hurt then
-		if grabbed == nil then
-			local hu = h.Parent:findFirstChild("Humanoid")
-			local head = h.Parent:findFirstChild("Head")
-			local torz = h.Parent:findFirstChild("Torso")
-			if hu ~= nil and head ~= nil and torz ~= nil and h.Parent.Name ~= name then
-				if hu.Health > 0 then
-				grabbed = torz
-				hu.PlatformStand = true
-				local w = Instance.new("Weld")
-				weld(w,righthold,grabbed,math.pi/2,0.2,0,0.7,-0.9,-0.6)
-				grabweld = w
-				lolhum = hu
-				local lolxd = true
-				platlol = lolxd
-				hu.Changed:connect(function(prop)
-					if prop == "PlatformStand" and platlol then
-						hu.PlatformStand = true
-					end
-				end)
-				end
-			end
-		end
-	end
-end
-
-righthold.Touched:connect(touch)
-lefthold.Touched:connect(touch)
-
-function bleed(part,po)
-	local lol1 = math.random(5,30)/100
-	local lol2 = math.random(5,30)/100
-	local lol3 =math.random(5,30)/100
-	local lol4 = math.random(1,#bloodcolors)
-	local p = Instance.new("Part")
-	prop(p,part.Parent,false,0,0,lol1,lol2,lol3,bloodcolors[lol4],false,"Custom")
-	p.CFrame = part.CFrame * CFrame.new(math.random(-5,5)/10,po,math.random(-5,5)/10)
-	p.Velocity = Vector3.new(math.random(-190,190)/10,math.random(-190,190)/10,math.random(-190,190)/10)
-	p.RotVelocity = Vector3.new(math.random(-400,400)/10,math.random(-400,400)/10,math.random(-400,400)/10)
-	coroutine.resume(coroutine.create(function()
-		wait(3)
-		p:remove()
-	end))
-end
-
-if script.Parent.className ~= "HopperBin" then
-	h = Instance.new("HopperBin",me.Backpack)
-	h.Name = "Grab"
-	script.Parent = h
-end
-
-bin = script.Parent
-
-function select(mouse)
-	orr.Part1 = nil
-	ar.Part1 = knife
-	mouse.Button1Down:connect(function()
-		if attacking == false then
-			attacking = true
-			lw.Part1 = larm
-			rw.Part1 = rarm
-			hurt = true
-			for i=1, 8 do
-				rw.C0 = rw.C0 * CFrame.new(-0.03,0,-0.08) * CFrame.fromEulerAnglesXYZ(0.18,0.04,0)
-				lw.C0 = lw.C0 * CFrame.new(0.06,0,-0.06) * CFrame.fromEulerAnglesXYZ(0.15,-0.11,-0.05)
-				wait()
-			end
-			wait(1)
-			hurt = false
-			if grabbed == nil then
-				for i=1, 4 do
-					rw.C0 = rw.C0 * CFrame.new(0.06,0,0.16) * CFrame.fromEulerAnglesXYZ(-0.36,-0.08,0)
-					lw.C0 = lw.C0 * CFrame.new(-0.12,0,0.12) * CFrame.fromEulerAnglesXYZ(-0.3,0.22,0.05)
-					wait()
-				end
-				lw.C0 = CFrame.new(0,0,0)
-				rw.C0 = CFrame.new(0,0,0)
-				lw.Part1 = nil
-				rw.Part1 = nil
-				attacking = false
-			end
-		elseif hurt == false and grabbed ~= nil and mode == "drop" then
-			grabweld:remove()
-			grabweld = nil
-			platlol = false
-			grabbed = nil
-			lolhum.PlatformStand = false
-			lolhum = nil
-			for i=1, 4 do
-				rw.C0 = rw.C0 * CFrame.new(0.06,0,0.16) * CFrame.fromEulerAnglesXYZ(-0.36,-0.08,0)
-				lw.C0 = lw.C0 * CFrame.new(-0.12,0,0.16) * CFrame.fromEulerAnglesXYZ(-0.3,0.2,0)
-				wait()
-			end
-			lw.C0 = CFrame.new(0,0,0)
-			rw.C0 = CFrame.new(0,0,0)
-			lw.Part1 = nil
-			rw.Part1 = nil
-			attacking = false
-			platlol = nil
-		elseif hurt == false and grabbed ~= nil and grabweld ~= nil and mode == "throw" then
-			grabweld:remove()
-			grabweld = nil
-			local bf = Instance.new("BodyForce",grabbed)
-			bf.force = torso.CFrame.lookVector * 8500
-			bf.force = bf.force + Vector3.new(0,7400,0)
-			coroutine.resume(coroutine.create(function()
-				wait(0.12)
-				bf:remove()
-			end))
-			for i=1, 6 do
-				rw.C0 = rw.C0 * CFrame.new(0,0,0) * CFrame.fromEulerAnglesXYZ(0.35,0,0)
-				lw.C0 = lw.C0 * CFrame.new(0,0,0) * CFrame.fromEulerAnglesXYZ(-0.18,0,0)
-				wait()
-			end
-			for i=1, 4 do
-				rw.C0 = rw.C0 * CFrame.new(0,0,0) * CFrame.fromEulerAnglesXYZ(-0.47,0,0)
-				lw.C0 = lw.C0 * CFrame.new(0,0,0) * CFrame.fromEulerAnglesXYZ(0.2,0,0)
-				wait()
-			end
-			wait(0.2)
-			platlol = false
-			grabbed = nil
-			lolhum.PlatformStand = false
-			lolhum = nil
-			for i=1, 4 do
-				rw.C0 = rw.C0 * CFrame.new(0.06,0,0.16) * CFrame.fromEulerAnglesXYZ(-0.36,-0.08,0)
-				lw.C0 = lw.C0 * CFrame.new(-0.12,0,0.16) * CFrame.fromEulerAnglesXYZ(-0.3,0.2,0)
-				wait()
-			end
-			lw.C0 = CFrame.new(0,0,0)
-			rw.C0 = CFrame.new(0,0,0)
-			lw.Part1 = nil
-			rw.Part1 = nil
-			attacking = false
-			platlol = nil
-		elseif hurt == false and grabbed ~= nil and lolhum ~= nil and grabweld ~= nil and mode == "kill" then
-			for i=1, 5 do
-				lw.C0 = lw.C0 * CFrame.new(0.02,0.12,0.1) * CFrame.fromEulerAnglesXYZ(-0.05,0,-0.03)
-				wait()
-			end
-			local ne = grabbed:findFirstChild("Neck")
-			coroutine.resume(coroutine.create(function()
-				local duh = grabbed
-				local duh2 = grabbed.Parent.Head
-				local lolas = lolhum
-				duh.RotVelocity = Vector3.new(math.random(-20,20),math.random(-20,20),math.random(-20,20))
-				for i=1, 60 do
-					wait()
-					local hm = math.random(1,9)
-					pcall(function()
-						if hm == 1 then
-							duh2.Sound.Pitch = math.random(90,110)/100
-							duh2.Sound:play()
-						end
-					end)
-					if hm > 0 and hm < 3 then
-						bleed(duh,1)
-						bleed(duh2,-0.5)
-					end
-				end
-				lolas.Health = 0
-				for i=1, 85 do
-					wait()
-					local hm = math.random(1,9)
-					pcall(function()
-						if hm == 1 then
-							duh2.Sound.Pitch = math.random(90,110)/100
-							duh2.Sound:play()
-						end
-					end)
-					if hm > 0 and hm < 3 then
-						bleed(duh,1)
-						bleed(duh2,-0.5)
-					end
-				end
-			end))
-			for i=1, 3 do
-				lw.C0 = lw.C0 * CFrame.new(0.02,0.12,0.1) * CFrame.fromEulerAnglesXYZ(-0.05,0,-0.03)
-				if ne ~= nil then
-					grabbed.Neck.C0 = grabbed.Neck.C0 * CFrame.fromEulerAnglesXYZ(-0.35,0,0)
-				end
-				wait()
-			end
-			grabweld:remove()
-			grabweld = nil
-			for i=1, 4 do
-				lw.C0 = lw.C0 * CFrame.new(-0.04,-0.24,-0.2) * CFrame.fromEulerAnglesXYZ(0.1,0,0.06)
-				wait()
-			end
-			for i=1, 4 do
-				rw.C0 = rw.C0 * CFrame.new(0.06,0,0.16) * CFrame.fromEulerAnglesXYZ(-0.36,-0.08,0)
-				lw.C0 = lw.C0 * CFrame.new(-0.12,0,0.12) * CFrame.fromEulerAnglesXYZ(-0.3,0.22,0.05)
-				wait()
-			end
-			lw.C0 = CFrame.new(0,0,0)
-			rw.C0 = CFrame.new(0,0,0)
-			lw.Part1 = nil
-			rw.Part1 = nil
-			platlol = false
-			grabbed = nil
-			lolhum = nil
-			attacking = false
-			platlol = nil
-		end
-	end)
-	mouse.KeyDown:connect(function(kai)
-		key = kai:lower()
-		if key == "q" then
-			mode = "drop"
-			inform("Mode: Drop",2)
-		elseif key == "e" then
-			mode = "throw"
-			inform("Mode: Throw",2)
-		elseif key == "f" then
-			mode = "kill"
-			inform("Mode: Kill",2)
-		end
-	end)
-end
-
-function desel()
-	repeat wait() until attacking == false
-	orr.Part1 = knife
-	ar.Part1 = nil
-end
-
-bin.Selected:connect(select)
-bin.Deselected:connect(desel)
-
-char.Humanoid.Died:connect(function()
-	pcall(function()
-		grabweld:remove()
-		grabweld = nil
-		grabbed = nil
-		platlol = false
-		platlol = nil
-	end)
-end)
-
-inform("Grab script loaded succesfully.",2)
-end)
 
 UICorner_57.Parent = Grabknife
 
@@ -4106,11 +3123,11 @@ newTag.Name = "NewTag"
 newTag.Parent = BaseballBat
 newTag.BackgroundColor3 = Color3.fromRGB(170, 0, 0)
 newTag.Position = UDim2.new(0.85, -10, 0.1, 0)
-newTag.Size = UDim2.new(0, 55, 0, 25)
+newTag.Size = UDim2.new(0, 55, 0, 29)
 newTag.Text = "NEW"
 newTag.TextColor3 = Color3.fromRGB(255, 255, 255)
 newTag.Font = Enum.Font.SourceSansBold
-newTag.TextSize = 18
+newTag.TextSize = 20
 newTag.BorderSizePixel = 0
 
 Eggdog.Name = "Eggdog"
@@ -4306,6 +3323,7 @@ local function MakeDraggable()
 		)
 		game:GetService('TweenService'):Create(frame, TweenInfo.new(dragSpeed), {Position = position}):Play()
 	end
+	
 	frame.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
 			dragToggle = true
@@ -4326,6 +3344,23 @@ local function MakeDraggable()
 		end
 	end)
 end
+
 MakeDraggable()
 
 Main:TweenPosition(UDim2.new(0.382, 0, 0.181, 0), "Out", "Quad", 0.5, true)
+
+game:GetService("StarterGui"):SetCore("SendNotification",{
+Title = "Script credits",
+Text = "Credits to SirPwnsAlot who made this", 
+
+Button1 = "Ok",
+Duration = 30 
+})
+
+game:GetService("StarterGui"):SetCore("SendNotification",{
+Title = "THANK YOU",
+Text = "THANK YOU MASTERSMZ WHO USED THE EARLY VERSION! :D", 
+
+Button1 = "Thanks",
+Duration = 30 
+})
