@@ -1,0 +1,328 @@
+--[[
+ _____     _           _ _ _         | Welcome to YepImSirPwnsAlot's & Fartman42121cool's Offical Echolite Hub Condo Destroyer if you somehow manages to deobfusicate this shit
+| ____|___| |__   ___ | (_) |_ ___   | Feel free to look around and if your curious in updates for this so join the discord server
+|  _| / __| '_ \ / _ \| | | __/ _ \  | This shit was painful to make so consider joing the server
+| |__| (__| | | | (_) | | | ||  __/  |
+|_____\___|_| |_|\___/|_|_|\__\___   |
+
+--]]     
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local StarterGui = game:GetService("StarterGui")
+local UserSettings = game:GetService("UserSettings")
+local localPlayer = Players.LocalPlayer
+
+repeat wait() until game:IsLoaded()
+
+local function printLog(level, source, message)
+    local timestamp = os.date("[%Y-%m-%d %H:%M:%S]")
+    spawn(function()
+        print(string.format("%s [%s] [%s] %s", timestamp, source, level, message))
+    end)
+end
+
+local robloxVersion = "Unknown"
+pcall(function()
+    local ver = UserSettings():GetService("UserGameSettings").Version
+    if ver and ver ~= "" then
+        robloxVersion = ver
+    end
+end)
+
+local inStudio = RunService:IsStudio()
+local sessionType = inStudio and "Studio" or "Live Game"
+local playerName = localPlayer.Name
+local userId = localPlayer.UserId
+local jobId = game.JobId
+local placeId = game.PlaceId
+local gameId = tostring(game.GameId)
+printLog("info", "Echolite", "Runtime: " .. sessionType)
+printLog("info", "Echolite", "Roblox Client Version: " .. robloxVersion)
+printLog("debug", "Echolite", "Client Checker thread: 0x726377d420")
+printLog("debug", "Echolite", "Echolite Caching thread: 0x726377d410")
+printLog("debug", "Echolite", "WebSockets Cleaner thread: 0x726377d400")
+printLog("debug", "Echolite", "Echolite Server thread: 0x726377d3f0")
+printLog("info", "Cache", "Reattaching to cached client PID: 15304")
+printLog("info", "Cache", "Loaded cache: 1 RBXClients, 2 RBXBytecode, 0 RBXMFlags, 1 RBXRenderViews")
+printLog("info", "Echolite", "Creating new RBXClient: 15304")
+printLog("info", "RBXClient", "[15304]: Initializing...")
+printLog("info", "RBXClient", string.format("[15304]: Version: %s", robloxVersion))
+printLog("debug", "Echolite", "Created RBXClient instance @0x283dc5640a0")
+printLog("info", "Echolite", "Successfully created RBXClient: 15304")
+printLog("debug", "RBXClient", "[15304]: Getting RenderView...")
+printLog("info", "RBXClient", "[15304]: RenderView retrieved from Cache: 0x21e64525800")
+printLog("debug", "RBXClient", "[15304]: DataModel: 0x21e70c6c238")
+printLog("debug", "RBXClient", "[15304]: LocalPlayer: 0x21e72e7c480")
+printLog("debug", "RBXClient", string.format("[15304]: LocalPlayer Name: '%s'", playerName))
+printLog("debug", "RBXClient", string.format("[15304]: UserId: %s", userId))
+printLog("debug", "RBXClient", string.format("[15304]: JobId: %s", jobId ~= "" and jobId or "N/A"))
+printLog("debug", "RBXClient", string.format("[15304]: PlaceId: %s", placeId))
+printLog("debug", "RBXClient", string.format("[15304]: GameId: %s", gameId))
+printLog("debug", "RBXClient", "[15304]: EventConnection: 0x21e83828e00")
+printLog("info", "DiscordRPC", "RPC is Enabled")
+printLog("debug", "RBXClient", "[15304]: StyledTextLabel: 0x21e84307000")
+printLog("info", "RBXClient", "[15304]: StyledTextLabel SSS was set to 0")
+
+-- GUI INSTANCE DECLARATIONS (DESTROYER NAME)
+local EcholiteHubTheCondoDestroyerScreenGui = Instance.new("ScreenGui")
+local EcholiteHubTheCondoDestroyerMainFrameGui = Instance.new("Frame")
+local EcholiteHubTheCondoDestroyerMainFrameUIStroke = Instance.new("UIStroke")
+local EcholiteHubTheCondoDestroyerMainFrameUICorner = Instance.new("UICorner")
+local EcholiteHubTheCondoDestroyerTopBar = Instance.new("Frame")
+local EcholiteHubTheCondoDestroyerTopbarUIStroke = Instance.new("UIStroke")
+local EcholiteHubTheCondoDestroyerTopBarUICorner = Instance.new("UICorner") -- Corrected variable usage
+local EcholiteHubTheCondoDestroyerMainFrameTextLabelEcholiteName = Instance.new("TextLabel")
+local EcholiteHubTheCondoDestroyerSeperator = Instance.new("Frame")
+local EcholiteHubTheCondoDestroyerSeperatorUICorner = Instance.new("UICorner")
+local EcholiteHubTheCondoDestroyerSeperatorUIStroke = Instance.new("UIStroke")
+		
+local UI_Stroke_Color = Color3.new(0, 255/255, 255/255) -- Set values between 0 and 1
+
+-- ECHOLITEHUBTHECONDODESTROYERSCREENGUI SETUP
+EcholiteHubTheCondoDestroyerScreenGui.Parent = localPlayer:WaitForChild("PlayerGui")
+EcholiteHubTheCondoDestroyerScreenGui.ResetOnSpawn = false
+EcholiteHubTheCondoDestroyerScreenGui.Name = ("Echolite Hub The Condo Destroyer ScreenGui")
+EcholiteHubTheCondoDestroyerScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+-- ECHOLITEHUBTHECONDODESTROYERMAINFRAMEGUI SETUP
+EcholiteHubTheCondoDestroyerMainFrameGui.Name = ("efgrefurgbreugr")
+EcholiteHubTheCondoDestroyerMainFrameGui.Parent = EcholiteHubTheCondoDestroyerScreenGui
+EcholiteHubTheCondoDestroyerMainFrameGui.Position = UDim2.new(0.5, 0, 0.5, 0) -- Centered
+EcholiteHubTheCondoDestroyerMainFrameGui.AnchorPoint = Vector2.new(0.5, 0.5) -- Centered
+EcholiteHubTheCondoDestroyerMainFrameGui.Size = UDim2.new(0, 395, 0, 290)
+EcholiteHubTheCondoDestroyerMainFrameGui.BorderSizePixel = 0
+EcholiteHubTheCondoDestroyerMainFrameGui.BackgroundColor3 = Color3.new(0/255, 0/255, 0/255)
+EcholiteHubTheCondoDestroyerMainFrameGui.Visible = false -- Will be set to true after loading
+
+-- MAINFRAME UICORNER AND UI STROKE
+EcholiteHubTheCondoDestroyerMainFrameUICorner.Name = ("Echolite Hub The Condo Destroyer Main Frame UI Corner")
+EcholiteHubTheCondoDestroyerMainFrameUICorner.Parent = EcholiteHubTheCondoDestroyerMainFrameGui
+EcholiteHubTheCondoDestroyerMainFrameUICorner.CornerRadius = UDim.new(0, 20)
+
+EcholiteHubTheCondoDestroyerMainFrameUIStroke.Color = UI_Stroke_Color
+EcholiteHubTheCondoDestroyerMainFrameUIStroke.Thickness = 3
+EcholiteHubTheCondoDestroyerMainFrameUIStroke.Parent = EcholiteHubTheCondoDestroyerMainFrameGui
+
+-- ECHOLITEHUBTHECONDODESTROYERTOPBAR SETUP (FIXED POSITION)
+EcholiteHubTheCondoDestroyerTopBar.Name = ("Feuifrw87fgre8fr")
+EcholiteHubTheCondoDestroyerTopBar.Parent = EcholiteHubTheCondoDestroyerMainFrameGui
+EcholiteHubTheCondoDestroyerTopBar.BackgroundColor3 = Color3.new(0/255, 0/255, 0/255)
+EcholiteHubTheCondoDestroyerTopBar.BorderSizePixel = 0
+EcholiteHubTheCondoDestroyerTopBar.Size = UDim2.new(1, 0, 0, 30) -- Corrected to span width, fixed height (30px)
+EcholiteHubTheCondoDestroyerTopBar.Position = UDim2.new(0, 0, 0, 0) -- Corrected to be at the top
+EcholiteHubTheCondoDestroyerTopBar.Active = true
+EcholiteHubTheCondoDestroyerTopBar.AnchorPoint = Vector2.new(0, 0)
+EcholiteHubTheCondoDestroyerTopBar.Draggable = true
+
+-- TOPBAR UICORNER AND UI STROKE
+EcholiteHubTheCondoDestroyerTopBarUICorner.Name = ("TopBarUICorner") -- Using the correct UICorner variable
+EcholiteHubTheCondoDestroyerTopBarUICorner.Parent = EcholiteHubTheCondoDestroyerTopBar
+EcholiteHubTheCondoDestroyerTopBarUICorner.CornerRadius = UDim.new(0, 20)
+
+EcholiteHubTheCondoDestroyerTopbarUIStroke.Name = "ferferfrfref"
+EcholiteHubTheCondoDestroyerTopbarUIStroke.Color = UI_Stroke_Color
+EcholiteHubTheCondoDestroyerTopbarUIStroke.Thickness = 3
+EcholiteHubTheCondoDestroyerTopbarUIStroke.Parent = EcholiteHubTheCondoDestroyerTopBar
+-- Removed redundant and incorrect .CornerRadius setting on UIStroke
+
+-- Text Label Setup (Parented to TopBar)
+EcholiteHubTheCondoDestroyerMainFrameTextLabelEcholiteName.Name = ("Echolite Name Text")
+EcholiteHubTheCondoDestroyerMainFrameTextLabelEcholiteName.Parent = EcholiteHubTheCondoDestroyerTopBar
+EcholiteHubTheCondoDestroyerMainFrameTextLabelEcholiteName.BackgroundTransparency = 1
+EcholiteHubTheCondoDestroyerMainFrameTextLabelEcholiteName.Text = "Echolite Hub"
+EcholiteHubTheCondoDestroyerMainFrameTextLabelEcholiteName.TextColor3 = Color3.new(1, 1, 1)
+EcholiteHubTheCondoDestroyerMainFrameTextLabelEcholiteName.Size = UDim2.new(1, 0, 1, 0)
+EcholiteHubTheCondoDestroyerMainFrameTextLabelEcholiteName.TextSize = 18
+
+-- Seperator Setup (Parented and positioned)
+EcholiteHubTheCondoDestroyerSeperator.Name = ("Seperator")
+EcholiteHubTheCondoDestroyerSeperator.Parent = EcholiteHubTheCondoDestroyerMainFrameGui
+EcholiteHubTheCondoDestroyerSeperator.BackgroundColor3 = Color3.new(0/255, 0/255, 0/255)
+EcholiteHubTheCondoDestroyerSeperator.Size = UDim2.new(1, 0, 0, 1)
+EcholiteHubTheCondoDestroyerSeperator.Position = UDim2.new(0, 0, 0, 30) -- Below the 30px TopBar
+
+EcholiteHubTheCondoDestroyerSeperatorUICorner.Name = ("Seperator Corner")
+EcholiteHubTheCondoDestroyerSeperatorUICorner.Parent = EcholiteHubTheCondoDestroyerSeperator
+
+EcholiteHubTheCondoDestroyerSeperatorUIStroke.Name = ("Seperator Stroke")
+EcholiteHubTheCondoDestroyerSeperatorUIStroke.Color = UI_Stroke_Color
+EcholiteHubTheCondoDestroyerSeperatorUIStroke.Thickness = 3
+EcholiteHubTheCondoDestroyerSeperatorUIStroke.Parent = EcholiteHubTheCondoDestroyerSeperator
+
+
+local success, result = pcall(function()
+    local TweenService = game:GetService("TweenService")
+    local Players = game:GetService("Players")
+    local player = Players.LocalPlayer
+
+    local gui = Instance.new("ScreenGui")
+    gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    gui.ResetOnSpawn = false
+    gui.Parent = player:WaitForChild("PlayerGui")
+
+    local frame = Instance.new("Frame")
+    frame.Size = UDim2.new(0, 380, 0, 140)
+    frame.Position = UDim2.new(0.5, -200, 0.5, -140)
+    frame.BackgroundColor3 = Color3.fromRGB(33, 33, 33)
+    frame.BackgroundTransparency = 1
+    frame.BorderSizePixel = 0
+    frame.Parent = gui
+
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(0, 15)
+    corner.Parent = frame
+
+    local stroke = Instance.new("UIStroke")
+    stroke.Color = Color3.fromRGB(0, 255, 255)
+    stroke.Thickness = 3
+    stroke.Transparency = 1
+    stroke.Parent = frame
+
+    local title = Instance.new("TextLabel")
+    title.Size = UDim2.new(1, -20, 0, 32)
+    title.Position = UDim2.new(0, 10, 0, 8)
+    title.BackgroundTransparency = 1
+    title.Text = "Echolite Hub"
+    title.TextColor3 = Color3.new(0, 255, 255)
+    title.TextScaled = true
+    title.Font = Enum.Font.GothamBold
+    title.TextTransparency = 1
+    title.Parent = frame
+
+    local customImage = Instance.new("ImageLabel")
+    customImage.Size = UDim2.new(0, 70, 0, 70)
+    customImage.Position = UDim2.new(0.5, -35, 0, 44)
+    customImage.BackgroundTransparency = 1
+    customImage.Image = "rbxassetid://86733014304064"
+    customImage.ImageTransparency = 1
+    customImage.Parent = frame
+
+    local subtitle = Instance.new("TextLabel")
+    subtitle.Size = UDim2.new(1, -20, 0, 26)
+    subtitle.Position = UDim2.new(0, 10, 0, 116)
+    subtitle.BackgroundTransparency = 1
+    subtitle.Text = "Loading this may take a bit..."
+    subtitle.TextColor3 = Color3.fromRGB(180, 180, 180)
+    subtitle.TextWrapped = false
+	subtitle.TextSize = 10
+	subtitle.Font = Enum.Font.Gotham
+    subtitle.TextTransparency = 1
+    subtitle.Parent = frame
+
+    local loader = Instance.new("ImageLabel")
+    loader.Size = UDim2.new(0, 28, 0, 28)
+    loader.Position = UDim2.new(1, -40, 0, 112)
+    loader.BackgroundTransparency = 1
+    loader.Image = "rbxassetid://81120285184687"
+    loader.ImageTransparency = 1
+    loader.Parent = frame
+
+    local fadeIn = TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+    local fadeOut = TweenInfo.new(0.6, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
+
+    TweenService:Create(frame, fadeIn, {
+        Position = UDim2.new(0.5, -200, 0.5, -70),
+        BackgroundTransparency = 0
+    }):Play()
+
+    TweenService:Create(title, fadeIn, { TextTransparency = 0 }):Play()
+    TweenService:Create(subtitle, fadeIn, { TextTransparency = 0 }):Play()
+    TweenService:Create(stroke, fadeIn, { Transparency = 0 }):Play()
+    TweenService:Create(loader, fadeIn, { ImageTransparency = 0 }):Play()
+    TweenService:Create(customImage, fadeIn, { ImageTransparency = 0 }):Play()
+
+    local isRunning = true
+
+    task.spawn(function()
+        local dots = 0
+        while isRunning do
+            dots = (dots % 3) + 1
+            subtitle.Text = "Loading" .. string.rep(".", dots)
+            task.wait(0.35)
+        end
+    end)
+
+    task.spawn(function()
+        while isRunning do
+            loader.Rotation = (loader.Rotation + 5) % 360
+            task.wait(0.02)
+        end
+    end)
+
+    task.spawn(function()
+        while isRunning do
+            TweenService:Create(customImage, TweenInfo.new(1.2, Enum.EasingStyle.Sine), {
+                Position = UDim2.new(0.5, -35, 0, 42)
+            }):Play()
+            task.wait(1.2)
+
+            TweenService:Create(customImage, TweenInfo.new(1.2, Enum.EasingStyle.Sine), {
+                Position = UDim2.new(0.5, -35, 0, 44)
+            }):Play()
+            task.wait(1.2)
+        end
+    end)
+
+    task.spawn(function()
+        while isRunning do
+            TweenService:Create(stroke, TweenInfo.new(1.4, Enum.EasingStyle.Sine), {
+                Thickness = 4,
+                Transparency = 0.1
+            }):Play()
+            task.wait(1.4)
+
+            TweenService:Create(stroke, TweenInfo.new(1.4, Enum.EasingStyle.Sine), {
+                Thickness = 2,
+                Transparency = 0.25
+            }):Play()
+            task.wait(1.4)
+        end
+    end)
+
+    task.wait(5)
+
+    isRunning = false
+
+    local sweep = Instance.new("Frame")
+    sweep.Size = UDim2.new(0, 90, 1, 0)
+    sweep.Position = UDim2.new(-0.3, 0, 0, 0)
+    sweep.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+    sweep.BackgroundTransparency = 0.75
+    sweep.Parent = frame
+
+    local swc = Instance.new("UICorner")
+    swc.CornerRadius = UDim.new(0, 15)
+    swc.Parent = sweep
+
+    TweenService:Create(sweep, TweenInfo.new(0.4), {
+        Position = UDim2.new(1.2, 0, 0, 0),
+        BackgroundTransparency = 1
+    }):Play()
+
+    TweenService:Create(customImage, TweenInfo.new(0.4), {
+        ImageTransparency = 1,
+        Size = UDim2.new(0, 0, 0, 0)
+    }):Play()
+
+    TweenService:Create(frame, fadeOut, {
+        Position = UDim2.new(0.5, -200, 0.5, -160),
+        BackgroundTransparency = 1
+    }):Play()
+
+    TweenService:Create(title, fadeOut, { TextTransparency = 1 }):Play()
+    TweenService:Create(subtitle, fadeOut, { TextTransparency = 1 }):Play()
+    TweenService:Create(loader, fadeOut, { ImageTransparency = 1 }):Play()
+    TweenService:Create(stroke, fadeOut, { Transparency = 1 }):Play()
+
+    task.wait(0.4)
+    gui:Destroy()
+
+end)
+
+if not success then
+    warn("Intro UI failed:", result)
+end
+
+task.wait(0.5)
+EcholiteHubTheCondoDestroyerMainFrameGui.Visible = true -- Set main GUI visible after the intro finishes
