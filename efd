@@ -1,12 +1,3 @@
---[[
- _____     _           _ _ _         | Welcome to YepImSirPwnsAlot's & Fartman42121cool's Echolite Hub The Condo Demolisher if you somehow managed to deobfusicate ts
-| ____|___| |__   ___ | (_) |_ ___   | Feel free to look around and if your curious in updates for this so join the discord server
-|  _| / __| '_ \ / _ \| | | __/ _ \  | This shit was painful to make so consider joing the server
-| |__| (__| | | | (_) | | | ||  __/  |
-|_____\___|_| |_|\___/|_|_|\__\___   |
-
---]]     
-
 local Players = game:GetService("Players")
 local UserInputService = game:GetService("UserInputService")
 local player = Players.LocalPlayer
