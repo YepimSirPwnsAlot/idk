@@ -290,7 +290,7 @@ local function addTab(name, order, isLast)
     return page
 end
 
-local tabList = {"Information", "Player", "Fe/Admin Gui's", "Scripts", "Chat", "Trolling", "DM's", "Settings", "Themes"}
+local tabList = {"Information", "Updates", "Player", "Fe/Admin Gui's", "Scripts", "Chat", "Trolling", "DM's", "Settings", "Themes"}
 
 for i, name in ipairs(tabList) do
     local isLast = (i == #tabList)
@@ -405,7 +405,7 @@ UpdateVersion.Name = "UpdateVersion"
 UpdateVersion.Size = UDim2.new(0.95, 0, 0, 38)
 UpdateVersion.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 UpdateVersion.TextColor3 = Color3.fromRGB(0, 255, 255)
-UpdateVersion.Text = "  Echolite Version | Premium Version 0.0.1"
+UpdateVersion.Text = "  Echolite Version | Normal Version 2.0.0"
 UpdateVersion.TextXAlignment = Enum.TextXAlignment.Left
 UpdateVersion.Font = Enum.Font.GothamBold
 UpdateVersion.TextSize = 14
@@ -1877,22 +1877,22 @@ stroke.Parent = UISize
 
 local ThemesPage = allPages["Themes"]
 
-if not Themes:FindFirstChildOfClass("UIListLayout") then
+if not ThemesPage:FindFirstChildOfClass("UIListLayout") then
     local layout = Instance.new("UIListLayout")
     layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
     layout.Padding = UDim.new(0, 12)
     layout.SortOrder = Enum.SortOrder.LayoutOrder
-    layout.Parent = Themes
+    layout.Parent = ThemesPage
     
     local padding = Instance.new("UIPadding")
     padding.PaddingTop = UDim.new(0, 8)
-    padding.Parent = Themes
+    padding.Parent = ThemesPage
 end
 
 local function CreateButton(name, text)
     local btn = Instance.new("TextButton")
     btn.Name = name
-    btn.Parent = Themes
+    btn.Parent = ThemesPage
     btn.Size = UDim2.new(0.95, 0, 0, 38)
     btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
     btn.TextColor3 = Color3.new(0, 255, 255)
